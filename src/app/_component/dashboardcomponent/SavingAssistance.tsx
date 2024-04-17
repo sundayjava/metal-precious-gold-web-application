@@ -1,4 +1,4 @@
-import trial from "../../public/triol.webp";
+import trial from "../../../../public/triol.webp";
 import Image from "next/image";
 
 const SavingAssistance = () => {

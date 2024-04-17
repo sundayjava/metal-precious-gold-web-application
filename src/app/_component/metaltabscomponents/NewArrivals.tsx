@@ -1,9 +1,9 @@
 import Slider from "react-slick";
 import ItemsCard from "./ItemsCard";
-import { bestSellData } from "@/utils/metalData";
+import { newlyArrivedData } from "@/app/_utility/metalData";
 import { useState, useEffect } from "react";
 
-const BestSeller = () => {
+const NewArrivals = () => {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -32,43 +32,38 @@ const BestSeller = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1.3,
-          slidesToScroll: 1
-        }
-      }
-    ]
-
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
     <section className="homeSlider">
       <div className="container-fluid position-relative">
         <Slider {...settings} className="home_slider_Main">
-         {
-          bestSellData.map(
-            items => (
-              <ItemsCard key={items.id} item={items}/>
-            )
-          )
-         }
+          {newlyArrivedData.map((items) => (
+            <ItemsCard key={items.id} item={items} />
+          ))}
         </Slider>
       </div>
     </section>
   );
 };
 
-export default BestSeller;
+export default NewArrivals;

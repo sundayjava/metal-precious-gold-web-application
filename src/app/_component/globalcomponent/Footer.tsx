@@ -11,9 +11,9 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import PublicIcon from "@mui/icons-material/Public";
 import XIcon from "@mui/icons-material/X";
 import Image from "next/image";
-import logo from "../../public/logo.png";
+import logo from '../../../../public/logo.png';
 import Link from "next/link";
-import delivery from '../../public/delivery.jpg'
+import delivery from '../../../../public/delivery.jpg'
 
 const footerItem = [
   {

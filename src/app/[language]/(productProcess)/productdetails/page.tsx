@@ -14,10 +14,10 @@ import Image from "next/image";
 import ThumbUpOffAltOutlinedIcon from "@mui/icons-material/ThumbUpOffAltOutlined";
 import AirportShuttleOutlinedIcon from "@mui/icons-material/AirportShuttleOutlined";
 import { useState, useEffect } from "react";
-import Overview from "@/components/productDetailTab/Overview";
-import Specifications from "@/components/productDetailTab/Specifications";
-import History from "@/components/productDetailTab/History";
-import PurchasedTogether from "@/components/productDetailTab/PurchasedTogether";
+import Overview from "@/app/_component/productDetailTab/Overview";
+import Specifications from "@/app/_component/productDetailTab/Specifications";
+import History from "@/app/_component/productDetailTab/History";
+import PurchasedTogether from "@/app/_component/productDetailTab/PurchasedTogether";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 
 const IOSSwitch = styled((props: SwitchProps) => (
@@ -150,7 +150,7 @@ const page = () => {
 
   return (
     <>
-      <div className="xl:px-[190px] lg:px-[100px] md:px-[40px] px-4 w-full">
+      <div className="xl:px-[190px] lg:px-[100px] bg-white md:px-[40px] px-4 w-full">
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           {breadcrumbs}
         </Breadcrumbs>

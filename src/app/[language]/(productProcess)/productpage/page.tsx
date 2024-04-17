@@ -1,11 +1,11 @@
 "use client";
 
-import ItemsCard from "@/components/metaltabscomponents/ItemsCard";
-import { bestSellData } from "@/utils/metalData";
+import ItemsCard from "@/app/_component/metaltabscomponents/ItemsCard";
+import { bestSellData } from "@/app/_utility/metalData";
 import { Pagination, PaginationItem } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { filters } from "@/utils/filterData";
+import { filters } from "@/app/_utility/filterData";
 import { Remove, Add } from "@mui/icons-material";
 
 const page = () => {

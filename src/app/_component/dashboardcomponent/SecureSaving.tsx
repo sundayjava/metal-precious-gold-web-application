@@ -1,5 +1,5 @@
 import Image from "next/image";
-import pamp from "../../public/pamp.webp";
+import pamp from "../../../../public/pamp.webp";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
 

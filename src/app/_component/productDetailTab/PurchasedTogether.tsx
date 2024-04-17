@@ -1,5 +1,5 @@
 import ItemsCard from "../metaltabscomponents/ItemsCard";
-import { limitedEditionData } from "@/utils/metalData";
+import { limitedEditionData } from "@/app/_utility/metalData";
 
 const PurchasedTogether = () => {
   return (

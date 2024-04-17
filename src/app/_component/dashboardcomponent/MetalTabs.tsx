@@ -1,10 +1,10 @@
 "use client";
 
 import { Tabs, TabsProps } from "antd";
-import BestSeller from "./metaltabscomponents/BestSeller";
-import LimitedEdition from "./metaltabscomponents/LimitedEdition";
-import Coins from "./metaltabscomponents/Coins";
-import NewArrivals from "./metaltabscomponents/NewArrivals";
+import BestSeller from "../metaltabscomponents/BestSeller";
+import LimitedEdition from "../metaltabscomponents/LimitedEdition";
+import Coins from "../metaltabscomponents/Coins";
+import NewArrivals from "../metaltabscomponents/NewArrivals";
 import { useEffect, useState } from "react";
 
 const onChange = (key: string) => {

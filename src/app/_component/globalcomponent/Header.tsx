@@ -5,7 +5,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../public/logo.png";
+import logo from "../../../../public/logo.png";
 import { Button } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
@@ -16,7 +16,7 @@ import {
   silverData,
   platinumData,
   palladium,
-} from "@/utils/headerData";
+} from "@/app/_utility/headerData";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const Header = () => {
@@ -44,16 +44,20 @@ const Header = () => {
 
   useEffect(() => {
     const fetchUrl = async () => {
-      const response = await axios.get(
-        "https://api.metals.dev/v1/latest?api_key=7293XOLNNXKQ3AJNA8K6155JNA8K6&currency=EUR&unit=toz",
-        {
-          headers: {
-            Accept: "application/json",
-          },
-        }
-      );
+      try {
+        const response = await axios.get(
+          "https://api.metals.dev/v1/latest?api_key=7293XOLNNXKQ3AJNA8K6155JNA8K6&currency=EUR&unit=toz",
+          {
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        );
 
-      setMetalData(response.data.metals);
+        setMetalData(response.data.metals);
+      } catch (e) {
+        console.log(e);
+      }
     };
 
     fetchUrl();
@@ -316,21 +320,29 @@ const Header = () => {
       <div className="md:hidden block bg-secondaryColor text-white/80 fixed z-30 top-0 w-full">
         <div className="grid grid-cols-5 px-3 py-3">
           <div className="col-span-1">
-            <MenuIcon sx={{ color: "white", cursor: "pointer",fontSize:30, fontWeight:200 }}/>
+            <MenuIcon
+              sx={{
+                color: "white",
+                cursor: "pointer",
+                fontSize: 30,
+                fontWeight: 200,
+              }}
+            />
           </div>
           <div className="flex col-span-3 justify-center items-center gap-4 text-white/80 hover:text-white">
-            <Image
-              src={logo}
-              alt="log"
-              className="w-[25px] h-[25px]"
-            />
+            <Image src={logo} alt="log" className="w-[25px] h-[25px]" />
             <p className="uppercase cursor-pointer text-[20px]">
               <span className="font-bold">waret</span> gold
             </p>
           </div>
           <div className="col-span-1 justify-end flex">
             <ShoppingCartOutlinedIcon
-              sx={{ color: "white", cursor: "pointer",fontSize:30, fontWeight:200 }}
+              sx={{
+                color: "white",
+                cursor: "pointer",
+                fontSize: 30,
+                fontWeight: 200,
+              }}
             />
           </div>
         </div>

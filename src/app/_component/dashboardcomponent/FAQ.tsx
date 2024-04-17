@@ -3,7 +3,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Image from "next/image";
-import silverIkg from "../../public/silver1kg.webp";
+import silverIkg from "../../../../public/silver1kg.webp";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const FAQ = () => {

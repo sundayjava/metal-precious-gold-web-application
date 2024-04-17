@@ -202,3 +202,9 @@ nav .dropdown_menu li button:hover {
     display: block; /* Change display to block for smaller screens */
   }
 }
+
+.custom-box-shadow {
+  box-shadow: -1px 0px 45px 6px rgba(0,0,0,0.27);
+  -webkit-box-shadow: -1px 0px 45px 6px rgba(0,0,0,0.27);
+  -moz-box-shadow: -1px 0px 45px 6px rgba(0,0,0,0.27);
+}

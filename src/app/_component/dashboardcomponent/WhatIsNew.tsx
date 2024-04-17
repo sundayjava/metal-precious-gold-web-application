@@ -1,8 +1,8 @@
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Image from "next/image";
-import thisweek1 from "../../public/thisweek1.webp";
-import thisweek2 from "../../public/thisweek2.webp";
-import thisweek3 from "../../public/thisweek3.webp";
+import thisweek1 from "../../../../public/thisweek1.webp";
+import thisweek2 from "../../../../public/thisweek2.webp";
+import thisweek3 from "../../../../public/thisweek3.webp";
 import SellIcon from "@mui/icons-material/Sell";
 
 const WhatIsNew = () => {

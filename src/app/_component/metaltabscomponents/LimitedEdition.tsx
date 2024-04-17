@@ -1,9 +1,9 @@
 import Slider from "react-slick";
 import ItemsCard from "./ItemsCard";
-import { coinsData } from "@/utils/metalData";
+import { limitedEditionData } from "@/app/_utility/metalData";
 import { useState, useEffect } from "react";
 
-const Coins = () => {
+const LimitedEdition = () => {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const Coins = () => {
     <section className="homeSlider">
       <div className="container-fluid position-relative">
         <Slider {...settings} className="home_slider_Main">
-          {coinsData.map((items) => (
+          {limitedEditionData.map((items) => (
             <ItemsCard key={items.id} item={items} />
           ))}
         </Slider>
@@ -66,4 +66,4 @@ const Coins = () => {
   );
 };
 
-export default Coins;
+export default LimitedEdition;

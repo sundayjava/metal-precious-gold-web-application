@@ -1,8 +1,8 @@
 import Image from "next/image";
-import goldLogo from "../../public/goldlog.webp";
+import goldLogo from "../../../../public/goldlog.webp";
 import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import leftos from "../../public/lefttos.webp";
+import leftos from "../../../../public/lefttos.webp";
 const GoldSection = () => {
   return (
     <div className="mt-16">
