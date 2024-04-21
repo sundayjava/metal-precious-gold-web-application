@@ -2,11 +2,9 @@
 
 import { AppBar, Button, IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import axios from "axios";
 import { useState, useRef, useEffect, ChangeEvent } from "react";
-import { Call, Search } from "@mui/icons-material";
+import { ArrowDropUp, Call, Search } from "@mui/icons-material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import {
   metals,
   navData
@@ -18,7 +16,6 @@ import { useRouter } from "next/navigation";
 import { category } from "@/app/_utility/category";
 
 const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
-  const [metalData, setMetalData] = useState<any>({});
   const [isOpenNav, setIsOpenNav] = useState(false);
   const [openMegaMenu, setOpenMegaMenu] = useState(false);
   const [lang, setLang] = useState("en");
@@ -43,24 +40,6 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
   }, [headerRef]);
 
   useEffect(() => {
-    // const fetchUrl = async () => {
-    //   try {
-    //     const response = await axios.get(
-    //       "https://api.metals.dev/v1/latest?api_key=7293XOLNNXKQ3AJNA8K6155JNA8K6&currency=EUR&unit=toz",
-    //       {
-    //         headers: {
-    //           Accept: "application/json",
-    //         },
-    //       }
-    //     );
-
-    //     setMetalData(response.data.metals);
-    //   } catch (e) {
-    //     console.log(e);
-    //   }
-    // };
-
-    // fetchUrl();
     localStorage.setItem("lang", "en");
   }, []);
 
@@ -111,7 +90,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                         : "text-green-600"
                     } cursor-pointer hover:text-green-500 font-bold`}
                   >
-                    <ArrowDropUpIcon />
+                    <ArrowDropUp />
                     €0.00
                   </span>
                 </p>
