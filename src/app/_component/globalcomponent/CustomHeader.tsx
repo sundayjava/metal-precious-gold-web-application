@@ -43,24 +43,24 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
   }, [headerRef]);
 
   useEffect(() => {
-    const fetchUrl = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.metals.dev/v1/latest?api_key=7293XOLNNXKQ3AJNA8K6155JNA8K6&currency=EUR&unit=toz",
-          {
-            headers: {
-              Accept: "application/json",
-            },
-          }
-        );
+    // const fetchUrl = async () => {
+    //   try {
+    //     const response = await axios.get(
+    //       "https://api.metals.dev/v1/latest?api_key=7293XOLNNXKQ3AJNA8K6155JNA8K6&currency=EUR&unit=toz",
+    //       {
+    //         headers: {
+    //           Accept: "application/json",
+    //         },
+    //       }
+    //     );
 
-        setMetalData(response.data.metals);
-      } catch (e) {
-        console.log(e);
-      }
-    };
+    //     setMetalData(response.data.metals);
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // };
 
-    fetchUrl();
+    // fetchUrl();
     localStorage.setItem("lang", "en");
   }, []);
 
@@ -94,13 +94,13 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                 <p key={items.id} className="text-[12px]">
                   <span className="cursor-pointer hover:text-white">
                     {items.value} €
-                    {items.value === "GOLD"
+                    {/* {items.value === "GOLD"
                       ? metalData?.gold
                       : items.value === "SILVER"
                       ? metalData?.silver
                       : items.value === "PLATINUM"
                       ? metalData?.platinum
-                      : metalData?.palladium}
+                      : metalData?.palladium} */}
                   </span>
                   <span
                     className={`text-[12px] ${
