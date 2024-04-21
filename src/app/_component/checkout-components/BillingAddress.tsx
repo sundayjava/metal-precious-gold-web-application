@@ -1,9 +1,9 @@
 const BillingAddress = (props: { nextStep: any }) => {
   return (
-    <div className="flex justify-center mt-10">
-      <div className="bg-white rounded-md border-l-[8px] custom-box-shadow border-primaryColor p-10">
+    <div className="flex justify-center mt-10 w-full">
+      <div className="bg-white rounded-md border-l-[8px] custom-box-shadow border-primaryColor p-10 w-full">
         <form>
-          <div className="flex gap-5">
+          <div className="flex md:flex-row flex-col gap-5">
             <div className="flex flex-col">
               <input
                 type="text"

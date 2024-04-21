@@ -47,7 +47,7 @@ const FAQ = () => {
     },
   ];
   return (
-    <div className="mt-32">
+    <div className="mt-32 bg-white">
       <div className="flex items-end justify-between">
         <div className="md:w-[60%] w-full">
           <h1 className="font-bold md:text-[32px] text-[27px]">

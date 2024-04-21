@@ -18,9 +18,9 @@ const PaymentReviews = (props: { finalStep: any }) => {
   ];
 
   return (
-    <div className="flex justify-center mt-10">
-      <div className="bg-white rounded-md border-l-[8px] custom-box-shadow border-primaryColor p-10">
-        <div>
+    <div className="flex justify-center mt-10 w-full">
+      <div className="bg-white rounded-md border-l-[8px] custom-box-shadow border-primaryColor p-10 w-full">
+        <div className="w-full">
           <h1>Choose payment method</h1>
           <div className="md:w-[60%] w-full">
             {paymentMethods.map((item) => (
@@ -47,8 +47,9 @@ const PaymentReviews = (props: { finalStep: any }) => {
                 <AccordionDetails
                   sx={{
                     borderRadius: 5,
-                    display: "flex",
                     gap: "8px",
+                    lineClamp:2,
+                    overflowX:'scroll'
                   }}
                 >
                   {item.desc}

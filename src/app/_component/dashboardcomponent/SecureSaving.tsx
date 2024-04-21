@@ -35,7 +35,7 @@ const SecureSaving = () => {
   ];
   return (
     <div>
-      <div className="flex md:flex-row flex-col justify-between gap-2 items-center">
+      <div className="flex md:flex-row flex-col justify-between gap-2 mt-10 items-center">
         <div className="md:w-[60%] w-full">
           <h1 className="md:text-[32px] text-[28px] font-bold">Secure your savings</h1>
           <p className="md:text-[20px] text-[17px] mt-4 font-normal">

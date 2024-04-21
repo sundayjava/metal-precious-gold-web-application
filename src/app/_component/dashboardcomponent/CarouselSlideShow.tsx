@@ -8,19 +8,23 @@ import "slick-carousel/slick/slick-theme.css";
 import { useState, useEffect } from "react";
 
 const CarouselSlideShow = () => {
-  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const [viewportWidth, setViewportWidth] = useState(0); // Initialize to 0 or any default value
 
   useEffect(() => {
     const handleResize = () => {
       setViewportWidth(window.innerWidth);
     };
 
-    window.addEventListener("resize", handleResize);
+    // Add event listener only on the client side
+    if (typeof window !== "undefined") {
+      setViewportWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []); 
 
   const showarrows = viewportWidth < 640 ? false : true;
   
@@ -36,7 +40,7 @@ const CarouselSlideShow = () => {
   };
 
   return (
-    <section className="homeSlider">
+    <section className="homeSlider bg-white">
       <div className="container-fluid position-relative">
         <Slider {...settings} className="home_slider_Main">
           <Image src={slide1} alt="slide1" className="w-full md:h-[80%] h-[320px] object-cover md:rounded-2xl rounded-lg cursor-pointer"/>

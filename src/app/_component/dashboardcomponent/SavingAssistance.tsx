@@ -20,7 +20,7 @@ const SavingAssistance = () => {
           </div>
           <div>
             <label className="text-[14px]">Enter a budget</label>
-            <div className="flex border px-3 py-3 border-primaryColor/50 text-black/70 text-14px] rounded-md">
+            <div className="flex border px-3 py-3 bg-white border-primaryColor/50 text-black/70 text-14px] rounded-md">
               <select className="px-4">
                 <option>Eur</option>
               </select>

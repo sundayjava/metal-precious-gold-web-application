@@ -9,19 +9,23 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useState, useEffect } from "react";
 
 const Usercarousel = () => {
-  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const [viewportWidth, setViewportWidth] = useState(0); // Initialize to 0 or any default value
 
   useEffect(() => {
     const handleResize = () => {
       setViewportWidth(window.innerWidth);
     };
 
-    window.addEventListener("resize", handleResize);
+    // Add event listener only on the client side
+    if (typeof window !== "undefined") {
+      setViewportWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []); 
 
   const showarrows = viewportWidth < 640 ? false : true;
  
@@ -132,7 +136,7 @@ const Usercarousel = () => {
       <div className="slider-container">
         <Slider {...settings}>
           {userReviews.map((item) => (
-            <div key={item.id} className="bg-white px-3">
+            <div key={item.id} className="px-3">
               <div className="bg-gray-100 shadow-lg rounded-md p-2">
                 <div className="flex gap-2">
                   <Rating

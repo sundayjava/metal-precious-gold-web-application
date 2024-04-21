@@ -9,8 +9,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: rgb(255,255,255);
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(240,255,255,1) 50%, rgba(255,255,255,1) 100%);
+  background-color: #eeeeee;
 }
 
 header {
@@ -208,7 +207,7 @@ nav .dropdown_menu li button:hover {
 }
 
 .custom-box-shadow {
-  box-shadow: -1px 0px 45px 6px rgba(0, 0, 0, 0.27);
-  -webkit-box-shadow: -1px 0px 45px 6px rgba(0, 0, 0, 0.27);
-  -moz-box-shadow: -1px 0px 45px 6px rgba(0, 0, 0, 0.27);
+  box-shadow: -1px 0px 45px 6px rgba(0,0,0,0.27);
+  -webkit-box-shadow: -1px 0px 45px 6px rgba(0,0,0,0.27);
+  -moz-box-shadow: -1px 0px 45px 6px rgba(0,0,0,0.27);
 }

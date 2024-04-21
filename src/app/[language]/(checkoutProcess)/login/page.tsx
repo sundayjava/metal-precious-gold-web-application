@@ -1,6 +1,10 @@
-import { TextField } from "@mui/material";
+"use client"
 
-const page = () => {
+import { TextField } from "@mui/material";
+import { useRouter } from "next/navigation";
+
+const LoginPage = () => {
+  const router = useRouter()
   return (
     <div className="flex justify-center items-center min-h-[80vh]">
       <div className="custom-box-shadow rounded-md md:px-16 px-4 md:w-[35%] w-[98%] py-10">
@@ -47,12 +51,12 @@ const page = () => {
         <p className="mb-3 text-[14px] font-light text-center">
           First time on WARET GOLD?
         </p>
-        <button className="text-[14px] font-bold py-3 rounded-md w-full text-primaryColor border border-primaryColor">
-          Sign in
+        <button onClick={()=>router.push(`/${localStorage.getItem("lang")}/sign-up`)} className="text-[14px] font-bold py-3 rounded-md w-full text-primaryColor border border-primaryColor">
+          Sign up
         </button>
       </div>
     </div>
   );
 };
 
-export default page;
+export default LoginPage;

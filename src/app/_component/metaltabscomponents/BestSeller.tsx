@@ -1,10 +1,12 @@
+"use client"
+
 import Slider from "react-slick";
 import ItemsCard from "./ItemsCard";
-import { bestSellData } from "@/app/_utility/metalData";
 import { useState, useEffect } from "react";
 
-const BestSeller = () => {
+const BestSeller = (props:{product:any}) => {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const {product} = props
 
   useEffect(() => {
     const handleResize = () => {
@@ -22,8 +24,7 @@ const BestSeller = () => {
   var settings = {
     infinite: false,
     slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
+    slidesToScroll: 1,
     arrows: showarrows,
     responsive: [
       {
@@ -54,13 +55,15 @@ const BestSeller = () => {
 
   };
 
+  console.log("Best sales",product)
+
   return (
     <section className="homeSlider">
       <div className="container-fluid position-relative">
         <Slider {...settings} className="home_slider_Main">
          {
-          bestSellData.map(
-            items => (
+          product.map(
+            (items:any) => (
               <ItemsCard key={items.id} item={items}/>
             )
           )

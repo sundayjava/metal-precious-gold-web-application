@@ -19,6 +19,7 @@ import Specifications from "@/app/_component/productDetailTab/Specifications";
 import History from "@/app/_component/productDetailTab/History";
 import PurchasedTogether from "@/app/_component/productDetailTab/PurchasedTogether";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
+import axios from "axios";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -75,25 +76,9 @@ const onChange = (key: string) => {
   console.log(key);
 };
 
-const items: TabsProps["items"] = [
-  {
-    key: "overview",
-    label: "Overview",
-    children: <Overview />,
-  },
-  {
-    key: "specification",
-    label: "Specifications",
-    children: <Specifications />,
-  },
-  {
-    key: "history",
-    label: "History",
-    children: <History />,
-  },
-];
+const ProductDetails = () => {
+  const [itemData, setItemData] = useState<any>({});
 
-const page = () => {
   function handleBreadCumClick(
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) {
@@ -110,7 +95,7 @@ const page = () => {
       onClick={handleBreadCumClick}
       sx={{ fontSize: 13 }}
     >
-      Silver
+      {itemData?.parentcategory}
     </Link>,
     <Link
       underline="hover"
@@ -120,7 +105,7 @@ const page = () => {
       onClick={handleBreadCumClick}
       sx={{ fontSize: 13 }}
     >
-      Silver Bars
+      {itemData?.childcategory}
     </Link>,
     <Link
       underline="hover"
@@ -130,48 +115,68 @@ const page = () => {
       onClick={handleBreadCumClick}
       sx={{ fontSize: 13 }}
     >
-      Monster Box 500 oz Silver Bars - PAMP Suisse
+      {itemData?.title}
     </Link>,
   ];
 
-  const [isCentered, setIsCentered] = useState(window.innerWidth > 640);
+  const findProductsById = async (id: string) => {
+    const { data } = await axios.get(`/api/product/${id}`);
+    setItemData(data.data);
+  };
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsCentered(window.innerWidth > 640);
-    };
+    const id = location.pathname.split("/")[5];
+    findProductsById(id);
+  });
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const items: TabsProps["items"] = [
+    {
+      key: "overview",
+      label: "Overview",
+      children: <Overview overview={itemData?.overview} />,
+    },
+    {
+      key: "specification",
+      label: "Specifications",
+      children: <Specifications product={itemData} />,
+    },
+    {
+      key: "history",
+      label: "History",
+      children: <History history={itemData?.history} />,
+    },
+  ];
 
   return (
     <>
-      <div className="xl:px-[190px] lg:px-[100px] bg-white md:px-[40px] px-4 w-full">
-        <Breadcrumbs separator="›" aria-label="breadcrumb">
+      <div className="xl:px-[190px] lg:px-[80px] bg-white md:px-[28px] px-1 w-full">
+        <Breadcrumbs
+          separator="›"
+          aria-label="breadcrumb"
+          sx={{ marginTop: 8, paddingTop: 3 }}
+        >
           {breadcrumbs}
         </Breadcrumbs>
-        <div className="container mt-9">
+        <div className="container mt-3">
           <div className="md:w-[40%] w-full h-[350px] inline-block float-left md:sticky md:top-[50px] top-0">
-            <div className="inline-block align-top float-right">
-              <Image
-                src="https://m.media-amazon.com/images/I/61tXgp2RNxL._SX522_.jpg"
-                className="object-cover w-full h-full"
-                width={300}
-                height={300}
-                alt={"ghijkhiujk"}
-              />
+            <div className="inline-block align-top float-left">
+              {itemData.imageUrl?.length > 0 ? (
+                <Image
+                  src={itemData?.imageUrl[0].url}
+                  className="object-cover w-full h-full"
+                  width={300}
+                  height={300}
+                  alt={"ghijkhiujk"}
+                />
+              ) : null}
             </div>
           </div>
-          <div className="md:w-[60%] w-full inline-block align-top float-right lg:px-12 md:px-7 px-2">
+          <div className="md:w-[60%] w-full inline-block align-top float-right lg:px-7 pl-10">
             <h1 className="text-[18px] font-bold block mb-10 mt-4">
-              Monster Box 500 oz Silver Bars - PAMP Suisse
+              {itemData?.title}
             </h1>
             <div className="flex justify-start">
-              <div className="border-2 bg-primaryColor/10 border-primaryColor rounded-lg p-7 relative">
+              <div className="border-2 bg-primaryColor/10 border-primaryColor rounded-lg md:p-7 p-2 relative">
                 <div className="flex gap-2 items-center">
                   <div className="w-4 h-4 rounded-full bg-primaryColor flex justify-center items-center">
                     <div className="w-2 h-2 rounded-full bg-primaryColor/20"></div>
@@ -180,10 +185,11 @@ const page = () => {
                 </div>
                 <div className="ml-10 my-6">
                   <p className="font-bold text-[17px]">
-                    €14,173.<span className="text-[12px]">53</span>
+                    €{itemData?.price}
+                    <span className="text-[12px]"></span>
                   </p>
                   <p className="text-[14px] font-light">
-                    Fees: €2.22 per oz (7.82%)
+                    Fees: €{itemData?.discount} per oz ({itemData?.percent}%)
                   </p>
                   <ul className="mt-5">
                     <li className="flex gap-3 items-center text-[14px]">
@@ -249,7 +255,7 @@ const page = () => {
             </div>
 
             <div className="flex mt-8">
-              <div className="border-2 rounded-lg p-7">
+              <div className="border-2 rounded-lg md:p-7 p-2">
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full border-2" />
                   <select className="border-none underline outline-none font-bold">
@@ -276,7 +282,7 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div className="mt-20 mx-52">
+        <div className="mt-20 lg:mx-12 md:mx-5">
           <Tabs
             defaultActiveKey="1"
             items={items}
@@ -289,10 +295,10 @@ const page = () => {
           />
         </div>
 
-        <PurchasedTogether />
+        {/* <PurchasedTogether /> */}
       </div>
     </>
   );
 };
 
-export default page;
+export default ProductDetails;

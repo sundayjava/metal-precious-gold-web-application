@@ -5,7 +5,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import leftos from "../../../../public/lefttos.webp";
 const GoldSection = () => {
   return (
-    <div className="mt-16">
+    <div className="mt-16 bg-white">
       <div className="flex md:flex-row flex-col justify-between gap-2 items-center">
         <div className="md:w-[60%] w-full">
           <h1 className="text-[25px] font-bold">

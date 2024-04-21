@@ -36,7 +36,7 @@ const WhatIsNew = () => {
     },
   ];
   return (
-    <div className="md:mt-32 mt-20">
+    <div className="md:mt-32 mt-20 bg-white">
       <div className="flex md:flex-row flex-col items-end justify-between">
         <div className="md:w-[60%] w-full">
           <h1 className="font-bold md:text-[32px] text-[24px]">

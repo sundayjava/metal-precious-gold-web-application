@@ -6,52 +6,69 @@ import LimitedEdition from "../metaltabscomponents/LimitedEdition";
 import Coins from "../metaltabscomponents/Coins";
 import NewArrivals from "../metaltabscomponents/NewArrivals";
 import { useEffect, useState } from "react";
+// import { useAppDispatch, useAppSelector } from "@/state/hooks";
+import { getAllProduct } from "@/state/product/Action";
+import axios from "axios";
 
 const onChange = (key: string) => {
   console.log(key);
 };
 
-const items: TabsProps["items"] = [
-  {
-    key: "bestsellers",
-    label: "Best Sellers",
-    children: <BestSeller />,
-  },
-  {
-    key: "limitededitions",
-    label: "Limited Editions",
-    children: <LimitedEdition />,
-  },
-  {
-    key: "coins",
-    label: "Coins",
-    children: <Coins />,
-  },
-  {
-    key: "newarrivals",
-    label: "New Arrivals",
-    children: <NewArrivals />,
-  },
-];
-
 const MetalTabs = () => {
-  const [isCentered, setIsCentered] = useState(window.innerWidth > 640);
+  const [isCentered, setIsCentered] = useState(false);
+  const [product, setProduct] = useState([])
+  // const dispatch = useAppDispatch();
+  // const { product } = useAppSelector((state) => state);
 
   useEffect(() => {
     const handleResize = () => {
       setIsCentered(window.innerWidth > 640);
     };
+    if (typeof window !== "undefined") {
+      setIsCentered(window.innerWidth > 640);
+      window.addEventListener("resize", handleResize);
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
-  
+
+  const getAllProduct = async() => {
+    const { data } = await axios.get(`/api/product`);
+    setProduct(data)
+  }
+
+  useEffect(() => {
+    getAllProduct();
+  });
+
+  const items: TabsProps["items"] = [
+    {
+      key: "bestsellers",
+      label: "Best Sellers",
+      children: <BestSeller product={product} />,
+    },
+    {
+      key: "limitededitions",
+      label: "Limited Editions",
+      children: <LimitedEdition product={product} />,
+    },
+    {
+      key: "coins",
+      label: "Coins",
+      children: <Coins product={product} />,
+    },
+    {
+      key: "newarrivals",
+      label: "New Arrivals",
+      children: <NewArrivals product={product} />,
+    },
+  ];
+
   return (
     <div>
-      <div className="mt-20 mx-2">
+      <div className="mt-20 mx-2 bg-white">
         <Tabs
           defaultActiveKey="1"
           items={items}
@@ -59,7 +76,7 @@ const MetalTabs = () => {
           centered={isCentered}
           size="large"
           tabBarStyle={{
-            fontWeight: 600
+            fontWeight: 600,
           }}
         />
       </div>
