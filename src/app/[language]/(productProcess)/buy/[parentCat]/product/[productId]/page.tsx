@@ -160,15 +160,13 @@ const ProductDetails = () => {
         <div className="container mt-3">
           <div className="md:w-[40%] w-full h-[350px] inline-block float-left md:sticky md:top-[50px] top-0">
             <div className="inline-block align-top float-left">
-              {itemData.imageUrl?.length > 0 ? (
-                <Image
-                  src={itemData?.imageUrl[0].url}
+             <Image
+                  src={itemData?.imageUrl[1]}
                   className="object-cover w-full h-full"
                   width={300}
                   height={300}
                   alt={"ghijkhiujk"}
                 />
-              ) : null}
             </div>
           </div>
           <div className="md:w-[60%] w-full inline-block align-top float-right lg:px-7 pl-10">

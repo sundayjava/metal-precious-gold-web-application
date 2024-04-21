@@ -9,13 +9,9 @@ export async function GET(
       where: {
         id: params.id,
       },
-
-      include: {
-        imageUrl: true,
-      },
     });
 
-    return Response.json({data:data});
+    return Response.json({ data: data });
   } catch (error) {
     console.error("Error fetching product:", error);
     return Response.json({ success: false, error: "Error fetching product" });

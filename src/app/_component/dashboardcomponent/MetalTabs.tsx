@@ -6,8 +6,6 @@ import LimitedEdition from "../metaltabscomponents/LimitedEdition";
 import Coins from "../metaltabscomponents/Coins";
 import NewArrivals from "../metaltabscomponents/NewArrivals";
 import { useEffect, useState } from "react";
-// import { useAppDispatch, useAppSelector } from "@/state/hooks";
-import { getAllProduct } from "@/state/product/Action";
 import axios from "axios";
 
 const onChange = (key: string) => {
@@ -17,8 +15,6 @@ const onChange = (key: string) => {
 const MetalTabs = () => {
   const [isCentered, setIsCentered] = useState(false);
   const [product, setProduct] = useState([])
-  // const dispatch = useAppDispatch();
-  // const { product } = useAppSelector((state) => state);
 
   useEffect(() => {
     const handleResize = () => {
