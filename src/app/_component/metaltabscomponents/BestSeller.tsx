@@ -55,8 +55,6 @@ const BestSeller = (props:{product:any}) => {
 
   };
 
-  console.log("Best sales",product)
-
   return (
     <section className="homeSlider">
       <div className="container-fluid position-relative">

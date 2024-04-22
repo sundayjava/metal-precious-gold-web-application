@@ -9,6 +9,8 @@ import {
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/config/firebase";
 
 const SignupPage = () => {
   const router = useRouter();
@@ -34,32 +36,42 @@ const SignupPage = () => {
 
     try {
       setLoading(true);
-      const response = await fetch("/api/user/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstname: info.firstname,
-          lastname: info.lastname,
-          email: info.email,
-          password: info.password,
-        }),
-      });
 
-      const data = await response.json();
+      const res = await createUserWithEmailAndPassword(
+        auth,
+        info.email,
+        info.password
+      );
 
-      if (data.success !== true) {
-        console.log(response);
-        alert(data.error);
-        setLoading(false);
-        return;
-      }
+      if (res.user) {
+        const response = await fetch("/api/user/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstname: info.firstname,
+            lastname: info.lastname,
+            email: info.email,
+          }),
+        });
 
-      console.log(data);
-      if (data.success == true) {
-        router.push(`/${localStorage.getItem("lang")}/login`);
-        setLoading(false);
+        const data = await response.json();
+
+        if (data.success !== true) {
+          console.log(response);
+          alert(data.error);
+          setLoading(false);
+          return;
+        }
+
+        console.log(data);
+        if (data.success == true) {
+          router.push(`/${localStorage.getItem("lang")}/login`);
+          setLoading(false);
+        }
+      } else {
+        console.error("User not signed in", res);
       }
     } catch (error) {
       alert("Network error");

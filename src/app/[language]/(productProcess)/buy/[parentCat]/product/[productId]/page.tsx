@@ -17,7 +17,6 @@ import { useState, useEffect } from "react";
 import Overview from "@/app/_component/productDetailTab/Overview";
 import Specifications from "@/app/_component/productDetailTab/Specifications";
 import History from "@/app/_component/productDetailTab/History";
-import PurchasedTogether from "@/app/_component/productDetailTab/PurchasedTogether";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import axios from "axios";
 

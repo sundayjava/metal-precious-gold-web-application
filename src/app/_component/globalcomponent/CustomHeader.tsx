@@ -1,19 +1,33 @@
 "use client";
 
-import { AppBar, Button, IconButton, Toolbar } from "@mui/material";
+import {
+  AppBar,
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState, useRef, useEffect, ChangeEvent } from "react";
 import { ArrowDropUp, Call, Search } from "@mui/icons-material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import {
-  metals,
-  navData
-} from "@/app/_utility/headerData";
+import { metals, navData } from "@/app/_utility/headerData";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../../public/logo.png";
 import { useRouter } from "next/navigation";
 import { category } from "@/app/_utility/category";
+import { auth } from "@/config/firebase";
+import axios from "axios";
+import { signOut } from "@firebase/auth";
+
+type User = {
+  id: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+};
 
 const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
   const [isOpenNav, setIsOpenNav] = useState(false);
@@ -21,6 +35,37 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
   const [lang, setLang] = useState("en");
   const headerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const [user, setUser] = useState<User | null>(null);
+
+  const handleClick = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const navigateToOrder = () => {
+    handleClose();
+  };
+
+  const navigateToProfile = () => {
+    handleClose();
+  };
+
+  const hanldeLogout = () => {
+    signOut(auth)
+      .then(() => {
+        alert("User Logout");
+        handleClose()
+        setUser(null)
+      })
+      .catch((error) => {
+        alert("Unable to logout");
+      });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,9 +84,24 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
     };
   }, [headerRef]);
 
+  async function getProfile() {
+    if (auth.currentUser?.email) {
+      try {
+        const response = await axios.get<User>(
+          `/api/user/${auth.currentUser?.email}`
+        );
+        setUser(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    }
+  }
+
   useEffect(() => {
     localStorage.setItem("lang", "en");
-  }, []);
+    getProfile();
+  }, [auth.currentUser?.email]);
 
   const changeLanguage = (event: ChangeEvent<HTMLSelectElement>) => {
     setLang(event.target.value);
@@ -128,12 +188,55 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                   ))}
                 </div>
                 <div className="md:h-3 h-2 w-[2px] bg-white" />
-                <button onClick={()=>router.push(`/${localStorage.getItem("lang")}/login`)} className="text-white hover-border md:text-[13px] lg:text-[16px] text-[11px]">
-                  Sign in
-                </button>
-                <button onClick={()=>router.push(`/${localStorage.getItem("lang")}/sign-up`)} className="text-white border border-white hover:text-black md:text-[13px] lg:text-[16px] text-[11px] hover:bg-white rounded-md md:px-3 px-1 md:py-1 py-[2px]">
-                  Open an account
-                </button>
+                {user !== null ? (
+                  <div className="md:block hidden">
+                    <button
+                      id="basic-button"
+                      aria-controls={open ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                      onClick={handleClick}
+                      className="text-[14px] font-bold"
+                    >
+                      {user.firstname} {user.lastname}
+                    </button>
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button",
+                      }}
+                    >
+                      <MenuItem onClick={navigateToProfile}>History</MenuItem>
+                      <MenuItem onClick={navigateToOrder}>
+                        Prodile Settings
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>Storage</MenuItem>
+                      <MenuItem onClick={hanldeLogout}>Sign out</MenuItem>
+                    </Menu>
+                  </div>
+                ) : (
+                  <div className="flex gap-5">
+                    <button
+                      onClick={() =>
+                        router.push(`/${localStorage.getItem("lang")}/login`)
+                      }
+                      className="text-white hover-border md:text-[13px] lg:text-[16px] text-[11px]"
+                    >
+                      Sign in
+                    </button>
+                    <button
+                      onClick={() =>
+                        router.push(`/${localStorage.getItem("lang")}/sign-up`)
+                      }
+                      className="text-white border border-white hover:text-black md:text-[13px] lg:text-[16px] text-[11px] hover:bg-white rounded-md md:px-3 px-1 md:py-1 py-[2px]"
+                    >
+                      Open an account
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -163,9 +266,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                           <li key={item.id}>
                             <button
                               onClick={() =>
-                                router.push(
-                                  `/${lang}/buy/${item.parent}`
-                                )
+                                router.push(`/${lang}/buy/${item.parent}`)
                               }
                               className="text-white hover:bg-white/20 text-[15px] rounded-lg py-[2px] px-2"
                             >
@@ -264,9 +365,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
           {category.map((item) => (
             <li key={item.id}>
               <button
-                onClick={() =>
-                  router.push(`/${lang}/buy/${item.parent}`)
-                }
+                onClick={() => router.push(`/${lang}/buy/${item.parent}`)}
                 className="text-white hover:bg-white/20 text-[14px] rounded-lg py-[2px] px-2"
               >
                 {item.parent}
