@@ -20,7 +20,6 @@ export default function RootLayout({
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <NavBar />
         <div className="md:mt-32 mt-20">{children}</div>
-  
       </body>
     </html>
   );

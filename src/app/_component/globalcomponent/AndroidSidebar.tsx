@@ -10,6 +10,8 @@ import {
   Button,
   Drawer,
   IconButton,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import { ChevronLeft, Groups2Outlined } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -20,6 +22,11 @@ import {
   silverData,
 } from "@/app/_utility/headerData";
 import Link from "next/link";
+import { auth } from "@/config/firebase";
+import { User } from "@prisma/client";
+import axios from "axios";
+import { signOut } from "firebase/auth";
+import { useEffect, useState } from "react";
 
 const AndroidSidebar = (props: {
   isNonMobile: any;
@@ -29,10 +36,56 @@ const AndroidSidebar = (props: {
 }) => {
   const router = useRouter();
   const { drawerWidth, isNonMobile, isSidebarOpen, setIsSidebarOpen } = props;
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const [user, setUser] = useState<User | null>(null);
 
-  const naviageToPage = (url: string) => {
-    router.push(url);
+  const handleClick = (event: any) => {
+    setAnchorEl(event.currentTarget);
   };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const navigateToOrder = () => {
+    handleClose();
+  };
+
+  const navigateToProfile = () => {
+    handleClose();
+  };
+
+  const hanldeLogout = () => {
+    signOut(auth)
+      .then(() => {
+        alert("User Logout");
+        handleClose();
+        setUser(null);
+      })
+      .catch((error) => {
+        alert("Unable to logout");
+      });
+  };
+
+  async function getProfile() {
+    if (auth.currentUser?.email) {
+      try {
+        const response = await axios.get<User>(
+          `/api/user/${auth.currentUser?.email}`
+        );
+        setUser(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    localStorage.setItem("lang", "en");
+    getProfile();
+  }, [auth.currentUser?.email]);
 
   const sideData = [
     {
@@ -77,25 +130,57 @@ const AndroidSidebar = (props: {
         >
           <div className="w-full">
             <div className="flex w-full bg-black px-2 text-white gap-4 justify-between py-3 items-center">
-              <div className="flex justify-between items-center gap-3">
-                <button
-                  onClick={() =>
-                    router.push(`/${localStorage.getItem("lang")}/sign-up`)
-                  }
-                  className="text-[12px] font-bold"
-                >
-                  Open an account
-                </button>
-                <div className="w-[2px] h-3 bg-white" />
-                <button
-                  onClick={() =>
-                    router.push(`/${localStorage.getItem("lang")}/login`)
-                  }
-                  className="text-[12px] font-bold"
-                >
-                  Sign in
-                </button>
-              </div>
+              {user !== null ? (
+                <div className=" py-4 px-2">
+                  <button
+                    id="basic-button"
+                    aria-controls={open ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={handleClick}
+                    className="text-[14px] font-bold"
+                  >
+                    {user.firstname} {user.lastname}
+                  </button>
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                  >
+                    <MenuItem onClick={navigateToProfile}>History</MenuItem>
+                    <MenuItem onClick={navigateToOrder}>
+                      Prodile Settings
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>Storage</MenuItem>
+                    <MenuItem onClick={hanldeLogout}>Sign out</MenuItem>
+                  </Menu>
+                </div>
+              ) : (
+                <div className="flex justify-between items-center gap-3">
+                  <button
+                    onClick={() =>
+                      router.push(`/${localStorage.getItem("lang")}/sign-up`)
+                    }
+                    className="text-[12px] font-bold"
+                  >
+                    Open an account
+                  </button>
+                  <div className="w-[2px] h-3 bg-white" />
+                  <button
+                    onClick={() =>
+                      router.push(`/${localStorage.getItem("lang")}/login`)
+                    }
+                    className="text-[12px] font-bold"
+                  >
+                    Sign in
+                  </button>
+                </div>
+              )}
+
               <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                 <ChevronLeft sx={{ color: "white" }} />
               </IconButton>
@@ -123,7 +208,10 @@ const AndroidSidebar = (props: {
                         </button>
                         <div className="flex flex-wrap gap-2 items-center">
                           {item.items?.map((item) => (
-                            <span key={item.id} className="hover-border text-[12px] font-light">
+                            <span
+                              key={item.id}
+                              className="hover-border text-[12px] font-light"
+                            >
                               {item.value}
                             </span>
                           ))}
@@ -151,7 +239,10 @@ const AndroidSidebar = (props: {
                         </button>
                         <div className="flex flex-wrap gap-2 items-center">
                           {item.items?.map((item) => (
-                            <span key={item.id} className="hover-border text-[12px] font-light">
+                            <span
+                              key={item.id}
+                              className="hover-border text-[12px] font-light"
+                            >
                               {item.value}
                             </span>
                           ))}
@@ -179,7 +270,10 @@ const AndroidSidebar = (props: {
                         </button>
                         <div className="flex flex-wrap gap-2 items-center">
                           {item.items?.map((item) => (
-                            <span key={item.id} className="hover-border text-[12px] font-light">
+                            <span
+                              key={item.id}
+                              className="hover-border text-[12px] font-light"
+                            >
                               {item.value}
                             </span>
                           ))}
@@ -207,7 +301,10 @@ const AndroidSidebar = (props: {
                         </button>
                         <div className="flex flex-wrap gap-2 items-center">
                           {item.items?.map((item) => (
-                            <span key={item.id} className="hover-border text-[12px] font-light">
+                            <span
+                              key={item.id}
+                              className="hover-border text-[12px] font-light"
+                            >
                               {item.value}
                             </span>
                           ))}
@@ -221,7 +318,9 @@ const AndroidSidebar = (props: {
 
             <div className="flex flex-col px-5 my-7 items-start gap-5">
               {sideData.map((item) => (
-                <Link key={item.id} href={""}>{item.label}</Link>
+                <Link key={item.id} href={""}>
+                  {item.label}
+                </Link>
               ))}
             </div>
             <hr />
