@@ -193,7 +193,7 @@ const AndroidSidebar = (props: {
               <h1 className="font-bold ml-2 my-2">Shops</h1>
               <div>
                 {category.map((item) => (
-                  <Accordion>
+                  <Accordion key={item.id}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1-content"
@@ -243,130 +243,6 @@ const AndroidSidebar = (props: {
                     </AccordionDetails>
                   </Accordion>
                 ))}
-                {/* <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                    sx={{ color: "black" }}
-                  >
-                    Gold
-                  </AccordionSummary>
-                  <AccordionDetails
-                    sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}
-                  >
-                    {goldData.map((item) => (
-                      <div key={item.id}>
-                        <button className="text-blue-700 text-[14px] font-bold">
-                          {item.value}
-                        </button>
-                        <div className="flex flex-wrap gap-2 items-center">
-                          {item.items?.map((item) => (
-                            <span
-                              key={item.id}
-                              className="hover-border text-[12px] font-light"
-                            >
-                              {item.value}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </AccordionDetails>
-                </Accordion>
-                <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                    sx={{ color: "black" }}
-                  >
-                    Silver
-                  </AccordionSummary>
-                  <AccordionDetails
-                    sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}
-                  >
-                    {silverData.map((item) => (
-                      <div key={item.id}>
-                        <button className="text-blue-700 text-[14px] font-bold">
-                          {item.value}
-                        </button>
-                        <div className="flex flex-wrap gap-2 items-center">
-                          {item.items?.map((item) => (
-                            <span
-                              key={item.id}
-                              className="hover-border text-[12px] font-light"
-                            >
-                              {item.value}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </AccordionDetails>
-                </Accordion>
-                <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                    sx={{ color: "black" }}
-                  >
-                    Platinum
-                  </AccordionSummary>
-                  <AccordionDetails
-                    sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}
-                  >
-                    {platinumData.map((item) => (
-                      <div key={item.id}>
-                        <button className="text-blue-700 text-[14px] font-bold">
-                          {item.value}
-                        </button>
-                        <div className="flex flex-wrap gap-2 items-center">
-                          {item.items?.map((item) => (
-                            <span
-                              key={item.id}
-                              className="hover-border text-[12px] font-light"
-                            >
-                              {item.value}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </AccordionDetails>
-                </Accordion>
-                <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                    sx={{ color: "black" }}
-                  >
-                    Palladium
-                  </AccordionSummary>
-                  <AccordionDetails
-                    sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}
-                  >
-                    {palladium.map((item) => (
-                      <div key={item.id}>
-                        <button className="text-blue-700 text-[14px] font-bold">
-                          {item.value}
-                        </button>
-                        <div className="flex flex-wrap gap-2 items-center">
-                          {item.items?.map((item) => (
-                            <span
-                              key={item.id}
-                              className="hover-border text-[12px] font-light"
-                            >
-                              {item.value}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </AccordionDetails>
-                </Accordion> */}
               </div>
             </div>
 

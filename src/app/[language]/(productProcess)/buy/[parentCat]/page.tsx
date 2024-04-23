@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { Product } from "@/app/_utility/apicall";
 import axios from "axios";
 
-const page = () => {
+const ProductPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [parentcategory, setCat] = useState("");
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -140,4 +140,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ProductPage;
