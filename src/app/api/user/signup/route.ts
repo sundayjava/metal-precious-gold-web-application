@@ -1,4 +1,4 @@
-import { User } from "@/app/_utility/user";
+import { User2 } from "@/app/_utility/user";
 import { prisma } from "../../../../config";
 
 export async function POST(request: Request) {
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
   }
 }
 
-async function createCart(user: User) {
+async function createCart(user: User2) {
   const cart = await prisma.cart.create({
     data: {
       user: { connect: { id: user.id } },

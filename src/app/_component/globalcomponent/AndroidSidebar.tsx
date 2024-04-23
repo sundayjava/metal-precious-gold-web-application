@@ -26,7 +26,8 @@ import { auth } from "@/config/firebase";
 import { User } from "@prisma/client";
 import axios from "axios";
 import { signOut } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { category } from "@/app/_utility/category";
 
 const AndroidSidebar = (props: {
   isNonMobile: any;
@@ -39,6 +40,12 @@ const AndroidSidebar = (props: {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [user, setUser] = useState<User | null>(null);
+  const [lang, setLang] = useState("en");
+
+  const changeLanguage = (event: ChangeEvent<HTMLSelectElement>) => {
+    setLang(event.target.value);
+    localStorage.setItem("lang", event.target.value);
+  };
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -149,7 +156,7 @@ const AndroidSidebar = (props: {
                   >
                     <MenuItem onClick={navigateToProfile}>History</MenuItem>
                     <MenuItem onClick={navigateToOrder}>
-                      Prodile Settings
+                      Profile Settings
                     </MenuItem>
                     <MenuItem onClick={handleClose}>Storage</MenuItem>
                     <MenuItem onClick={hanldeLogout}>Sign out</MenuItem>
@@ -185,7 +192,58 @@ const AndroidSidebar = (props: {
             <div className="">
               <h1 className="font-bold ml-2 my-2">Shops</h1>
               <div>
-                <Accordion>
+                {category.map((item) => (
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1-content"
+                      id="panel1-header"
+                      sx={{ color: "black" }}
+                    >
+                      <p
+                        className="uppercase text-[14px] font-normal"
+                        onClick={() => {
+                          router.push(`/${lang}/buy/${item.parent}`);
+                          setIsSidebarOpen(!isSidebarOpen);
+                        }}
+                      >
+                        {item.parent}
+                      </p>
+                    </AccordionSummary>
+                    <AccordionDetails
+                      sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}
+                    >
+                      {item.children.map((item) => (
+                        <div key={item.id}>
+                          <button
+                            className="text-blue-700 text-[14px] font-bold"
+                            onClick={() => {
+                              router.push(`/${lang}/buy/${item.value}`);
+                              setIsSidebarOpen(!isSidebarOpen);
+                            }}
+                          >
+                            {item.value}
+                          </button>
+                          <div className="flex flex-wrap gap-2 items-center">
+                            {item.items?.map((item) => (
+                              <span
+                                key={item.id}
+                                onClick={() => {
+                                  router.push(`/${lang}/buy/${item.value}`);
+                                  setIsSidebarOpen(!isSidebarOpen);
+                                }}
+                                className="hover-border text-[12px] font-light"
+                              >
+                                {item.value}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </AccordionDetails>
+                  </Accordion>
+                ))}
+                {/* <Accordion>
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1-content"
@@ -308,7 +366,7 @@ const AndroidSidebar = (props: {
                       </div>
                     ))}
                   </AccordionDetails>
-                </Accordion>
+                </Accordion> */}
               </div>
             </div>
 

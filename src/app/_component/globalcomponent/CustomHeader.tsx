@@ -207,7 +207,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                     >
                       <MenuItem onClick={navigateToProfile}>History</MenuItem>
                       <MenuItem onClick={navigateToOrder}>
-                        Prodile Settings
+                        Profile Settings
                       </MenuItem>
                       <MenuItem onClick={handleClose}>Storage</MenuItem>
                       <MenuItem onClick={hanldeLogout}>Sign out</MenuItem>
@@ -264,7 +264,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                               onClick={() =>
                                 router.push(`/${lang}/buy/${item.parent}`)
                               }
-                              className="text-white hover:bg-white/20 text-[15px] rounded-lg py-[2px] px-2"
+                              className="text-white hover:bg-white/20 text-[15px] rounded-lg py-[2px] px-2 uppercase"
                             >
                               {item.parent}
                             </button>
@@ -323,7 +323,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                             sx={{ color: "white", cursor: "pointer" }}
                           />
                           <div className="absolute cursor-pointer bg-red-600 px-1 right-1 text-[12px] font-bold text-white rounded-full top-0">
-                            {cartData?.data.cartItems.length}
+                            {cartData?.data?.cartItems.length}
                           </div>
                         </li>
                       </ul>
@@ -362,7 +362,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
               }}
             />
             <div className="absolute bg-red-600 px-1 right-1 text-[12px] font-bold text-white rounded-full top-0">
-            {cartData?.data.cartItems.length}
+            {cartData?.data?.cartItems.length}
             </div>
           </div>
         </div>
@@ -371,7 +371,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
             <li key={item.id}>
               <button
                 onClick={() => router.push(`/${lang}/buy/${item.parent}`)}
-                className="text-white hover:bg-white/20 text-[14px] rounded-lg py-[2px] px-2"
+                className="text-white hover:bg-white/20 text-[14px] rounded-lg py-[2px] px-2 uppercase"
               >
                 {item.parent}
               </button>

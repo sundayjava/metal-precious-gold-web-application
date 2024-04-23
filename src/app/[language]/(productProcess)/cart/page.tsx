@@ -54,6 +54,72 @@ const CartPage = () => {
     }
   };
 
+  const handleRemoveCartItem = async (
+    value: number,
+    quantity: number,
+    cartitemid: string
+  ) => {
+    if (auth.currentUser?.email) {
+      try {
+        const user = await axios.get<User>(
+          `/api/user/${auth.currentUser?.email}`
+        );
+
+        const response = await fetch("/api/cart/addcartitem", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            cartitemid: cartitemid,
+            userId: user.data.id,
+            quantity: quantity - value,
+          }),
+        });
+        if (response.ok) {
+          getCartItem(auth.currentUser?.email, setCartData);
+        } else {
+          alert("Something went wrong, please try again");
+        }
+      } catch (error) {
+        console.error("Error updating item:", error);
+      }
+    }
+  };
+
+  const handleUpdateCartItem = async (
+    value: number,
+    quantity: number,
+    cartitemid: string
+  ) => {
+    if (auth.currentUser?.email) {
+      try {
+        const user = await axios.get<User>(
+          `/api/user/${auth.currentUser?.email}`
+        );
+
+        const response = await fetch("/api/cart/addcartitem", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            cartitemid: cartitemid,
+            userId: user.data.id,
+            quantity: quantity + value,
+          }),
+        });
+        if (response.ok) {
+          getCartItem(auth.currentUser?.email, setCartData);
+        } else {
+          alert("Something went wrong, please try again");
+        }
+      } catch (error) {
+        console.error("Error updating item:", error);
+      }
+    }
+  };
+
   return (
     <div className="xl:px-[170px] lg:px-[70px] md:px-[30px] px-1 w-full overflow-hidden">
       <p className="text-[14px] font-extralight md:px-10 px-2">Cart</p>
@@ -73,58 +139,69 @@ const CartPage = () => {
           <p className="font-bold mb-8">Your order</p>
           {cartData?.data.cartItems ? (
             <div className="flex flex-col justify-center">
-              {cartData?.data.cartItems.map((item) => (
-                <div key={item.id} className="border-t py-6">
-                  <div className="grid grid-cols-4 justify-center md:gap-8 gap-3 items-center">
-                    <div className="flex md:gap-2 gap-1 items-start col-span-2">
-                      <Image
-                        src="https://www.goldavenue.com/_next/image?url=https%3A%2F%2Fassets.goldavenue.com%2Fuploads%2Fproduct_image%2Fimage%2F2441%2Fsmall_3x_webp_lady_fortuna_45th__anniversary_1oz_Au_certipamp_front.webp&w=48&q=75"
-                        alt="dp"
-                        width={50}
-                        height={25}
-                      />
-                      <p className="md:text-[16px] text-[12px]">
-                        {item.product.title}
-                      </p>
-                    </div>
-                    <div className="flex gap-4 items-center col-span-1">
-                      <button className="md:w-8 w-4 md:h-8 h-4 flex items-center justify-center hover:bg-slate-400 md:rounded-md rounded-sm bg-slate-200">
-                        -
-                      </button>
-                      <p className="md:text-[16px] text-[13px]">
-                        {item.quantity}
-                      </p>
-                      <button className="md:w-8 w-4 md:h-8 h-4 flex items-center justify-center hover:bg-slate-400 md:rounded-md rounded-sm bg-slate-200">
-                        +
-                      </button>
-                    </div>
-                    <div className="col-span-1 flex md:flex-row flex-col md:gap-4 gap-1 items-center">
-                      <p className="text-[12px] font-bold md:font-normal md:text-[16px]">
-                        €{item.price}
-                      </p>
-                      <div
-                        className="text-light"
-                        onClick={() => deleteCartItem(item.id)}
-                      >
-                        <DeleteOutlinedIcon
-                          sx={{
-                            fontSize: 20,
-                            cursor: "pointer",
-                            color: "gray",
-                            ":hover": { color: "pink" },
-                          }}
+              {cartData?.data.cartItems.map((item) => {
+                localStorage.setItem("cartItemId", item.id);
+                return (
+                  <div key={item.id} className="border-t py-6">
+                    <div className="grid grid-cols-4 justify-center md:gap-8 gap-3 items-center">
+                      <div className="flex md:gap-2 gap-1 items-start col-span-2">
+                        <Image
+                          src="https://www.goldavenue.com/_next/image?url=https%3A%2F%2Fassets.goldavenue.com%2Fuploads%2Fproduct_image%2Fimage%2F2441%2Fsmall_3x_webp_lady_fortuna_45th__anniversary_1oz_Au_certipamp_front.webp&w=48&q=75"
+                          alt="dp"
+                          width={50}
+                          height={25}
                         />
+                        <p className="md:text-[16px] text-[12px]">
+                          {item.product.title}
+                        </p>
+                      </div>
+                      <div className="flex gap-4 items-center col-span-1">
+                        <button
+                          onClick={() =>
+                            handleRemoveCartItem(1, item.quantity, item.id)
+                          }
+                          className="md:w-8 w-4 md:h-8 h-4 flex items-center justify-center hover:bg-slate-400 md:rounded-md rounded-sm bg-slate-200"
+                        >
+                          -
+                        </button>
+                        <p className="md:text-[16px] text-[13px]">
+                          {item.quantity}
+                        </p>
+                        <button
+                          onClick={() =>
+                            handleUpdateCartItem(1, item.quantity, item.id)
+                          }
+                          className="md:w-8 w-4 md:h-8 h-4 flex items-center justify-center hover:bg-slate-400 md:rounded-md rounded-sm bg-slate-200"
+                        >
+                          +
+                        </button>
+                      </div>
+                      <div className="col-span-1 flex md:flex-row flex-col md:gap-4 gap-1 items-center">
+                        <p className="text-[12px] font-bold md:font-normal md:text-[16px]">
+                          €{item.price}
+                        </p>
+                        <div
+                          className="text-light"
+                          onClick={() => deleteCartItem(item.id)}
+                        >
+                          <DeleteOutlinedIcon
+                            sx={{
+                              fontSize: 20,
+                              cursor: "pointer",
+                              color: "gray",
+                              ":hover": { color: "pink" },
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
+                    <div className="flex mt-10 font-extralight items-center text-[13px]">
+                      <FavoriteBorder sx={{ fontSize: 15 }} />
+                      <p className="hover-border cursor-pointer"></p>
+                    </div>
                   </div>
-                  <div className="flex mt-10 font-extralight items-center text-[13px]">
-                    <FavoriteBorder sx={{ fontSize: 15 }} />
-                    <p className="hover-border cursor-pointer">
-                      Add to wishlist
-                    </p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <div className="my-8">
@@ -138,42 +215,46 @@ const CartPage = () => {
               <p className="font-bold md:text-[16px] text-[13px]">
                 Payment method
               </p>
-              <p className="mt-3 font-extralight text-[13px]">
-                Sign in to select a payment method
-              </p>
-              <div className="flex gap-3 items-center mt-6">
-                <FormControl>
-                  <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="female"
-                    name="radio-buttons-group"
-                  >
-                    <FormControlLabel
-                      value="1"
-                      control={<Radio />}
-                      label={
-                        <p className="md:text-[16px] text-[13px]">
-                          Bank transfer
-                        </p>
-                      }
-                      // onChange={(e) =>
-                      //   handleRadioFilterChange(section.id, e)
-                      // }
-                    />
-                    <div className="my-2" />
-                    <FormControlLabel
-                      value="2"
-                      control={<Radio />}
-                      label={
-                        <p className="md:text-[16px] text-[13px]">Bitcoin</p>
-                      }
-                      // onChange={(e) =>
-                      //   handleRadioFilterChange(section.id, e)
-                      // }
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </div>
+              {auth.currentUser ? null : (
+                <p className="mt-3 font-extralight text-[13px]">
+                  Sign in to select a payment method
+                </p>
+              )}
+              {auth.currentUser ? (
+                <div className="flex gap-3 items-center mt-6">
+                  <FormControl>
+                    <RadioGroup
+                      aria-labelledby="demo-radio-buttons-group-label"
+                      defaultValue="female"
+                      name="radio-buttons-group"
+                    >
+                      <FormControlLabel
+                        value="1"
+                        control={<Radio />}
+                        label={
+                          <p className="md:text-[16px] text-[13px]">
+                            Bank transfer
+                          </p>
+                        }
+                        // onChange={(e) =>
+                        //   handleRadioFilterChange(section.id, e)
+                        // }
+                      />
+                      <div className="my-2" />
+                      <FormControlLabel
+                        value="2"
+                        control={<Radio />}
+                        label={
+                          <p className="md:text-[16px] text-[13px]">Bitcoin</p>
+                        }
+                        // onChange={(e) =>
+                        //   handleRadioFilterChange(section.id, e)
+                        // }
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </div>
+              ) : null}
             </div>
             <div>
               <p className="font-bold md:text-[16px] text-[13px]">
@@ -267,10 +348,14 @@ const CartPage = () => {
               Proceed to checkout
             </button>
           )}
-          <p className="flex flex-col gap-2 font-[500] lg:text-[16px] text-[12px] items-center">
-            First time on WARET GOLD?{" "}
-            <span className="hover-border cursor-pointer">Open an account</span>
-          </p>
+          {!auth.currentUser ? (
+            <p className="flex flex-col gap-2 font-[500] lg:text-[16px] text-[12px] items-center">
+              First time on WARET GOLD?{" "}
+              <span className="hover-border cursor-pointer">
+                Open an account
+              </span>
+            </p>
+          ) : null}
         </div>
       </div>
     </div>

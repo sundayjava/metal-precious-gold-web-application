@@ -76,7 +76,7 @@ export async function PUT(request: Request) {
       },
     });
 
-    const user = await prisma.user.findUnique({
+    const user = await prisma.user.findFirst({
       where: { id: cartitem?.userId },
     });
 

@@ -4,9 +4,7 @@ import Image from "next/image";
 import { ShoppingCart } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 import { auth } from "@/config/firebase";
-import { User } from "@/app/_utility/user";
 import { addToCart } from "@/app/_utility/apicall";
 
 const ItemsCard = (props: { item: any }) => {
@@ -65,9 +63,9 @@ const ItemsCard = (props: { item: any }) => {
         <p className="text-[16px] line-clamp-2 text-center text-[#153358]/70 my-4">
           {item?.title}
         </p>
-        <h1 className="text-center font-bold text-[18px]">€{item?.price}</h1>
+        <h1 className="text-center font-bold text-[18px]">€{item?.discount}</h1>
         <p className="text-black/50 text-center text-[12px] mb-16">
-          Fees: €{item?.discount} per oz
+          Fees: €{item?.price} per oz
         </p>
         <div className="absolute bottom-3 left-0 w-full flex justify-center">
           <button

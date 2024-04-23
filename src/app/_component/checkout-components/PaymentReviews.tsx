@@ -1,9 +1,23 @@
-import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  CircularProgress,
+} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import CopyButton from "../globalcomponent/CopyBtn";
+import { auth, storage } from "@/config/firebase";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import axios from "axios";
+import { User } from "@/app/_utility/user";
+import { useRouter } from "next/navigation";
 
 const PaymentReviews = (props: { finalStep: any }) => {
+  const [file, setFile] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
   const paymentMethods = [
     {
       id: 1,
@@ -16,6 +30,102 @@ const PaymentReviews = (props: { finalStep: any }) => {
       desc: "9079029135",
     },
   ];
+
+  const deleteCartItem = async (cartitemid: any) => {
+    if (auth.currentUser?.email) {
+      try {
+        const user = await axios.get<User>(
+          `/api/user/${auth.currentUser?.email}`
+        );
+
+        await fetch("/api/cart/addcartitem", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            cartitemid: cartitemid,
+            userId: user.data.id,
+          }),
+        });
+      } catch (error) {
+        console.error("Error deleting item:", error);
+        alert("Something went wrong. Please try again");
+      }
+    }
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files?.[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+    }
+  };
+
+  const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!file) return;
+
+    try {
+      setIsLoading(true);
+      const cartItemId = localStorage.getItem("cartItemId");
+      const user = await axios.get<User>(
+        `/api/user/${auth.currentUser?.email}`
+      );
+
+      const storageRef = ref(storage, "payment");
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+        },
+        (error) => {
+          switch (error.code) {
+            case "storage/unauthorized":
+              console.log("Permission error");
+              break;
+            case "storage/canceled":
+              console.log("storage/canceled");
+              break;
+
+            case "storage/unknown":
+              console.log("storage/unknown");
+              break;
+          }
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            const response = await fetch("/api/payment", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                userId: user.data.id,
+                file: downloadURL,
+              }),
+            });
+
+            const data = await response.json();
+            if (data.success === true) {
+              alert("Payment Uploaded successfully");
+              deleteCartItem(cartItemId);
+              router.push("/");
+              setIsLoading(false);
+              localStorage.removeItem("cartItemId");
+            }
+          });
+        }
+      );
+    } catch (err) {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="flex justify-center mt-10 w-full">
@@ -48,8 +158,8 @@ const PaymentReviews = (props: { finalStep: any }) => {
                   sx={{
                     borderRadius: 5,
                     gap: "8px",
-                    lineClamp:2,
-                    overflowX:'scroll'
+                    lineClamp: 2,
+                    overflowX: "scroll",
                   }}
                 >
                   {item.desc}
@@ -59,7 +169,7 @@ const PaymentReviews = (props: { finalStep: any }) => {
             ))}
           </div>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="flex flex-col mt-4">
             <label className="text-[14px] text-gray-800 my-2">
               Upload payment reciept here
@@ -67,17 +177,19 @@ const PaymentReviews = (props: { finalStep: any }) => {
             <input
               type="file"
               placeholder=""
+              onChange={handleFileChange}
               className="px-4 py-2 border border-gray-400 rounded-md outline-primaryColor w-full"
             />
             <span className="text-[12px] italic font-light text-red-500"></span>
           </div>
           <div className="mt-8">
-            <button
-              onClick={props.finalStep}
-              className="px-4 py-2 rounded-md text-[15px] font-bold text-white bg-black"
-            >
-              Place order
-            </button>
+            {isLoading ? (
+              <CircularProgress />
+            ) : (
+              <button className="px-4 py-2 rounded-md text-[15px] font-bold text-white bg-black">
+                Place order
+              </button>
+            )}
           </div>
         </form>
       </div>

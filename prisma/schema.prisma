@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Product {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
   title          String
   price          Float
   discount       Float?
@@ -29,18 +29,32 @@ model Product {
   length         Float?
   width          Float?
   history        String?
-  cartItem       CartItem?
+  cartItems      CartItem[]
   imageUrl       String[]
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
 }
 
 model User {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  firstname String
-  lastname  String
-  email     String
-  cart      Cart? 
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  firstname    String
+  lastname     String
+  email        String
+  cart         Cart?
+  phoneNumber  String?
+  address      String?
+  street       String?
+  streetNumber String?
+  door         String?
+  postalcode   String?
+  city         String?
+  country      String?
+}
+
+model Payment {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String
+  file   String
 }
 
 model CartItem {
@@ -48,20 +62,20 @@ model CartItem {
   cart            Cart    @relation(fields: [cartId], references: [id])
   cartId          String  @db.ObjectId
   product         Product @relation(fields: [productId], references: [id])
-  productId       String  @unique @db.ObjectId
+  productId       String  @db.ObjectId
   quantity        Int
   price           Float
   discountedPrice Float?
-  userId String
+  userId          String?
 }
 
 model Cart {
-  id                   String     @id @default(auto()) @map("_id") @db.ObjectId
-  user                 User       @relation(fields: [userId], references: [id])
-  userId               String     @unique @db.ObjectId
-  cartItems            CartItem[]
-  totalPrice           Float?
-  totalItem            Int?
-  discount             Float?
-  percent Int?
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  user       User       @relation(fields: [userId], references: [id])
+  userId     String     @unique @db.ObjectId
+  cartItems  CartItem[]
+  totalPrice Float?
+  totalItem  Int?
+  discount   Float?
+  percent    Int?
 }

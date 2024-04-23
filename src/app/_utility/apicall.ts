@@ -1,7 +1,11 @@
 import axios from "axios";
 import { User } from "./user";
 
-export const addToCart = async (email: any, productId: string) => {
+export const addToCart = async (
+  email: any,
+  productId: string,
+  setCartData?: any
+) => {
   if (email) {
     try {
       const response = await axios.get<User>(`/api/user/${email}`);
@@ -25,12 +29,15 @@ export const addToCart = async (email: any, productId: string) => {
       const data = await addTocart.json();
       if (data.success === true) {
         alert("Item added to cart");
+        getCartItem(email, setCartData);
       } else {
         alert("Data already exist. please confirm");
       }
     } catch (error) {
       console.error("Something went wrong", error);
     }
+  } else {
+    alert("Please sign in to continue");
   }
 };
 
