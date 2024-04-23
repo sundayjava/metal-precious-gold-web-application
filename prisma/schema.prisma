@@ -40,7 +40,7 @@ model User {
   firstname String
   lastname  String
   email     String
-  cart      Cart?
+  cart      Cart? 
 }
 
 model CartItem {
@@ -51,7 +51,8 @@ model CartItem {
   productId       String  @unique @db.ObjectId
   quantity        Int
   price           Float
-  discountedPrice Float
+  discountedPrice Float?
+  userId String
 }
 
 model Cart {
@@ -60,7 +61,7 @@ model Cart {
   userId               String     @unique @db.ObjectId
   cartItems            CartItem[]
   totalPrice           Float?
-  totalItem            Int
-  totalDiscountedPrice Float
-  discount             Float
+  totalItem            Int?
+  discount             Float?
+  percent Int?
 }

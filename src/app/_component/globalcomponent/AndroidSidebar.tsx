@@ -97,10 +97,6 @@ const AndroidSidebar = (props: {
       label: "Pricing",
     },
     {
-      id: 3,
-      label: "Precious mtals guide",
-    },
-    {
       id: 4,
       label: "About us",
     },

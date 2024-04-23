@@ -2,7 +2,6 @@
 
 import {
   AppBar,
-  Button,
   IconButton,
   Menu,
   MenuItem,
@@ -21,13 +20,8 @@ import { category } from "@/app/_utility/category";
 import { auth } from "@/config/firebase";
 import axios from "axios";
 import { signOut } from "@firebase/auth";
-
-type User = {
-  id: string;
-  firstname: string;
-  lastname: string;
-  email: string;
-};
+import { CartData, getCartItem } from "@/app/_utility/apicall";
+import { User } from "@/app/_utility/user";
 
 const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
   const [isOpenNav, setIsOpenNav] = useState(false);
@@ -38,6 +32,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [user, setUser] = useState<User | null>(null);
+  const [cartData, setCartData] = useState<CartData | null>(null);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -59,8 +54,8 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
     signOut(auth)
       .then(() => {
         alert("User Logout");
-        handleClose()
-        setUser(null)
+        handleClose();
+        setUser(null);
       })
       .catch((error) => {
         alert("Unable to logout");
@@ -101,6 +96,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
   useEffect(() => {
     localStorage.setItem("lang", "en");
     getProfile();
+    getCartItem(auth.currentUser?.email, setCartData);
   }, [auth.currentUser?.email]);
 
   const changeLanguage = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -319,10 +315,16 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                         <li className=" mr-3">
                           <Search sx={{ color: "white", cursor: "pointer" }} />
                         </li>
-                        <li onClick={() => router.push(`/${lang}/cart`)}>
+                        <li
+                          onClick={() => router.push(`/${lang}/cart`)}
+                          className="relative"
+                        >
                           <ShoppingCartOutlinedIcon
                             sx={{ color: "white", cursor: "pointer" }}
                           />
+                          <div className="absolute cursor-pointer bg-red-600 px-1 right-1 text-[12px] font-bold text-white rounded-full top-0">
+                            {cartData?.data.cartItems.length}
+                          </div>
                         </li>
                       </ul>
                     </nav>
@@ -348,7 +350,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
             </p>
           </div>
           <div
-            className="col-span-1 justify-end flex"
+            className="col-span-1 justify-end flex relative"
             onClick={() => router.push(`/${lang}/cart`)}
           >
             <ShoppingCartOutlinedIcon
@@ -359,6 +361,9 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                 fontWeight: 200,
               }}
             />
+            <div className="absolute bg-red-600 px-1 right-1 text-[12px] font-bold text-white rounded-full top-0">
+            {cartData?.data.cartItems.length}
+            </div>
           </div>
         </div>
         <ul className="list-none gap-3 flex mb-3 mt-2 justify-center items-center">
