@@ -7,6 +7,7 @@ import Rating from "@mui/material/Rating";
 import { Star } from "@mui/icons-material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useState, useEffect } from "react";
+import { userReviews } from "@/app/_utility/headerData";
 
 const Usercarousel = () => {
   const [viewportWidth, setViewportWidth] = useState(0); // Initialize to 0 or any default value
@@ -63,65 +64,6 @@ const Usercarousel = () => {
       },
     ],
   };
-
-  const userReviews = [
-    {
-      id: 1,
-      title: "Effective communication and quick action",
-      desc: "Effective communication and quick action",
-      name: "Sendil Arasu Vijaya Ku..",
-      time: "2 days ago",
-    },
-    {
-      id: 2,
-      title: "Simple Purchase",
-      desc: "Simple Purchase, free storage of precious metals, excellent offer of small and other.",
-      name: "Peter",
-      time: "March 29",
-    },
-    {
-      id: 3,
-      title: "I like investing in gold and silver.",
-      desc: "I like investing in gold and silver. You are excellently organised, you are an excell..",
-      name: "Peter",
-      time: "March 27",
-    },
-    {
-      id: 4,
-      title: "Reliable and very good experience",
-      desc: "I am very satisfied with Gold Avenue: -interface is easy to find what i want - it i....",
-      name: "Sameh Mahmoud",
-      time: "March 26",
-    },
-    {
-      id: 5,
-      title: "Great company",
-      desc: "Easy, straightforward purchase procedure. Good stock choice and good prices.",
-      name: "Morag",
-      time: "March 26",
-    },
-    {
-      id: 6,
-      title: "Good choice of products",
-      desc: "I have always found WaretGold very efficient to deal with. They offer many choices in...",
-      name: "Thomas McGrath",
-      time: "March 25",
-    },
-    {
-      id: 7,
-      title: "It was easy and fast",
-      desc: "It was easy and fast. I am very happy with the order! Actually I`ll order more today",
-      name: "Peter",
-      time: "March 29",
-    },
-    {
-      id: 8,
-      title: "Easy intuitive & efficient service",
-      desc: "Easy intuitive website makes it easy & quick to choose & buy. Transfer of funds works",
-      name: "Peter",
-      time: "March 27",
-    },
-  ];
 
   return (
     <div>

@@ -2,8 +2,6 @@
 
 import ItemsCard from "@/app/_component/metaltabscomponents/ItemsCard";
 import { Pagination, PaginationItem } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { filters } from "@/app/_utility/filterData";
 import { useEffect, useState } from "react";
 import { Product } from "@/app/_utility/apicall";
@@ -46,7 +44,7 @@ const ProductPage = () => {
 
   console.log(products)
   return (
-    <>
+    <div className="pt-12">
       <div className="container mt-16 md:px-7 px-2 rounded-lg">
         <div className="md:w-[20%] w-[25%] h-[750px] inline-block float-left sticky top-[50px] overflow-y-scroll">
           <div className="flex md:justify-center overflow-x-scroll">
@@ -136,7 +134,7 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

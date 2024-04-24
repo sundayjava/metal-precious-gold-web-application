@@ -17,6 +17,7 @@ import { ChevronLeft, Groups2Outlined } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   goldData,
+  navData,
   palladium,
   platinumData,
   silverData,
@@ -93,25 +94,6 @@ const AndroidSidebar = (props: {
     localStorage.setItem("lang", "en");
     getProfile();
   }, [auth.currentUser?.email]);
-
-  const sideData = [
-    {
-      id: 1,
-      label: "Storage solution",
-    },
-    {
-      id: 2,
-      label: "Pricing",
-    },
-    {
-      id: 4,
-      label: "About us",
-    },
-    {
-      id: 5,
-      label: "Contact us",
-    },
-  ];
 
   return (
     <Box component="nav">
@@ -247,9 +229,9 @@ const AndroidSidebar = (props: {
             </div>
 
             <div className="flex flex-col px-5 my-7 items-start gap-5">
-              {sideData.map((item) => (
-                <Link key={item.id} href={""}>
-                  {item.label}
+              {navData.map((item) => (
+                <Link key={item.id} href={item.url}>
+                  {item.value}
                 </Link>
               ))}
             </div>

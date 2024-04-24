@@ -173,7 +173,7 @@ const ProductDetails = () => {
                 ))}
             </div>
           </div>
-          <div className="md:w-[60%] w-full inline-block align-top float-right lg:px-7 pl-10">
+          <div className="md:w-[60%] pt-10 w-full inline-block align-top float-right lg:px-7 pl-10">
             <h1 className="text-[18px] font-bold block mb-10 mt-4">
               {itemData?.title}
             </h1>

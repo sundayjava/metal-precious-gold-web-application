@@ -121,7 +121,7 @@ const CartPage = () => {
   };
 
   return (
-    <div className="xl:px-[170px] lg:px-[70px] md:px-[30px] px-1 w-full overflow-hidden">
+    <div className="xl:px-[170px] lg:px-[70px] md:px-[30px] px-1 pt-8 w-full overflow-hidden">
       <p className="text-[14px] font-extralight md:px-10 px-2">Cart</p>
       <div className="flex justify-between md:flex-row flex-col w-full items-center my-8 px-10">
         <h1 className="font-bold md:text-[25px] ">

@@ -30,8 +30,8 @@ export default function RootLayout({
               isSidebarOpen={isSidebarOpen}
               setIsSidebarOpen={setIsSidebarOpen}
             />
-            <div className="sm:mt mt-1-12 flex-grow">
-              <div className="xl:px-[190px] lg:px-[90px] md:px-[35px] px-1 md:mt-7 w-full">
+            <div className="flex-grow">
+              <div className="xl:px-[190px] lg:px-[90px] md:px-[35px] px-1 w-full">
                 {children}
               </div>
               <Footer />
