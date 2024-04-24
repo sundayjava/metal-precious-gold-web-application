@@ -114,16 +114,15 @@ export const navData = [
   {
     id: 1,
     value: "About us",
-    url: `/${localStorage.getItem("lang")}/about-us`,
+    url: "/en/about-us",
   },
   {
     id: 2,
     value: "Storage solution",
-    url: `/${localStorage.getItem("lang")}/physical-gold-storage-switzerland`,
+    url: "/en/physical-gold-storage-switzerland",
   },
-  { id: 3, value: "Pricing", url: `/${localStorage.getItem("lang")}/Pricing` },
+  { id: 3, value: "Pricing", url: "/en/Pricing" },
 ];
-
 
 export const userReviews = [
   {
