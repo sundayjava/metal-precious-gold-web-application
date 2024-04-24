@@ -181,7 +181,7 @@ const PricingPage = () => {
 
           <div className="flex justify-center gap-10 px-3 md:flex-row flex-col">
             {paymentData.map((item) => (
-              <div className="flex flex-col items-center">
+              <div key={item.id} className="flex flex-col items-center">
                 <div>{item.img}</div>
                 <p className="my-8 font-bold">
                   {item.heading}

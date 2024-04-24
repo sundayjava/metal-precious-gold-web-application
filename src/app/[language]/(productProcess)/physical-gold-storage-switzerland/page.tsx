@@ -243,7 +243,7 @@ const StorageSolution = () => {
                   </h1>
                   <ul className="ml-10 text-[13px] font-light">
                     {item.bullet.map((data) => (
-                      <div className="flex gap-2">
+                      <div key={item.id} className="flex gap-2">
                         <Done
                           sx={{
                             fontSize: 14,
