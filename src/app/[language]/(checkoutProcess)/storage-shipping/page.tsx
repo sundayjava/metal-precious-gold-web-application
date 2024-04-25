@@ -8,7 +8,7 @@ import { Box, Stepper, Step, StepLabel } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const steps = ["Storage & Delivery", "Billing Address", "Payment"];
+const steps = ["Storage & Delivery", "Billing Address", "Order Summary"];
 
 const StorageShipping = () => {
   const [activeStep, setActiveStep] = React.useState(0);

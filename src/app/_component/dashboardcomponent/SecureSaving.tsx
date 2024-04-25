@@ -2,6 +2,7 @@ import Image from "next/image";
 import pamp from "../../../../public/pamp.webp";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
+import Link from "next/link";
 
 const SecureSaving = () => {
   const secureData = [
@@ -12,6 +13,7 @@ const SecureSaving = () => {
       title2: "metals",
       desc: "We selected the best physical products on the market, with Swiss-made PAMP® bars directly from the MKS PAMP refinery.",
       btnOne: "Browse our shop",
+      url:"/en/buy/gold",
       btnDown: "How to buy gold and precious metals?",
     },
     {
@@ -21,6 +23,7 @@ const SecureSaving = () => {
       title2: "no commitment",
       desc: "Simply choose our free insured storage directly in your cart, and we’ll store your products for you in our secure Swiss vaults. They'll remain available for resale or delivery at any time.",
       btnOne: "More about storage",
+      url:"/en/physical-gold-storage-switzerland",
       btnDown: "How to store precious metals with WARET GOLD?",
     },
     {
@@ -30,6 +33,7 @@ const SecureSaving = () => {
       title2: "commission",
       desc: "Easily manage and resell your precious metals savings 24/7, with no commission. Get your money, whenever you need it.",
       btnOne: "An easy-to-use account",
+      url:"/en/Pricing",
       btnDown: "How to sell your precious metals?",
     },
   ];
@@ -56,14 +60,14 @@ const SecureSaving = () => {
             <p className="mt-4 text-[16px] md:w-[85%] w-full hover:underline font-light">{item.desc}</p>
 
             <div className="mt-5">
-              <span className="text-primaryColor hover-border font-normal">
+              <Link href={item.url} className="text-primaryColor hover-border font-normal">
                 {item.btnOne} <ArrowForwardIcon sx={{fontSize:16}}/>
-              </span>
+              </Link>
             </div>
-            <div className="mt-14 gap-2 flex items-start text-black/40 md:text-primaryColor text-[15px] text-center">
+            <Link href="https://www.youtube.com/watch?v=oh6X1A5wvIA&t=131s" className="mt-14 gap-2 flex items-start text-black/40 md:text-primaryColor text-[15px] text-center">
               <SmartDisplayIcon />
               <span className="hover-border">{item.btnDown}</span>
-            </div>
+            </Link>
           </div>
         ))}
       </div>

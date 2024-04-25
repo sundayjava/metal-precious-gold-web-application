@@ -44,10 +44,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
 
   const navigateToOrder = () => {
     handleClose();
-  };
-
-  const navigateToProfile = () => {
-    handleClose();
+    router.push("/en/order-history")
   };
 
   const hanldeLogout = () => {
@@ -205,11 +202,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                         "aria-labelledby": "basic-button",
                       }}
                     >
-                      <MenuItem onClick={navigateToProfile}>History</MenuItem>
-                      <MenuItem onClick={navigateToOrder}>
-                        Profile Settings
-                      </MenuItem>
-                      <MenuItem onClick={handleClose}>Storage</MenuItem>
+                      <MenuItem onClick={navigateToOrder}>Order history</MenuItem>
                       <MenuItem onClick={hanldeLogout}>Sign out</MenuItem>
                     </Menu>
                   </div>
@@ -311,10 +304,6 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                             </div>
                           </li>
                         ))}
-
-                        <li className=" mr-3">
-                          <Search sx={{ color: "white", cursor: "pointer" }} />
-                        </li>
                         <li
                           onClick={() => router.push(`/${lang}/cart`)}
                           className="relative"
@@ -377,10 +366,10 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
               </button>
             </li>
           ))}
-
+{/* 
           <li className=" mr-3">
             <Search sx={{ color: "white", cursor: "pointer", fontSize: 22 }} />
-          </li>
+          </li> */}
         </ul>
       </Toolbar>
     </AppBar>

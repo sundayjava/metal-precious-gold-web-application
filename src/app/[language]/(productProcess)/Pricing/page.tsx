@@ -108,45 +108,45 @@ const PricingPage = () => {
             <p>With insurance included and without commitment.</p>
           </div>
           <div className="grid grid-cols-4 gap-1 md:w-[70%] w-full mt-14">
-            <div className="px-5 py-5 bg-white">
-              <p className="text-[18px] font-normal">
+            <div className="md:px-5 px-2 md:py-5 py-2 bg-white">
+              <p className="md:text-[18px] text-[12px] font-normal">
                 Precious metals in storage
               </p>
             </div>
-            <div className="px-5 py-5 bg-white">
-              <p className="text-[18px] font-normal">Up to €10,000</p>
+            <div className="md:px-5 px-2 md:py-5 py-2 bg-white">
+              <p className="md:text-[18px] text-[12px] font-normal">Up to €10,000</p>
             </div>
-            <div className="px-5 py-5 bg-white">
-              <p className="text-[18px] font-normal">Up to €100,000</p>
+            <div className="md:px-5 px-2 md:py-5 py-2 bg-white">
+              <p className="md:text-[18px] text-[12px] font-normal">Up to €100,000</p>
             </div>
-            <div className="px-5 py-5 bg-white">
-              <p className="text-[18px] font-normal">Above €100,000</p>
+            <div className="md:px-5 px-2 md:py-5 py-2 bg-white">
+              <p className="md:text-[18px] text-[12px] font-normal">Above €100,000</p>
             </div>
-            <div className="px-5 py-5 bg-white">
-              <p className="text-[18px] font-normal">Storage price</p>
+            <div className="md:px-5 px-2 md:py-5 py-2 bg-white">
+              <p className="md:text-[18px] text-[12px] font-normal">Storage price</p>
             </div>
-            <div className="px-5 py-5 bg-white">
-              <p className="text-[18px] text-blue-700 font-bold">FREE</p>
+            <div className="md:px-5 px-2 md:py-5 py-2 bg-white">
+              <p className="md:text-[18px] text-[12px] text-blue-700 font-bold">FREE</p>
             </div>
-            <div className="px-5 py-5 bg-white">
-              <p className="text-[18px] text-blue-700 font-bold">8 €/mo</p>
+            <div className="md:px-5 px-2 md:py-5 py-2 bg-white">
+              <p className="md:text-[18px] text-[12px] text-blue-700 font-bold">8 €/mo</p>
             </div>
-            <div className="px-5 py-5 bg-white">
-              <p className="text-[18px] text-blue-700 font-bold">0.5%/year</p>
+            <div className="md:px-5 px-2 md:py-5 py-2 bg-white">
+              <p className="md:text-[18px] text-[12px] text-blue-700 font-bold">0.5%/year</p>
             </div>
           </div>
-          <div className="flex gap-3 items-center text-primaryColor mt-10">
+          <Link href="https://www.youtube.com/watch?v=uGXRCvrlZnE" className="flex gap-3 items-center text-primaryColor mt-10">
             <YouTubeIcon />
             <p className="hover-border cursor-pointer">How to store precious metals with GOLD AVENUE?</p>
-          </div>
+          </Link>
         </div>
 
         <div className=" w-full px-3 py-10 my-10">
           <p className="font-bold md:text-[30px] text-[22px] mb-5">
             Resell without commission
           </p>
-          <div className="flex justify-between items-center">
-            <div className="w-[50%]">
+          <div className="flex justify-between md:flex-row flex-col items-center">
+            <div className="md:w-[50%] w-full">
               <p className="font-bold mb-2">
                 We charge 0% commission fee upon resale
               </p>
@@ -157,14 +157,14 @@ const PricingPage = () => {
                 wire the amount to your bank account.
               </p>
             </div>
-            <div className="w-[50%]">
+            <div className="md:w-[50%] w-full md:mt-0 mt-6">
               <Image src={resel} alt="ujhbnol" className="" />
             </div>
           </div>
-          <div className="flex gap-3 items-center text-primaryColor mt-7">
+          <Link href="https://www.youtube.com/watch?v=uGXRCvrlZnE" className="flex gap-3 items-center text-primaryColor mt-7">
             <YouTubeIcon />
             <p className="hover-border cursor-pointer">How to sell your precious metals?</p>
-          </div>
+          </Link>
         </div>
 
         <div className="w-full px-5 py-10 my-10 bg-primaryColor/5">

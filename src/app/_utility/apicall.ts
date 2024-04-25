@@ -45,7 +45,6 @@ export const getCartItem = async (email: any, setCartData: any) => {
   try {
     const response = await axios.get<User>(`/api/user/${email}`);
     const cartRes = await axios.get<CartData>(`/api/cart/${response.data.id}`);
-    console.log(cartRes.data);
     setCartData(cartRes.data);
   } catch (error) {
     console.error("Error fetching cart item data:", error);

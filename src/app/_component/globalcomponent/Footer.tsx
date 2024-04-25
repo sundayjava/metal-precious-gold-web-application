@@ -11,9 +11,10 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import PublicIcon from "@mui/icons-material/Public";
 import XIcon from "@mui/icons-material/X";
 import Image from "next/image";
-import logo from '../../../../public/logo.png';
+import logo from "../../../../public/logo.png";
 import Link from "next/link";
-import delivery from '../../../../public/delivery.jpg'
+import delivery from "../../../../public/delivery.jpg";
+import { useState } from "react";
 
 const footerItem = [
   {
@@ -23,22 +24,22 @@ const footerItem = [
       {
         id: 1,
         label: "Gold",
-        url: "",
+        url: "/en/buy/Gold",
       },
       {
         id: 2,
         label: "Silver",
-        url: "",
+        url: "/en/buy/Silver",
       },
       {
         id: 3,
         label: "Platinum",
-        url: "",
+        url: "/en/buy/Platinum",
       },
       {
         id: 4,
         label: "Palladium",
-        url: "",
+        url: "/en/buy/Palladium",
       },
     ],
   },
@@ -54,12 +55,12 @@ const footerItem = [
       {
         id: 4,
         label: "Storage solution",
-        url: "",
+        url: "/en/physical-gold-storage-switzerland",
       },
       {
         id: 5,
         label: "Pricing",
-        url: "",
+        url: "/en/Pricing",
       },
     ],
   },
@@ -70,7 +71,7 @@ const footerItem = [
       {
         id: 1,
         label: "Precious metal guide",
-        url: "",
+        url: "https://www.youtube.com/watch?v=uGXRCvrlZnE",
       },
       {
         id: 2,
@@ -80,8 +81,8 @@ const footerItem = [
       {
         id: 3,
         label: "Tutorial Video",
-        url: "",
-      }
+        url: "https://www.youtube.com/watch?v=uGXRCvrlZnE",
+      },
     ],
   },
   {
@@ -91,17 +92,17 @@ const footerItem = [
       {
         id: 1,
         label: "About us",
-        url: "",
+        url: "http://localhost:3001/en/about-us",
       },
       {
         id: 3,
         label: "Contact us",
-        url: "",
+        url: "http://localhost:3001/en/about-us",
       },
       {
         id: 4,
         label: "Refer your friends",
-        url: "",
+        url: "http://localhost:3001/en/about-us",
       },
     ],
   },
@@ -122,7 +123,7 @@ const footerItem = [
       {
         id: 3,
         label: "Storage fees",
-        url: "",
+        url: "http://localhost:3001/en/physical-gold-storage-switzerland",
       },
       {
         id: 4,
@@ -141,27 +142,27 @@ const footerItem = [
 const socials = [
   {
     id: 1,
-    icon: <YouTubeIcon sx={{fontSize:17, cursor:'pointer'}}/>,
+    icon: <YouTubeIcon sx={{ fontSize: 17, cursor: "pointer" }} />,
     url: "",
   },
   {
     id: 2,
-    icon: <FacebookIcon sx={{fontSize:17, cursor:'pointer'}}/>,
+    icon: <FacebookIcon sx={{ fontSize: 17, cursor: "pointer" }} />,
     url: "",
   },
   {
     id: 3,
-    icon: <InstagramIcon sx={{fontSize:17, cursor:'pointer'}}/>,
+    icon: <InstagramIcon sx={{ fontSize: 17, cursor: "pointer" }} />,
     url: "",
   },
   {
     id: 4,
-    icon: <LinkedInIcon sx={{fontSize:17, cursor:'pointer'}}/>,
+    icon: <LinkedInIcon sx={{ fontSize: 17, cursor: "pointer" }} />,
     url: "",
   },
   {
     id: 5,
-    icon: <XIcon sx={{fontSize:17, cursor:'pointer'}}/>,
+    icon: <XIcon sx={{ fontSize: 17, cursor: "pointer" }} />,
     url: "",
   },
 ];
@@ -180,7 +181,15 @@ const topOfPage = () => {
 };
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
   const date = new Date();
+
+  const submitBtn = () => {
+    if (email.trim() === "") {
+      alert("Email is empty");
+    }
+    alert("mail sent");
+  };
 
   return (
     <>
@@ -199,10 +208,15 @@ const Footer = () => {
             SUBSCRIBE to WARET GOLD newsletter to stay informed of our special
             offers
           </h1>
-          <form className="flex items-center bg-white/30 rounded-md px-5">
+          <form
+            onSubmit={submitBtn}
+            className="flex items-center bg-white/30 rounded-md px-5"
+          >
             <input
               type="email"
               placeholder="Enter your email"
+              value={email}
+              onChange={(val) => setEmail(val.target.value)}
               className="text-[14px] text-white border-none outline-none bg-transparent"
             />
             <div>
@@ -234,11 +248,10 @@ const Footer = () => {
               <div className="" key={items.id}>
                 <h1 className="mb-4 font-bold">{items.label}</h1>
                 {items.values.map((item) => (
-                  <p
-                    className="text-[14px] cursor-pointer mb-3"
-                    key={item.id}
-                  >
-                    <Link href={item.url} className="hover-border">{item.label}</Link>
+                  <p className="text-[14px] cursor-pointer mb-3" key={item.id}>
+                    <Link href={item.url} className="hover-border">
+                      {item.label}
+                    </Link>
                   </p>
                 ))}
               </div>
@@ -265,9 +278,9 @@ const Footer = () => {
                 </span>
               </h3>
               <h3 className="text-[14px] flex gap-1 items-center font-bold">
-              <PublicIcon sx={{ fontSize: 18 }} /> Delivery:{" "}
+                <PublicIcon sx={{ fontSize: 18 }} /> Delivery:{" "}
                 <span className="px-3 flex items-center text-[12px] gap-1 font-normal py-1 hover:bg-transparent">
-                  <Image src={delivery} alt="delivery" className=""/>
+                  <Image src={delivery} alt="delivery" className="" />
                 </span>
               </h3>
             </div>
@@ -279,15 +292,17 @@ const Footer = () => {
               <div key={item.id}>{item.icon}</div>
             ))}
           </div>
-         <div className="flex items-center gap-2">
-         <div className="w-[2px] h-3 bg-white md:block hidden" />
-          <h1 className=" cursor-pointer hover:underline">General Conditions</h1>
-          <div className="w-[2px] h-3 bg-white" />
-          <h1 className=" cursor-pointer hover:underline">Privacy policy</h1>
-          <div className="w-[2px] h-3 bg-white" />
-          <h1 className=" cursor-pointer hover:underline">Impression</h1>
-          <div className="w-[2px] h-3 bg-white md:block hidden" />
-         </div>
+          <div className="flex items-center gap-2">
+            <div className="w-[2px] h-3 bg-white md:block hidden" />
+            <h1 className=" cursor-pointer hover:underline">
+              General Conditions
+            </h1>
+            <div className="w-[2px] h-3 bg-white" />
+            <h1 className=" cursor-pointer hover:underline">Privacy policy</h1>
+            <div className="w-[2px] h-3 bg-white" />
+            <h1 className=" cursor-pointer hover:underline">Impression</h1>
+            <div className="w-[2px] h-3 bg-white md:block hidden" />
+          </div>
           <h1>
             &copy; 2018-{date.getFullYear()} WARETGOLD.COM, All Rights Reserved
           </h1>

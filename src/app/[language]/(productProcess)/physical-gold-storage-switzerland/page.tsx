@@ -13,10 +13,13 @@ import FAQ from "@/app/_component/dashboardcomponent/FAQ";
 import Slider from "react-slick";
 import { userReviews } from "@/app/_utility/headerData";
 import leftos from "../../../../../public/lefttos.webp";
+import { useRouter } from "next/navigation";
+import { auth } from "@/config/firebase";
 
 const StorageSolution = () => {
   const [viewportWidth, setViewportWidth] = useState(0);
   const [active, setActive] = useState(2);
+  const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
@@ -152,7 +155,7 @@ const StorageSolution = () => {
               directly online.
             </p>
             <div className="mt-11">
-              <button className="text-white text-[13px] font-bold bg-primaryColor px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white">
+              <button className="text-white text-[13px] cursor-not-allowed font-bold bg-primaryColor px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white">
                 Get started
               </button>
             </div>
@@ -186,7 +189,10 @@ const StorageSolution = () => {
               Platinum, and Palladium.
             </p>
             <div className="mt-11 md:mb-0 mb-5">
-              <button className="text-white text-[15px] font-bold bg-primaryColor px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white">
+              <button
+                onClick={() => router.push("/en/buy/gold")}
+                className="text-white text-[15px] font-bold bg-primaryColor px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white"
+              >
                 Discover VAT_FREE Products
               </button>
             </div>
@@ -247,8 +253,7 @@ const StorageSolution = () => {
                         <Done
                           sx={{
                             fontSize: 14,
-                            color:
-                              active === item.id ? "#FD7E14" : "inherit",
+                            color: active === item.id ? "#FD7E14" : "inherit",
                           }}
                         />
                         <li>{data}</li>
@@ -290,9 +295,18 @@ const StorageSolution = () => {
                 GOLD).
               </p>
               <div className="mt-11">
-                <button className="bg-white text-[13px] font-bold text-primaryColor px-10 py-3 rounded-md hover:bg-primaryColor hover:text-white">
-                  Open an account
-                </button>
+                {auth.currentUser ? (
+                  <button
+                    disabled
+                    className="bg-white text-[13px] cursor-not-allowed font-bold text-primaryColor px-10 py-3 rounded-md hover:bg-primaryColor hover:text-white"
+                  >
+                    Open an account
+                  </button>
+                ) : (
+                  <button className="bg-white text-[13px] font-bold text-primaryColor px-10 py-3 rounded-md hover:bg-primaryColor hover:text-white">
+                    Open an account
+                  </button>
+                )}
               </div>
             </div>
           </div>

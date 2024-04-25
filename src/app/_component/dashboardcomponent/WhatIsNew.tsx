@@ -4,6 +4,7 @@ import thisweek1 from "../../../../public/thisweek1.webp";
 import thisweek2 from "../../../../public/thisweek2.webp";
 import thisweek3 from "../../../../public/thisweek3.webp";
 import SellIcon from "@mui/icons-material/Sell";
+import Link from "next/link";
 
 const WhatIsNew = () => {
   const newBlog = [
@@ -48,9 +49,9 @@ const WhatIsNew = () => {
             metals.
           </p>
         </div>
-        <button className="md:flex hidden text-primaryColor hover-border gap-2 items-center">
+        <Link href="https://newstopedia.space" className="md:flex hidden text-primaryColor hover-border gap-2 items-center">
           Discover our Blog <ArrowForwardIcon sx={{ fontSize: 17 }} />
-        </button>
+        </Link>
       </div>
       <div className="grid md:grid-cols-3 gap-10 sm:grid-cols-2 grid-cols-1 mt-24">
         {newBlog.map((item) => (
@@ -62,9 +63,9 @@ const WhatIsNew = () => {
               </span>
               {item.time}
             </p>
-            <h1 className="text-[21px] font-bold hover:underline cursor-pointer">
+            <Link href="https://newstopedia.space" className="text-[21px] font-bold hover:underline cursor-pointer">
               {item.title}
-            </h1>
+            </Link>
             <p className="my-4 text-[14px] text-black/80">{item.desc}</p>
             <div className="text-[14px] text-primaryColor font-light flex items-center gap-1">
               <SellIcon sx={{ transform: "rotate(75deg)", fontSize: 15, color:'gray' }} />

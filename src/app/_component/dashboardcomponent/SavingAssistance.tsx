@@ -27,7 +27,7 @@ const SavingAssistance = () => {
               <input type="text" placeholder="5,000" className=" ms-4 border-none outline-none w-[50%]"/>
             </div>
           </div>
-          <button className="text-[15px] font-bold text-white mt-6 py-3 px-3 rounded-lg bg-primaryColor hover:text-black hover:bg-primaryColor/30">Show my results</button>
+          <button disabled className="text-[15px] font-bold cursor-not-allowed text-white mt-6 py-3 px-3 rounded-lg bg-primaryColor hover:text-black hover:bg-primaryColor/30">Show my results</button>
         </div>
       </div>
       <div className="md:w-[20%] w-full">

@@ -3,24 +3,18 @@
 import { useRouter } from "next/navigation";
 import {
   Accordion,
-  AccordionActions,
   AccordionDetails,
   AccordionSummary,
   Box,
-  Button,
   Drawer,
   IconButton,
   Menu,
   MenuItem,
 } from "@mui/material";
-import { ChevronLeft, Groups2Outlined } from "@mui/icons-material";
+import { ChevronLeft} from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
-  goldData,
   navData,
-  palladium,
-  platinumData,
-  silverData,
 } from "@/app/_utility/headerData";
 import Link from "next/link";
 import { auth } from "@/config/firebase";
@@ -58,10 +52,7 @@ const AndroidSidebar = (props: {
 
   const navigateToOrder = () => {
     handleClose();
-  };
-
-  const navigateToProfile = () => {
-    handleClose();
+    router.push("/en/order-history");
   };
 
   const hanldeLogout = () => {
@@ -136,11 +127,7 @@ const AndroidSidebar = (props: {
                       "aria-labelledby": "basic-button",
                     }}
                   >
-                    <MenuItem onClick={navigateToProfile}>History</MenuItem>
-                    <MenuItem onClick={navigateToOrder}>
-                      Profile Settings
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>Storage</MenuItem>
+                    <MenuItem onClick={navigateToOrder}>Order history</MenuItem>
                     <MenuItem onClick={hanldeLogout}>Sign out</MenuItem>
                   </Menu>
                 </div>
