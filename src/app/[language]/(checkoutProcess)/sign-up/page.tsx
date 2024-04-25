@@ -11,6 +11,7 @@ import React, { ChangeEvent, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/config/firebase";
+import { sendMail } from "@/config/mail";
 
 const SignupPage = () => {
   const router = useRouter();
@@ -67,8 +68,16 @@ const SignupPage = () => {
 
         console.log(data);
         if (data.success == true) {
-          router.push(`/${localStorage.getItem("lang")}/login`);
+          const result = await sendMail({
+            to: info.email,
+            firstname: info.firstname,
+            lastname: info.lastname,
+          });
+          if(result?.accepted){
+            alert("We`ve sent a mail to your e-mail")
+          }
           setLoading(false);
+          router.push(`/${localStorage.getItem("lang")}/login`);
         }
       } else {
         console.error("User not signed in", res);
