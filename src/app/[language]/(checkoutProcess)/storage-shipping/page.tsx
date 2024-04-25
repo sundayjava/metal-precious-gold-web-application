@@ -1,6 +1,5 @@
 "use client";
 
-import BillingAddress from "@/app/_component/checkout-components/BillingAddress";
 import Delivery from "@/app/_component/checkout-components/Delivery";
 import PaymentReviews from "@/app/_component/checkout-components/PaymentReviews";
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
@@ -8,7 +7,7 @@ import { Box, Stepper, Step, StepLabel } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const steps = ["Storage & Delivery", "Billing Address", "Order Summary"];
+const steps = ["Storage & Delivery", "Order Summary"];
 
 const StorageShipping = () => {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -51,9 +50,7 @@ const StorageShipping = () => {
           </Stepper>
           {activeStep === 0 ? (
             <Delivery nextStep={handleNext} />
-          ) : activeStep === 1 ? (
-            <BillingAddress nextStep={handleNext} />
-          ) : (
+          )  : (
             <PaymentReviews finalStep={handleNext} />
           )}
         </Box>

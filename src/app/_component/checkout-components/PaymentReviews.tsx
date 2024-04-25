@@ -36,27 +36,21 @@ const PaymentReviews = (props: { finalStep: any }) => {
   //   },
   // ];
 
-  const deleteCartItem = async (cartitemid: any) => {
-    if (auth.currentUser?.email) {
-      try {
-        const user = await axios.get<User>(
-          `/api/user/${auth.currentUser?.email}`
-        );
-
-        await fetch("/api/cart/addcartitem", {
+  const deleteCartItem = async (cartId: any) => {
+   try {
+        await fetch("/api/cart", {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            cartitemid: cartitemid,
-            userId: user.data.id,
+            cartId: cartId,
           }),
         });
       } catch (error) {
         console.error("Error deleting item:", error);
         alert("Something went wrong. Please try again");
-      }
+      
     }
   };
 
@@ -67,7 +61,7 @@ const PaymentReviews = (props: { finalStep: any }) => {
           `/api/user/${auth.currentUser?.email}`
         );
 
-        console.log("user data ",user)
+        console.log("user data ", user);
 
         const response = await fetch("/api/order", {
           method: "POST",
@@ -78,14 +72,14 @@ const PaymentReviews = (props: { finalStep: any }) => {
         });
         const data = await response.json();
 
-        console.log("order items",data)
+        console.log("order items ", data);
 
         if (data.success === true) {
-          // deleteCartItem(cartData?.data.cartItems.);
+          deleteCartItem(cartData?.data.id);
           alert(
             "Order placed. Check your mail to make payment and recieve your order. Thanks!"
           );
-          router.push("/")
+          router.push("/");
         } else {
           alert(data.data);
         }
