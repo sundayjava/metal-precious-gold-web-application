@@ -50,22 +50,19 @@ const ItemsCard = (props: { item: any }) => {
           className="flex justify-center"
           onClick={() => handleNavigate(item.id)}
         >
-          {item.imageUrl?.slice(0, 1).map((itemss: any, index: number) => (
-            <Image
-              key={index}
-              src={itemss}
-              alt="imageslog"
-              width={imageWidth}
-              height={imageHeight}
-            />
-          ))}
+          <Image
+            src={item.imageUrl[1]}
+            alt="imageslog"
+            width={imageWidth}
+            height={imageHeight}
+          />
         </div>
         <p className="text-[16px] line-clamp-2 text-center text-[#153358]/70 my-4">
           {item?.title}
         </p>
-        <h1 className="text-center font-bold text-[18px]">€{item?.discount}</h1>
+        <h1 className="text-center font-bold text-[18px]">€{item?.price.toLocaleString()}</h1>
         <p className="text-black/50 text-center text-[12px] mb-16">
-          Fees: €{item?.price} per oz
+          Fees: €{item?.discount.toLocaleString()} per oz
         </p>
         <div className="absolute bottom-3 left-0 w-full flex justify-center">
           <button
