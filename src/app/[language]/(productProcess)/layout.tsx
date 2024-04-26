@@ -6,6 +6,7 @@ import Footer from "@/app/_component/globalcomponent/Footer";
 import { useState } from "react";
 import AndroidSidebar from "@/app/_component/globalcomponent/AndroidSidebar";
 import CustomHeader from "@/app/_component/globalcomponent/CustomHeader";
+import TawkToChat from "@/app/_component/Tawkto";
 
 export default function RootLayout({
   children,
@@ -38,6 +39,7 @@ export default function RootLayout({
             </div>
           </Box>
         </Box>
+       
       </body>
     </html>
   );

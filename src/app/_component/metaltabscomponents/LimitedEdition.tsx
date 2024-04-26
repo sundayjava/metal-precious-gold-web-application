@@ -23,7 +23,7 @@ const LimitedEdition = (props:{product:any}) => {
   var settings = {
     infinite: false,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     arrows: showarrows,
     responsive: [
       {

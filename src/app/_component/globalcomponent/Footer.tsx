@@ -94,7 +94,7 @@ const footerItem = [
         id: 3,
         label: "Contact us",
         url: "/en/about-us",
-      }
+      },
     ],
   },
   {
@@ -105,7 +105,7 @@ const footerItem = [
         id: 3,
         label: "Storage fees",
         url: "/en/physical-gold-storage-switzerland",
-      }
+      },
     ],
   },
 ];
@@ -197,7 +197,7 @@ const Footer = () => {
                   marginBottom: 1,
                   fontSize: 24,
                   cursor: "pointer",
-                  color:'white'
+                  color: "white",
                 }}
               />
             </IconButton>

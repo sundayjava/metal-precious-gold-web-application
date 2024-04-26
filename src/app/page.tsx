@@ -13,6 +13,7 @@ import { Box, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import AndroidSidebar from "./_component/globalcomponent/AndroidSidebar";
 import CustomHeader from "./_component/globalcomponent/CustomHeader";
+import TawkToChat from "./_component/Tawkto";
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -45,6 +46,7 @@ export default function Home() {
           <Footer />
         </div>
       </Box>
+      <TawkToChat />
     </Box>
   );
 }
