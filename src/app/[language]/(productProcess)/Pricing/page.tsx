@@ -39,14 +39,14 @@ const PricingPage = () => {
       img: <SwapHorizIcon sx={{ fontSize: 70, color: "#FD7E14" }} />,
       heading: "Wire transfer",
       sub: "(free)",
-      body: "Bank transfers are free at GOLD AVENUE (no additional fees). This payment method is only allowed for orders between €100.00 and €100,000.00. Your invoice must be paid immediately after placing your order. WARET GOLD cannot be held responsible for any conversion or reversal fees charged by your bank.",
+      body: "Bank transfers are free at WARET GOLD (no additional fees). This payment method is only allowed for orders between €100.00 and €100,000.00. Your invoice must be paid immediately after placing your order. WARET GOLD cannot be held responsible for any conversion or reversal fees charged by your bank.",
     },
     {
       id: 2,
       img: <MonetizationOnIcon sx={{ fontSize: 70, color: "#FD7E14" }} />,
-      heading: "GOLD AVENUE Pay",
+      heading: "WARET GOLD Pay",
       sub: "(free)",
-      body: "GOLD AVENUE Pay is our instant payment and withdrawal solution. Free and secure, you can top it up with a simple wire transfer before placing your order. Your funds will be credited to your account within 1-3 business days (your bank may apply transfer fees for which you are responsible).",
+      body: "WARET GOLD Pay is our instant payment and withdrawal solution. Free and secure, you can top it up with a simple wire transfer before placing your order. Your funds will be credited to your account within 1-3 business days (your bank may apply transfer fees for which you are responsible).",
     },
     {
       id: 3,
@@ -137,7 +137,7 @@ const PricingPage = () => {
           </div>
           <Link href="https://www.youtube.com/watch?v=uGXRCvrlZnE" className="flex gap-3 items-center text-accent mt-10">
             <YouTubeIcon />
-            <p className="hover-border cursor-pointer">How to store precious metals with GOLD AVENUE?</p>
+            <p className="hover-border cursor-pointer">How to store precious metals with WARET GOLD?</p>
           </Link>
         </div>
 
@@ -151,7 +151,7 @@ const PricingPage = () => {
                 We charge 0% commission fee upon resale
               </p>
               <p>
-                You can easily resell your stored products to GOLD AVENUE at
+                You can easily resell your stored products to WARET GOLD at
                 spot price (the current market price). We buy them back
                 instantly and apply no commission fees. At your request, we then
                 wire the amount to your bank account.
@@ -169,12 +169,12 @@ const PricingPage = () => {
 
         <div className="w-full px-5 py-10 my-10 bg-primaryColor/5">
           <div className="md:w-[50%] w-full">
-            <h1 className="font-bold md:text-[30px] text-[22px] mb-5">
+            <h1 className="text-decoration-none text-darkaccent leading-[46px] text-[30px] font-[700] mb-[24px]">
               Choose your payment method
             </h1>
-            <p className="my-10 font-normal">
-              GOLD AVENUE currently accepts payments in USD, EUR, GBP, and CHF.
-              You can pay either by wire transfer, GOLD AVENUE Pay or credit
+            <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] md:mb-0 mb-10 font-[400] max-w-[750px]">
+              WARET GOLD currently accepts payments in USD, EUR, GBP, and CHF.
+              You can pay either by wire transfer, WARET GOLD Pay or credit
               card.
             </p>
           </div>
