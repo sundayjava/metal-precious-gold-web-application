@@ -161,21 +161,12 @@ const StorageSolution = () => {
             </div>
           </div>
           <div className="md:w-[50%] w-full flex flex-col justify-end">
-            <div className="flex justify-end">
-              <Image
-                src={trustpilot}
-                alt="trustpilot"
-                className="object-contain rounded-md"
-                width={100}
-                height={30}
-              />
-            </div>
             <Image
               src="https://www.goldavenue.com/_next/image?url=%2Fimages%2Fstorage-solution%2Fgold-1kg.png&w=3840&q=75"
               alt="trustpilot"
-              className="object-contain rounded-md w-[80%] h-[300px]"
+              className="object-contain rounded-md w-full h-[300px]"
               width={100}
-              height={20}
+              height={100}
             />
           </div>
         </div>
@@ -356,10 +347,6 @@ const StorageSolution = () => {
             <span className="underline">2,162 reviews.</span> Trust our favorite
             reviews
           </p>
-          <div className="flex items-center">
-            <Star sx={{ color: "#68D391" }} />
-            <span>Trustpilot</span>
-          </div>
         </div>
 
         <div className="flex justify-center">

@@ -76,15 +76,6 @@ const PricingPage = () => {
               Buy, store, sell. Gold with no hidden costs.
             </p>
           </div>
-          <div className="md:w-[50%] w-full flex justify-end">
-            <Image
-              src={trustpilot}
-              alt="trustpilot"
-              className="object-contain rounded-md"
-              width={100}
-              height={30}
-            />
-          </div>
         </div>
 
         <div className="bg-primaryColor/5 w-full px-5 py-10 my-10">
@@ -126,13 +117,13 @@ const PricingPage = () => {
               <p className="md:text-[18px] text-[12px] font-normal">Storage price</p>
             </div>
             <div className="md:px-5 px-2 md:py-5 py-2 bg-white">
-              <p className="md:text-[18px] text-[12px] text-blue-700 font-bold">FREE</p>
+              <p className="md:text-[18px] text-[12px] text-primaryColor font-bold">FREE</p>
             </div>
             <div className="md:px-5 px-2 md:py-5 py-2 bg-white">
-              <p className="md:text-[18px] text-[12px] text-blue-700 font-bold">8 €/mo</p>
+              <p className="md:text-[18px] text-[12px] text-primaryColor font-bold">8 €/mo</p>
             </div>
             <div className="md:px-5 px-2 md:py-5 py-2 bg-white">
-              <p className="md:text-[18px] text-[12px] text-blue-700 font-bold">0.5%/year</p>
+              <p className="md:text-[18px] text-[12px] text-primaryColor font-bold">0.5%/year</p>
             </div>
           </div>
           <Link href="https://www.youtube.com/watch?v=uGXRCvrlZnE" className="flex gap-3 items-center text-accent mt-10">

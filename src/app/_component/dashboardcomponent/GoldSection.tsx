@@ -39,7 +39,7 @@ const GoldSection = () => {
         <div className="md:w-[50%] w-full">
           <h1 className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[700] max-w-[750px]">Trust an industry expert</h1>
           <p className="text-decoration-none text-darkaccent leading-[32px] text-[19px] mt-5 font-[400] max-w-[750px]">
-            WARET GOLD is the official online reseller of the MKS PAMP GROUP, a
+            WARET GOLD is the official online retailer of the MKS PAMP GROUP, a
             Swiss family group with a global reputation.
           </p>
           <p className="text-decoration-none text-darkaccent leading-[32px] text-[19px] mt-2 font-[400] max-w-[750px]">
