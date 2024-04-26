@@ -40,16 +40,16 @@ const WhatIsNew = () => {
     <div className="md:mt-32 mt-20 bg-white">
       <div className="flex md:flex-row flex-col items-end justify-between">
         <div className="md:w-[60%] w-full">
-          <h1 className="font-bold md:text-[32px] text-[24px]">
+          <h1 className="text-decoration-none text-darkaccent leading-[46px] text-[36px] font-[700] mb-[24px]">
             What’s new this week?
           </h1>
-          <p className="text-[19px] mt-4 font-normal">
+          <p className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[400] max-w-[750px]">
             Learn more about what drives the markets and the economy and how to
             secure your savings by investing in gold, silver, and precious
             metals.
           </p>
         </div>
-        <Link href="https://newstopedia.space" className="md:flex hidden text-primaryColor hover-border gap-2 items-center">
+        <Link href="https://newstopedia.space" className="md:flex hidden text-darkaccent hover-border gap-2 items-center">
           Discover our Blog <ArrowForwardIcon sx={{ fontSize: 17 }} />
         </Link>
       </div>
@@ -57,22 +57,22 @@ const WhatIsNew = () => {
         {newBlog.map((item) => (
           <div key={item.id}>
             <Image src={item.img} alt={item.title} className="h-[200px] w-full object-cover"/>
-            <p className="my-3  text-gray-600 text-[17px] flex gap-3">
+            <p className="my-3  text-accent flex gap-3">
               <span className="text-primaryColor hover-border cursor-pointer">
                 The Spotlight
               </span>
               {item.time}
             </p>
-            <Link href="https://newstopedia.space" className="text-[21px] font-bold hover:underline cursor-pointer">
+            <Link href="https://newstopedia.space" className="text-[28px] font-[700] leading-[36px] text-secondaryColor hover:text-accent">
               {item.title}
             </Link>
-            <p className="my-4 text-[14px] text-black/80">{item.desc}</p>
+            <p className="mt-4 text-[18px] leading-[28px] font-[400] h-[150px] hover:text-darkaccent">{item.desc}</p>
             <div className="text-[14px] text-primaryColor font-light flex items-center gap-1">
               <SellIcon sx={{ transform: "rotate(75deg)", fontSize: 15, color:'gray' }} />
-              <span className="cursor-pointer hover-border mr-4">
+              <span className="cursor-pointer hover-border mr-4 text-accent">
                 {item.tag1}
               </span>
-              <span className="cursor-pointer hover-border">
+              <span className="cursor-pointer hover-border text-accent">
                 {item.tag2}
               </span>
             </div>

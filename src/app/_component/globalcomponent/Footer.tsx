@@ -15,6 +15,7 @@ import logo from "../../../../public/logo.png";
 import Link from "next/link";
 import delivery from "../../../../public/delivery.jpg";
 import { useState } from "react";
+import { IconButton } from "@mui/material";
 
 const footerItem = [
   {
@@ -47,11 +48,6 @@ const footerItem = [
     id: 2,
     label: "BUYING & SELLING",
     values: [
-      {
-        id: 1,
-        label: "Live charts",
-        url: "",
-      },
       {
         id: 4,
         label: "Storage solution",
@@ -92,18 +88,13 @@ const footerItem = [
       {
         id: 1,
         label: "About us",
-        url: "http://localhost:3001/en/about-us",
+        url: "/en/about-us",
       },
       {
         id: 3,
         label: "Contact us",
-        url: "http://localhost:3001/en/about-us",
-      },
-      {
-        id: 4,
-        label: "Refer your friends",
-        url: "http://localhost:3001/en/about-us",
-      },
+        url: "/en/about-us",
+      }
     ],
   },
   {
@@ -111,30 +102,10 @@ const footerItem = [
     label: "MY ACCOUNT",
     values: [
       {
-        id: 1,
-        label: "Wallet",
-        url: "",
-      },
-      {
-        id: 2,
-        label: "History",
-        url: "",
-      },
-      {
         id: 3,
         label: "Storage fees",
-        url: "http://localhost:3001/en/physical-gold-storage-switzerland",
-      },
-      {
-        id: 4,
-        label: "Purchase limit",
-        url: "",
-      },
-      {
-        id: 5,
-        label: "Profile settings",
-        url: "",
-      },
+        url: "/en/physical-gold-storage-switzerland",
+      }
     ],
   },
 ];
@@ -203,14 +174,14 @@ const Footer = () => {
             <p className="uppercase text-[10px]">Top of page</p>
           </div>
         </div>
-        <div className="lg:px-[190px] md:px-[10px] px-2 flex md:flex-row flex-col  justify-center items-center gap-8 bg-primaryColor text-white/80 py-3">
+        <div className="lg:px-[190px] md:px-[10px] px-2 flex md:flex-row flex-col  justify-center items-center gap-8 bg-black text-primaryColor py-3">
           <h1 className="md:text-[14px] text-[10px] font-bold md:text-start text-center">
             SUBSCRIBE to WARET GOLD newsletter to stay informed of our special
             offers
           </h1>
           <form
             onSubmit={submitBtn}
-            className="flex items-center bg-white/30 rounded-md px-5"
+            className="flex items-center bg-primaryColor/30 rounded-md px-5"
           >
             <input
               type="email"
@@ -219,16 +190,17 @@ const Footer = () => {
               onChange={(val) => setEmail(val.target.value)}
               className="text-[14px] text-white border-none outline-none bg-transparent"
             />
-            <div>
+            <IconButton>
               <SendIcon
                 sx={{
                   transform: "rotate(-35deg)",
                   marginBottom: 1,
-                  fontSize: 20,
+                  fontSize: 24,
                   cursor: "pointer",
+                  color:'white'
                 }}
               />
-            </div>
+            </IconButton>
           </form>
         </div>
         <div className="lg:px-[190px] md:px-[10px] px-2 bg-secondaryColor text-white/80 py-5">
@@ -243,12 +215,12 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-5 justify-center mb-5">
+          <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-5 justify-center mb-5 text-[rgb(255, 255, 255)] leading-[1.2] font-normal text-[15px]">
             {footerItem.map((items) => (
               <div className="" key={items.id}>
-                <h1 className="mb-4 font-bold">{items.label}</h1>
+                <h1 className="mb-4">{items.label}</h1>
                 {items.values.map((item) => (
-                  <p className="text-[14px] cursor-pointer mb-3" key={item.id}>
+                  <p className="cursor-pointer mb-3" key={item.id}>
                     <Link href={item.url} className="hover-border">
                       {item.label}
                     </Link>
@@ -286,7 +258,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="lg:px-[190px] md:px-[10px] px-2 bg-primaryColor text-white/80 py-4 text-[13px] flex md:flex-row flex-col justify-center gap-5 items-center">
+        <div className="lg:px-[190px] md:px-[10px] px-2 bg-black text-accent py-4 text-[13px] flex md:flex-row flex-col justify-center gap-5 items-center">
           <div className="flex gap-5 items-center">
             {socials.map((item) => (
               <div key={item.id}>{item.icon}</div>

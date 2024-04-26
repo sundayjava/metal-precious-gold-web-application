@@ -62,10 +62,10 @@ const AboutUsPage = () => {
         </Breadcrumbs>
         <div className="mt-7 flex md:flex-row flex-col justify-between items-start">
           <div className="md:w-[50%] w-full">
-            <h1 className="font-bold md:text-[32px] text-[20px]">
+            <h1 className="text-decoration-none text-darkaccent leading-[46px] text-[36px] font-[700] mb-[24px]">
               Your trustworthy GOLD partner
             </h1>
-            <p className="mr-12 mt-2 font-normal text-[14px]">
+            <p className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[400] max-w-[750px]">
               WARET GOAL is the official online retailer of MKS PAMP GROUP, the
               worldwide leader in the precious metal industry.
             </p>
@@ -84,8 +84,8 @@ const AboutUsPage = () => {
           <Map />
         </div>
         <div className="mt-12 md:w-[40%] w-full">
-          <p className="font-bold md:text-[30px]">People at WARET GOLD</p>
-          <p className="mt-2 font-normal">
+          <p className="text-decoration-none text-darkaccent leading-[46px] text-[36px] font-[700] mb-[24px]">People at WARET GOLD</p>
+          <p className="text-decoration-none text-darkaccent leading-[32px] text-[20px] font-[400] max-w-[750px]">
             WARET GOLD is composed of a team of thirty experts who aim to offer
             the most transparent and accessible solution when it comes to your
             gold.
@@ -105,14 +105,14 @@ const AboutUsPage = () => {
                 height={30}
               />
               <div>
-                <p className="font-bold text-[18px]">{item.heading}</p>
-                <p className="py-5 md:text-[16px] text-[14px] md:font-normal font-light">{item.body}</p>
+                <p className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[700] max-w-[750px]">{item.heading}</p>
+                <p className="text-decoration-none text-darkaccent leading-[32px] mt-5 font-[400] max-w-[750px]">{item.body}</p>
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="font-bold text-[17px]">{item.name}</p>
-                    <p className="text-[14px] font-light">{item.position}</p>
+                    <p className="text-decoration-none text-darkaccent leading-[32px] font-[700] max-w-[750px] mt-5">{item.name}</p>
+                    <p className="text-decoration-none text-darkaccent leading-[32px]font-[400] max-w-[750px]">{item.position}</p>
                   </div>
-                  <LinkedInIcon sx={{ color: "blue" }} />
+                  <LinkedInIcon sx={{ color: "#FA7617" }} />
                 </div>
               </div>
             </div>

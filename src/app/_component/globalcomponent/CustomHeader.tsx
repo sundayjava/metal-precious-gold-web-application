@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  AppBar,
-  IconButton,
-  Menu,
-  MenuItem,
-  Toolbar,
-} from "@mui/material";
+import { AppBar, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState, useRef, useEffect, ChangeEvent } from "react";
 import { ArrowDropUp, Call, Search } from "@mui/icons-material";
@@ -44,7 +38,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
 
   const navigateToOrder = () => {
     handleClose();
-    router.push("/en/order-history")
+    router.push("/en/order-history");
   };
 
   const hanldeLogout = () => {
@@ -111,35 +105,35 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
     >
       <Toolbar
         sx={{
-          backgroundColor: "black",
+          backgroundColor: "#000000",
           flexDirection: "column",
           justifyContent: "space-between",
           py: "0.1rem",
           px: "1.5rem",
-          color: "white",
+          color: "#000080",
         }}
       >
         <div className="headerWrapper md:block hidden" ref={headerRef}>
-          <header className="lg:px-[190px] md:px-[10px] px-1 bg-primaryColor/40 text-white">
-            <div className="flex justify-between items-center text-white/70 text-[14px] py-[2px]">
+          <header className="lg:px-[190px] md:px-[10px] px-1 bg-black">
+            <div className="flex justify-between items-center  text-accent text-[14px] py-[2px]">
               {metals.map((items) => (
                 <p key={items.id} className="text-[12px]">
                   <span className="cursor-pointer hover:text-white">
                     {items.value} €
-                    {/* {items.value === "GOLD"
-                      ? metalData?.gold
+                    {items.value === "GOLD"
+                      ? (23221.7).toLocaleString()
                       : items.value === "SILVER"
-                      ? metalData?.silver
+                      ? (1781.23).toLocaleString()
                       : items.value === "PLATINUM"
-                      ? metalData?.platinum
-                      : metalData?.palladium} */}
+                      ? (821.0).toLocaleString()
+                      : (361.0).toLocaleString()}
                   </span>
                   <span
                     className={`text-[12px] ${
                       items.value === "PLATINUM"
-                        ? "text-red-600"
+                        ? "text-green-600"
                         : items.value === "PALLADIUM"
-                        ? "text-red-600"
+                        ? "text-green-600"
                         : "text-green-600"
                     } cursor-pointer hover:text-green-500 font-bold`}
                   >
@@ -150,25 +144,28 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
               ))}
             </div>
           </header>
-          <div className="lg:px-[190px] md:px-[10px] px-1 bg-secondaryColor py-2">
+          <div className="lg:px-[190px] md:px-[10px] px-1 bg-secondaryColor text-accent font-normal py-2">
             <div className="flex justify-between">
-              <div className="flex lg:gap-6 gap-2 items-center md:text-[14px] text-[12px] text-white/80">
-                <p className="text-[13px]">
-                  <span className="rounded-full px-1 bg-blue-200">€</span> EUR
+              <div className="flex lg:gap-6 gap-2 items-center md:text-[14px] text-[12px] text-accent">
+                <p className="text-[14px]">
+                  <span className="rounded-full px-1 bg-primaryColor text-white">
+                    €
+                  </span>{" "}
+                  EUR
                 </p>
 
                 <select
                   onChange={changeLanguage}
-                  className="bg-transparent cursor-pointer"
+                  className="bg-transparent cursor-pointer text-[14px]"
                 >
                   <option value="en">EN</option>
                 </select>
-                <p className="cursor-pointer hover-border">
+                <p className="cursor-pointer hover-border text-[14px]">
                   <Call sx={{ fontSize: 14 }} />
-                  +4122518911
+                  +41225189111
                 </p>
               </div>
-              <div className="flex items-center text-white/80 md:text-[15px] text-[12px] md:gap-5 gap-2">
+              <div className="flex items-center text-[rgb(255, 255, 255)] leading-[1.2] font-normal text-[15px] md:gap-5 gap-2">
                 <div className="flex md:gap-6 gap-2">
                   {navData.map((item) => (
                     <Link
@@ -180,7 +177,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                     </Link>
                   ))}
                 </div>
-                <div className="md:h-3 h-2 w-[2px] bg-white" />
+                <div className="md:h-3 h-2 w-[2px] bg-accent" />
                 {user !== null ? (
                   <div className="md:block hidden">
                     <button
@@ -189,7 +186,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                       aria-haspopup="true"
                       aria-expanded={open ? "true" : undefined}
                       onClick={handleClick}
-                      className="text-[14px] font-bold"
+                      className="text-[14px]"
                     >
                       {user.firstname} {user.lastname}
                     </button>
@@ -202,7 +199,9 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                         "aria-labelledby": "basic-button",
                       }}
                     >
-                      <MenuItem onClick={navigateToOrder}>Order history</MenuItem>
+                      <MenuItem onClick={navigateToOrder}>
+                        Order history
+                      </MenuItem>
                       <MenuItem onClick={hanldeLogout}>Sign out</MenuItem>
                     </Menu>
                   </div>
@@ -212,7 +211,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                       onClick={() =>
                         router.push(`/${localStorage.getItem("lang")}/login`)
                       }
-                      className="text-white hover-border md:text-[13px] lg:text-[16px] text-[11px]"
+                      className="text-accent hover-border text-[14px]"
                     >
                       Sign in
                     </button>
@@ -220,7 +219,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                       onClick={() =>
                         router.push(`/${localStorage.getItem("lang")}/sign-up`)
                       }
-                      className="text-white border border-white hover:text-black md:text-[13px] lg:text-[16px] text-[11px] hover:bg-white rounded-md md:px-3 px-1 md:py-1 py-[2px]"
+                      className="text-accent border border-accent text-[14px] hover:bg-primaryColor/30 rounded-md md:px-3 px-1 md:py-1 py-[2px]"
                     >
                       Open an account
                     </button>
@@ -229,18 +228,20 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
               </div>
             </div>
           </div>
-          <div className="lg:px-[190px] md:px-[10px] px-1 bg-secondaryColor py-3 flex justify-between">
+          <div className="lg:px-[190px] md:px-[10px] px-1 bg-secondaryColor py-5 flex justify-between">
             <div className="flex justify-between w-full">
               <div
-                className="flex items-center gap-4 text-white/80 hover:text-white"
+                className="flex items-center gap-4 text-accent"
                 onClick={() => router.push("/")}
               >
                 <Image
                   src={logo}
                   alt="log"
-                  className="md:w-[25px] w-[20px] md:h-[25px] h-[20px]"
+                  className="md:w-[25px] w-[20px] md:h-[25px] h-[18px]"
                 />
-                <p className="uppercase cursor-pointer">waret gold</p>
+                <p className="uppercase cursor-pointer flex gap-2 hover-border font-bold">
+                  waret <span className="font-normal">gold</span>
+                </p>
               </div>
               <div
                 className={`nav flex items-center ${
@@ -257,7 +258,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                               onClick={() =>
                                 router.push(`/${lang}/buy/${item.parent}`)
                               }
-                              className="text-white hover:bg-white/20 text-[15px] rounded-lg py-[2px] px-2 uppercase"
+                              className="text-accent hover:bg-primaryColor/30 text-[16px] leading-[22px] font-bold rounded-lg py-[2px] px-2 uppercase"
                             >
                               {item.parent}
                             </button>
@@ -277,7 +278,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                                             `/${lang}/buy/${item.value}`
                                           )
                                         }
-                                        className="text-[15px] text-primaryColor cursor-pointer mb-2 hover-border font-bold mr-5 block"
+                                        className="text-[15px] text-accent cursor-pointer mb-2 hover-border font-bold mr-5 block"
                                       >
                                         {item.value}
                                       </h4>
@@ -306,12 +307,12 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                         ))}
                         <li
                           onClick={() => router.push(`/${lang}/cart`)}
-                          className="relative"
+                          className="relative ml-3"
                         >
                           <ShoppingCartOutlinedIcon
-                            sx={{ color: "white", cursor: "pointer" }}
+                            sx={{ color: "#C1C2C5", cursor: "pointer" }}
                           />
-                          <div className="absolute cursor-pointer bg-red-600 px-1 right-1 text-[12px] font-bold text-white rounded-full top-0">
+                          <div className="absolute cursor-pointer bg-red-600 px-1 right-1 text-[12px] font-bold text-primaryColor rounded-full top-0">
                             {cartData?.data?.cartItems.length}
                           </div>
                         </li>
@@ -330,7 +331,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
             <MenuIcon sx={{ color: "white" }} />
           </IconButton>
           <div
-            className="flex col-span-3 justify-center items-center gap-4 text-white/80 hover:text-white"
+            className="flex col-span-3 justify-center items-center gap-4 text-accent"
             onClick={() => router.push("/")}
           >
             <Image src={logo} alt="log" className="w-[20px] h-[20px]" />
@@ -344,14 +345,14 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
           >
             <ShoppingCartOutlinedIcon
               sx={{
-                color: "white",
+                color: "#C1C2C5",
                 cursor: "pointer",
                 fontSize: 25,
                 fontWeight: 200,
               }}
             />
-            <div className="absolute bg-red-600 px-1 right-1 text-[12px] font-bold text-white rounded-full top-0">
-            {cartData?.data?.cartItems.length}
+            <div className="absolute bg-primaryColor px-1 right-1 text-[12px] font-bold text-accent rounded-full top-0">
+              {cartData?.data?.cartItems.length}
             </div>
           </div>
         </div>
@@ -360,13 +361,13 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
             <li key={item.id}>
               <button
                 onClick={() => router.push(`/${lang}/buy/${item.parent}`)}
-                className="text-white hover:bg-white/20 text-[14px] rounded-lg py-[2px] px-2 uppercase"
+                className="text-primaryColor hover:bg-white/20 text-[14px] rounded-lg py-[2px] px-2 uppercase"
               >
                 {item.parent}
               </button>
             </li>
           ))}
-{/* 
+          {/* 
           <li className=" mr-3">
             <Search sx={{ color: "white", cursor: "pointer", fontSize: 22 }} />
           </li> */}

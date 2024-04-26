@@ -67,7 +67,7 @@ const Usercarousel = () => {
 
   return (
     <div>
-      <div className="text-[30px] font-bold md:mt-16 mt-2">
+      <div className="text-decoration-none md:mt-28 mt-20 text-darkaccent leading-[46px] text-[36px] font-[700] mb-[24px]">
         <h1>
           More than <span className="text-green-600">102,000 users</span>{" "}
           already

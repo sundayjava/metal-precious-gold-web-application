@@ -50,15 +50,15 @@ const FAQ = () => {
     <div className="mt-32 bg-white">
       <div className="flex items-end justify-between">
         <div className="md:w-[60%] w-full">
-          <h1 className="font-bold md:text-[32px] text-[27px]">
+          <h1 className="text-decoration-none text-darkaccent leading-[46px] text-[36px] font-[700] mb-[24px]">
             Frequently asked questions
           </h1>
-          <p className="text-[19px] mt-4 font-normal">
+          <p className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[400] max-w-[750px]">
             Read the most frequently asked questions from savers and investors
             on WARET GOLD and on how to buy gold, silver, and precious metals.
           </p>
         </div>
-        <button className="md:flex hidden text-primaryColor hover-border gap-2 items-center">
+        <button className="md:flex hidden text-accent hover-border gap-2 items-center">
           More FAQ <ArrowForwardIcon sx={{ fontSize: 17 }} />
         </button>
       </div>
@@ -108,7 +108,7 @@ const FAQ = () => {
         </div>
       </div>
       <div className="flex justify-end md:hidden gap-2 items-center">
-        <button className="text-primaryColor hover-border">
+        <button className="text-accent hover-border">
           More FAQ <ArrowForwardIcon sx={{ fontSize: 17 }} />
         </button>
       </div>

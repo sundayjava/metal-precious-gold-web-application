@@ -9,24 +9,8 @@ import { addToCart } from "@/app/_utility/apicall";
 
 const ItemsCard = (props: { item: any }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
   const router = useRouter();
   const { item } = props;
-
-  useEffect(() => {
-    const handleResize = () => {
-      setViewportWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const imageWidth = viewportWidth < 640 ? 140 : 200;
-  const imageHeight = viewportWidth < 640 ? 170 : 350;
 
   const handleNavigate = (id: string) => {
     router.push(
@@ -38,12 +22,12 @@ const ItemsCard = (props: { item: any }) => {
 
   return (
     <div
-      className={`cursor-pointer my-2 bg-white`}
+      className={`cursor-pointer my-1 bg-white`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`cursor-pointer py-4 rounded-lg hover:shadow-xl relative bg-white`}
+        className={`cursor-pointer py-4 rounded-lg hover:shadow-xl h-[400px] w-full px-2 bg-white`}
         style={{ overflow: "hidden" }}
       >
         <div
@@ -53,23 +37,21 @@ const ItemsCard = (props: { item: any }) => {
           <Image
             src={item.imageUrl[1]}
             alt="imageslog"
-            width={imageWidth}
-            height={imageHeight}
+            width={100}
+            height={100}
+            className="h-[190px] object-cover w-[80%]"
           />
         </div>
-        <p className="text-[16px] line-clamp-2 text-center text-[#153358]/70 my-4">
+        <p className="line-clamp-2 text-center text-[15px] font-normal mt-6 h-[50px]">
           {item?.title}
         </p>
-        <h1 className="text-center font-bold text-[18px]">€{item?.price.toLocaleString()}</h1>
-        <p className="text-black/50 text-center text-[12px] mb-16">
-          Fees: €{item?.discount.toLocaleString()} per oz
-        </p>
-        <div className="absolute bottom-3 left-0 w-full flex justify-center">
+        <h1 className="text-center font-bold text-[18px] text-primaryColor mt-2">€{item?.price.toLocaleString()}</h1>
+        <div className="w-full flex justify-center items-center">
           <button
             onClick={() => addToCart(auth.currentUser?.email, item.id)}
-            className="bg-black text-white px-6 md:py-4 py-2 rounded-lg flex items-center gap-2"
+            className="text-white grdientBtn font-bold px-6 py-3 mt-4 rounded-lg flex items-center gap-2"
           >
-            <ShoppingCart sx={{ fontSize: 18 }} />
+            <ShoppingCart sx={{ fontSize: 20 }} />
             <span className="text-[14px]">Add to cart</span>
           </button>
         </div>

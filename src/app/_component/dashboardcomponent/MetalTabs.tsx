@@ -64,7 +64,7 @@ const MetalTabs = () => {
 
   return (
     <div>
-      <div className="mt-20 mx-2 bg-white">
+      <div className="mt-16 mx-2 bg-white">
         <Tabs
           defaultActiveKey="1"
           items={items}
