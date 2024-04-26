@@ -25,13 +25,13 @@ const StorageShipping = () => {
     <div className="xl:px-[180px] lg:px-[80px] md:px-[34px] px-0 md:mt-8 mt-3 w-full mb-10">
       <button
         onClick={() => router.push("/")}
-        className="text-[14px] font-extralight px-10 md:mt-0 mt-4 flex gap-1 items-center"
+        className="text-decoration-none text-darkaccent leading-[28px] flex gap-3 items-center text-[20px] pt-10 font-[400] max-w-[750px]"
       >
-        <ArrowCircleLeftOutlinedIcon sx={{ fontSize: 16, color: "gray" }} />
+        <ArrowCircleLeftOutlinedIcon sx={{ fontSize: 20, color: "gray" }} />
         Go back to cart
       </button>
       <div className="flex justify-center items-center my-5">
-        <p className="text-[20px] font-bold">Checkout</p>
+        <p className="text-decoration-none text-darkaccent leading-[28px] text-[26px] font-[700] max-w-[750px]">Checkout</p>
       </div>
       <div className="md:w-[80%] w-full inline-block lg:px-12 md:px-7 px-2">
         <Box>

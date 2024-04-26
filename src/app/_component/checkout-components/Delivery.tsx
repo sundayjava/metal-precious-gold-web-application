@@ -91,13 +91,13 @@ const Delivery = (props: { nextStep: any }) => {
     getProfile();
   });
 
-  return (
+  return ( 
     <div className="flex justify-center mt-10">
       <div className="bg-white rounded-md border-l-[8px] custom-box-shadow border-primaryColor p-10">
         <form onSubmit={handleSubmit}>
           <div>
-            <p className="font-bold">Storage & Delivery</p>
-            <button className="text-[12px] bg-primaryColor text-white px-3 py-[2px] ml-10 mt-10 rounded-full">
+            <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[600] max-w-[750px]">Storage & Delivery</p>
+            <button className="text-[12px] grdientBtn text-white px-3 py-[2px] ml-10 mt-10 rounded-full">
               VAT-FREE
             </button>
             <div className="flex gap-3 items-center mt-6">
@@ -112,8 +112,8 @@ const Delivery = (props: { nextStep: any }) => {
                     control={<Radio />}
                     label={
                       <div>
-                        <p>Insured Storage</p>
-                        <p className="text-[12px] font-extralight text-gray-500">
+                        <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400] max-w-[750px]">Insured Storage</p>
+                        <p className="text-decoration-none text-darkaccent leading-[28px] text-[16px] font-[400] max-w-[750px]">
                           Estimated storage fees: FREE
                         </p>
                       </div>
@@ -128,8 +128,8 @@ const Delivery = (props: { nextStep: any }) => {
                     control={<Radio />}
                     label={
                       <div>
-                        <p>Shipping Delivery details</p>
-                        <p className="text-[12px] font-extralight text-gray-500">
+                        <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400] max-w-[750px]">Shipping Delivery details</p>
+                        <p className="text-decoration-none text-darkaccent leading-[28px] text-[16px] font-[400] max-w-[750px]">
                           4-15 business days
                         </p>
                       </div>
@@ -143,8 +143,8 @@ const Delivery = (props: { nextStep: any }) => {
             </div>
           </div>
           <div className="flex flex-col mt-10">
-            <label className="text-[14px] font-extralight">
-              Enter shipping country:
+            <label className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[600] max-w-[750px] mb-5">
+              Enter shipping country tel:
             </label>
             <input
               type="text"
@@ -157,7 +157,7 @@ const Delivery = (props: { nextStep: any }) => {
             <span className="text-[12px] italic font-light text-red-500"></span>
           </div>
           <div className="flex flex-col mt-8">
-            <h1 className="font-bold text-[18px] my-4">Billing Address</h1>
+            <h1 className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[600] max-w-[750px] mb-5">Billing Address</h1>
             <input
               type="text"
               placeholder="Enter your address here"
@@ -239,7 +239,7 @@ const Delivery = (props: { nextStep: any }) => {
             <span className="text-[12px] italic font-light text-red-500"></span>
           </div>
           <div className="mt-8">
-            <button className="px-4 py-2 rounded-md text-[15px] font-bold text-white bg-black">
+            <button className="px-4 py-2 rounded-md text-[15px] font-bold text-white grdientBtn">
               Continue
             </button>
           </div>

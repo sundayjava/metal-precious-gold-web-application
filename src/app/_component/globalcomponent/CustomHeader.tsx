@@ -268,7 +268,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                                 openMegaMenu === true && "open"
                               }`}
                             >
-                              <div className="flex flex-wrap">
+                              <div className="flex flex-wrap gap-7 ">
                                 {item.children.length !== 0 &&
                                   item.children.map((item) => (
                                     <div key={item.id} className="">
@@ -278,7 +278,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                                             `/${lang}/buy/${item.value}`
                                           )
                                         }
-                                        className="text-[15px] text-accent cursor-pointer mb-2 hover-border font-bold mr-5 block"
+                                        className="text-[15px] text-secondaryColor cursor-pointer mb-2 hover-border font-bold mr-5 block"
                                       >
                                         {item.value}
                                       </h4>
@@ -292,7 +292,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                                                   `/${lang}/buy/${item.value}`
                                                 )
                                               }
-                                              className="text-[13px] text-black font-light w-full cursor-pointer hover-border"
+                                              className="text-[13px] text-darkaccent font-light w-full py-4 cursor-pointer hover-border"
                                             >
                                               {itemize.value}
                                             </li>

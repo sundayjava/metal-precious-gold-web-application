@@ -121,41 +121,48 @@ const CartPage = () => {
   };
 
   return (
-    <div className="xl:px-[170px] lg:px-[70px] md:px-[30px] px-1 pt-8 w-full overflow-hidden">
-      <p className="text-[14px] font-extralight md:px-10 px-2">Cart</p>
+    <div className="xl:px-[150px] lg:px-[50px] md:px-[20px] px-1 pt-8 w-full overflow-hidden">
+      <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] pt-10 font-[400] max-w-[750px]">
+        Cart
+      </p>
       <div className="flex justify-between md:flex-row flex-col w-full items-center my-8 px-10">
-        <h1 className="font-bold md:text-[25px] ">
+        <h1 className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[600] max-w-[750px]">
           {cartData?.data.cartItems.length} product(s) in your cart
         </h1>
         <button
           onClick={() => router.push("/")}
-          className="border md:mt-0 mt-2 border-primaryColor hover:bg-primaryColor hover:text-white text-[14px] rounded-md px-5 py-1"
+          className="border md:mt-0 mt-2 border-primaryColor hover:bg-primaryColor hover:text-white leading-[28px] text-[20px] text-darkaccent font-[700] rounded-md px-5 py-1"
         >
           Continue shopping
         </button>
       </div>
       <div className="flex md:flex-row flex-col-reverse jmd:ustify-center md:items-start gap-5 w-full">
-        <div className="md:w-[70%] w-full bg-white rounded-md border-l-[8px] border-primaryColor md:p-10 p-3">
-          <p className="font-bold mb-8">Your order</p>
+        <div className="md:w-[65%] w-full bg-white rounded-md border-l-[8px] border-primaryColor md:p-10 p-3">
+          <p className="text-decoration-none text-darkaccent leading-[46px] text-[30px] font-[700] mb-[26px]">
+            Your order
+          </p>
           {cartData?.data.cartItems ? (
             <div className="flex flex-col justify-center">
               {cartData?.data.cartItems.map((item) => {
                 localStorage.setItem("cartItemId", item.id);
                 return (
                   <div key={item.id} className="border-t py-6">
-                    <div className="grid grid-cols-4 justify-center md:gap-8 gap-3 items-center">
-                      <div className="flex md:gap-2 gap-1 items-start col-span-2">
-                        <Image
-                          src="https://www.goldavenue.com/_next/image?url=https%3A%2F%2Fassets.goldavenue.com%2Fuploads%2Fproduct_image%2Fimage%2F2441%2Fsmall_3x_webp_lady_fortuna_45th__anniversary_1oz_Au_certipamp_front.webp&w=48&q=75"
-                          alt="dp"
-                          width={50}
-                          height={25}
-                        />
-                        <p className="md:text-[16px] text-[12px]">
+                    <div className="flex justify-center md:gap-5 gap-3 items-center">
+                      <div className="flex md:gap-2 gap-1 items-center w-[55%]">
+                        <div className="w-[80px] h-[80px]">
+                          <Image
+                            src={item.product.imageUrl[1]}
+                            alt="dp"
+                            width={50}
+                            height={25}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                        <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400]">
                           {item.product.title}
                         </p>
                       </div>
-                      <div className="flex gap-4 items-center col-span-1">
+                      <div className="flex gap-4 items-center w-[21%]">
                         <button
                           onClick={() =>
                             handleRemoveCartItem(1, item.quantity, item.id)
@@ -176,8 +183,8 @@ const CartPage = () => {
                           +
                         </button>
                       </div>
-                      <div className="col-span-1 flex md:flex-row flex-col md:gap-4 gap-1 items-center">
-                        <p className="text-[12px] font-bold md:font-normal md:text-[16px]">
+                      <div className="flex md:flex-row flex-col gap-2 items-center w-[24%]">
+                        <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400]">
                           €{item.price}
                         </p>
                         <div
@@ -195,8 +202,8 @@ const CartPage = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="flex mt-10 font-extralight items-center text-[13px]">
-                      <FavoriteBorder sx={{ fontSize: 15 }} />
+                    <div className="flex mt-10 ml-10 font-extralight items-center text-[13px]">
+                      <FavoriteBorder sx={{ fontSize: 22,color:'#c1c2c5' }} />
                       <p className="hover-border cursor-pointer"></p>
                     </div>
                   </div>
@@ -212,11 +219,11 @@ const CartPage = () => {
           )}
           <div className="flex justify-between items-start mt-10">
             <div>
-              <p className="font-bold md:text-[16px] text-[13px]">
+              <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[600] max-w-[750px]">
                 Payment method
               </p>
               {auth.currentUser ? null : (
-                <p className="mt-3 font-extralight text-[13px]">
+                <p className="mt-3 text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[600] max-w-[750px]">
                   Sign in to select a payment method
                 </p>
               )}
@@ -232,7 +239,7 @@ const CartPage = () => {
                         value="1"
                         control={<Radio />}
                         label={
-                          <p className="md:text-[16px] text-[13px]">
+                          <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400] max-w-[750px]">
                             Bank transfer
                           </p>
                         }
@@ -245,7 +252,7 @@ const CartPage = () => {
                         value="2"
                         control={<Radio />}
                         label={
-                          <p className="md:text-[16px] text-[13px]">Bitcoin</p>
+                          <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400] max-w-[750px]">Bitcoin</p>
                         }
                         // onChange={(e) =>
                         //   handleRadioFilterChange(section.id, e)
@@ -257,10 +264,10 @@ const CartPage = () => {
               ) : null}
             </div>
             <div>
-              <p className="font-bold md:text-[16px] text-[13px]">
+              <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[600] max-w-[750px]">
                 Storage & Delivery
               </p>
-              <button className="md:text-[12px] text-[9px] bg-primaryColor text-white px-3 py-[2px] ml-10 mt-10 rounded-full">
+              <button className="md:text-[12px] text-[9px] grdientBtn text-white px-3 py-[2px] ml-10 mt-10 rounded-full">
                 VAT-FREE
               </button>
               <div className="flex gap-3 items-center mt-6">
@@ -275,10 +282,10 @@ const CartPage = () => {
                       control={<Radio />}
                       label={
                         <div>
-                          <p className="md:text-[16px] text-[13px]">
+                          <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400] max-w-[750px]">
                             Insured Storage
                           </p>
-                          <p className="md:text-[16px] text-[12px] font-light">
+                          <p className="text-decoration-none text-darkaccent leading-[28px] text-[16px] font-[400] max-w-[750px]">
                             Estimated storage fees: FREE
                           </p>
                         </div>
@@ -293,10 +300,10 @@ const CartPage = () => {
                       control={<Radio />}
                       label={
                         <div>
-                          <p className="md:text-[16px] text-[13px]">
+                          <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400] max-w-[750px]">
                             Shipping Delivery details
                           </p>
-                          <p className="md:text-[16px] text-[12px] font-light">
+                          <p className="text-decoration-none text-darkaccent leading-[28px] text-[17px] font-[400] max-w-[750px]">
                             4-15 business days
                           </p>
                         </div>
@@ -311,30 +318,32 @@ const CartPage = () => {
             </div>
           </div>
         </div>
-        <div className="md:w-[30%] w-full bg-white rounded-md md:p-6 p-2">
-          <p className="font-bold">Order summary</p>
-          <div className="mt-10 flex justify-between items-center font-light text-[14px]">
+        <div className="md:w-[35%] w-full bg-white rounded-md md:p-5 p-2">
+          <p className="text-decoration-none text-darkaccent leading-[46px] text-[30px] font-[700] mb-[26px]">
+            Order summary
+          </p>
+          <div className="mt-10 text-decoration-none text-darkaccent leading-[28px] text-[18px] font-[400] flex justify-between items-center max-w-[750px]">
             <p>Products ({cartData?.data.cartItems.length})</p>
-            <p>€{cartData?.data.discount}</p>
+            <p className="text-decoration-none text-darkaccent leading-[28px] text-[18px] font-[600] max-w-[750px]">€{cartData?.data.discount}</p>
           </div>
-          <div className="mb-10 mt-2 flex justify-between items-center font-light text-[14px]">
+          <div className="mb-10 mt-2 text-decoration-none text-darkaccent leading-[28px] text-[18px] font-[400] flex justify-between items-center max-w-[750px]">
             <p>Priority payment (3%)</p>
-            <p>€{cartData?.data.totalPrice}</p>
+            <p className="text-decoration-none text-darkaccent leading-[28px] text-[18px] font-[600] max-w-[750px]">€{cartData?.data.totalPrice}</p>
           </div>
           <hr />
           <div className="my-10">
-            <div className="flex font-bold justify-between items-center text-[14px]">
+            <div className="flex text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[600] max-w-[750px] justify-between items-center">
               <p>Total</p>
               <p>€{cartData?.data.discount}</p>
             </div>
-            <p className="font-light text-[14px]">Incl. taxes</p>
+            <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] pt-2 font-[400] max-w-[750px]">Incl. taxes</p>
           </div>
           {!auth.currentUser ? (
             <button
               onClick={() =>
                 router.push(`/${localStorage.getItem("lang")}/login`)
               }
-              className="w-full py-2 bg-primaryColor rounded-md text-[14px] text-white mb-10"
+              className="w-full py-2 grdientBtn rounded-md text-[14px] text-white mb-10"
             >
               Sign in to continue
             </button>
@@ -343,7 +352,7 @@ const CartPage = () => {
               onClick={() =>
                 router.push(`/${localStorage.getItem("lang")}/storage-shipping`)
               }
-              className="w-full py-2 bg-primaryColor rounded-md text-[14px] text-white mb-10"
+              className="w-full py-2 grdientBtn rounded-md text-[14px] text-white mb-10"
             >
               Proceed to checkout
             </button>

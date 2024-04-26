@@ -178,7 +178,7 @@ const PricingPage = () => {
                   {item.heading}
                   <span className="font-light"> {item.sub}</span>
                 </p>
-                <p className="mt-4 text-[18px] leading-[20px] font-[400] h-[150px] hover:text-accent text-darkaccent">{item.body}</p>
+                <p className="mt-4 text-[18px] leading-[28px] font-[400] h-[150px] hover:text-accent text-darkaccent">{item.body}</p>
               </div>
             ))}
           </div>

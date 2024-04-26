@@ -197,7 +197,7 @@ const PaymentReviews = (props: { finalStep: any }) => {
               <tr key={items.id} className="hover:bg-gray-100">
                 <td className="px-6 py-4">
                   <img
-                    src={items.product.imageUrl[0]}
+                    src={items.product.imageUrl[1]}
                     alt="Product Image"
                     className="h-10 w-10 object-cover rounded-md"
                   />
@@ -271,7 +271,7 @@ const PaymentReviews = (props: { finalStep: any }) => {
           ) : (
             <button
               onClick={placeOrder}
-              className="px-4 py-2 rounded-md text-[15px] font-bold text-white bg-black"
+              className="px-4 py-2 rounded-md text-[15px] font-bold text-white grdientBtn"
             >
               Place order
             </button>

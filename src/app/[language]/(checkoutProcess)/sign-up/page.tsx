@@ -17,7 +17,7 @@ const SignupPage = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [info, setInfo] = useState({
-    firstname: "",
+    firstname: "", 
     lastname: "",
     email: "",
     password: "",
@@ -89,10 +89,10 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[80vh]">
+    <div className="flex justify-center items-center md:min-h-[100vh]">
       <div className="rounded-md md:px-16 px-4 xl:w-[35%] lg:w-[45%] md:w-[55%] w-[98%] py-10">
-        <h1 className="text-[20px] font-bold">Welcome to GOLD AVENUE!</h1>
-        <h1 className="text-[17px] font-normal">Savings made simple.</h1>
+        <h1 className="text-[28px] font-[700] leading-[36px] text-darkaccent hover:text-accent">Welcome to GOLD AVENUE!</h1>
+        <h1 className="mt-4 text-[18px] leading-[20px] font-[400] mb-8 hover:text-accent text-darkaccent">Savings made simple.</h1>
         <p className="my-5 text-[14px] font-light">
           Fill in the fields below to open your{" "}
           <span className="text-blue-400 hover-border cursor-pointer">
@@ -207,12 +207,12 @@ const SignupPage = () => {
           {loading ? (
             <CircularProgress />
           ) : (
-            <button className="text-[14px] my-8 font-bold text-white py-3 px-4 bg-primaryColor rounded-md">
+            <button className="text-[14px] my-8 font-bold text-white py-3 px-4 grdientBtn rounded-md">
               Open an account
             </button>
           )}
         </form>
-        <p className="text-[14px]">
+        <p className="mt-4 text-[18px] leading-[20px] font-[400] mb-8 hover:text-accent text-darkaccent">
           Already have an account?{" "}
           <span
             className="text-blue-400 hover-border cursor-pointer"

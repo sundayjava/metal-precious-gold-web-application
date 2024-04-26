@@ -132,7 +132,7 @@ const AndroidSidebar = (props: {
                   </Menu>
                 </div>
               ) : (
-                <div className="flex justify-between items-center gap-3">
+                <div className="flex items-center text-[rgb(255, 255, 255)] leading-[1.2] font-normal text-[15px] md:gap-5 gap-2">
                   <button
                     onClick={() =>
                       router.push(`/${localStorage.getItem("lang")}/sign-up`)
@@ -159,7 +159,7 @@ const AndroidSidebar = (props: {
             </div>
 
             <div className="">
-              <h1 className="font-bold ml-2 my-2">Shops</h1>
+              <h1 className="text-[22px] font-[700] leading-[36px] text-darkaccent hover:text-accent">Shops</h1>
               <div>
                 {category.map((item) => (
                   <Accordion key={item.id}>
@@ -185,7 +185,7 @@ const AndroidSidebar = (props: {
                       {item.children.map((item) => (
                         <div key={item.id}>
                           <button
-                            className="text-blue-700 text-[14px] font-bold"
+                            className="text-primaryColor text-[14px] font-bold"
                             onClick={() => {
                               router.push(`/${lang}/buy/${item.value}`);
                               setIsSidebarOpen(!isSidebarOpen);
@@ -215,7 +215,7 @@ const AndroidSidebar = (props: {
               </div>
             </div>
 
-            <div className="flex flex-col px-5 my-7 items-start gap-5">
+            <div className="flex flex-col px-5 my-7 items-start gap-5 text-[rgb(255, 255, 255)] leading-[1.2] font-normal text-[15px]">
               {navData.map((item) => (
                 <Link key={item.id} href={item.url}>
                   {item.value}
@@ -227,10 +227,10 @@ const AndroidSidebar = (props: {
               <p className="text-[13px]">
                 <span className="rounded-full px-1 bg-blue-200">€</span> EUR
               </p>
-              <select className="border-none mt-5 outline-none">
+              {/* <select className="border-none mt-5 outline-none">
                 <option>EN</option>
                 <option>FR</option>
-              </select>
+              </select> */}
             </div>
           </div>
         </Drawer>

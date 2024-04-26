@@ -17,7 +17,7 @@ const ProductPage = () => {
     { id: 2, value: "pricelow", label: "Price (Low to High)" },
     { id: 3, value: "pricehigh", label: "Price (High to Low)" },
   ];
-  
+
   useEffect(() => {
     const parentcategory = location.pathname.split("/")[3];
     setCat(parentcategory);
@@ -33,7 +33,7 @@ const ProductPage = () => {
     };
     fetchData();
   }, []);
-  
+
   const totalPages = Math.ceil(products.length / pageSize);
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -42,14 +42,16 @@ const ProductPage = () => {
     setCurrentPage(page);
   };
 
-  console.log(products)
+  console.log(products);
   return (
     <div className="pt-12">
       <div className="container mt-16 md:px-7 px-2 rounded-lg">
         <div className="md:w-[20%] w-[25%] h-[750px] inline-block float-left sticky top-[50px] overflow-y-scroll">
           <div className="flex md:justify-center overflow-x-scroll">
             <form>
-              <h1 className="font-bold text-start">Filters</h1>
+              <h1 className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[700] max-w-[750px]">
+                Filters
+              </h1>
               {filters.map((section) => (
                 <div
                   key={section.id}
@@ -91,9 +93,9 @@ const ProductPage = () => {
           </div>
         </div>
         <div className="md:w-[80%] w-[75%] inline-block align-top float-right lg:px-12 md:px-7 px-1">
-          <h1 className="font-bold lg:text-[17px] md:text-[15px] sm:text-[13px] text-[12px]">
-            Buy {parentcategory}, with Free Storage in Switzerland and Resale without
-            Commission
+          <h1 className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400] max-w-[750px]">
+            Buy {parentcategory}, with Free Storage in Switzerland and Resale
+            without Commission
           </h1>
           <div className="flex justify-between items-center">
             <p className="bg-slate-200 rounded-md px-1 md:block hidden">
@@ -110,11 +112,20 @@ const ProductPage = () => {
               </select>
             </div>
           </div>
-          <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
-            {products?.map((item) => (
-              <ItemsCard item={item} key={item.id} />
-            ))}
-          </div>
+          {products.length > 0 ? (
+            <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
+              {products?.map((item) => (
+                <ItemsCard item={item} key={item.id} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400] max-w-[750px]">
+              <h1>
+                There is no product on this category. Please check another
+                category
+              </h1>
+            </div>
+          )}
           <div className="flex justify-end mt-28 mb-10">
             <Pagination
               count={totalPages}
