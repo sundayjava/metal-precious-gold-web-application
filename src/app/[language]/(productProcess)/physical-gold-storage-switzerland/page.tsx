@@ -146,16 +146,16 @@ const StorageSolution = () => {
         </Breadcrumbs>
         <div className="mt-7 flex md:flex-row flex-col justify-between items-start bg-primaryColor/5 px-10 pt-10 rounded-md">
           <div className="md:w-[50%] w-full">
-            <h1 className="font-bold md:text-[32px] text-[30px]">
+            <h1 className="text-decoration-none text-darkaccent leading-[46px] text-[30px] font-[700] mb-[24px]">
               A secure place for your physical gold
             </h1>
-            <p className="mr-12 mt-2 font-normal">
+            <p className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[400] max-w-[750px]">
               Fully allocated, 100% VAT-free, insured, secure, simple, and
               Swiss. Get all the advantages of physical precious metals storage,
               directly online.
             </p>
             <div className="mt-11">
-              <button className="text-white text-[13px] cursor-not-allowed font-bold bg-primaryColor px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white">
+              <button className="text-white text-[13px] cursor-not-allowed font-bold grdientBtn px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white">
                 Get started
               </button>
             </div>
@@ -181,17 +181,17 @@ const StorageSolution = () => {
         </div>
         <div className="mt-16 flex md:flex-row flex-col justify-between items-start px-10 pt-10 rounded-md">
           <div className="md:w-[50%] w-full">
-            <h1 className="font-bold md:text-[32px] w-[60%] text-[27px]">
+            <h1 className="text-decoration-none text-darkaccent leading-[46px] text-[30px] font-[700] mb-[24px]">
               Why not enjoy VAT-free products?
             </h1>
-            <p className="mr-12 mt-2 font-normal">
+            <p className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[400] max-w-[750px]">
               All our products are VAT-free. Save the 8.1% Swiss VAT on Silver,
               Platinum, and Palladium.
             </p>
             <div className="mt-11 md:mb-0 mb-5">
               <button
                 onClick={() => router.push("/en/buy/gold")}
-                className="text-white text-[15px] font-bold bg-primaryColor px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white"
+                className="text-white text-[15px] font-bold grdientBtn px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white"
               >
                 Discover VAT_FREE Products
               </button>
@@ -210,10 +210,10 @@ const StorageSolution = () => {
 
         <div className="md:my-40 my-14">
           <div className="flex flex-col justify-center items-center">
-            <h1 className="font-bold md:text-[32px] wmd:-[60%] w-full text-[27px] text-center">
+            <h1 className="text-decoration-none text-darkaccent leading-[46px] text-[30px] font-[700] mb-[24px]">
               Enjoy simple pricing
             </h1>
-            <p className="mr-12 mt-2 font-normal md:text-start text-center">
+            <p className="text-decoration-none text-darkaccent text-center leading-[32px] text-[24px] font-[400] max-w-[750px]">
               We believe pricing should remain transparent and affordable for
               everyone.
             </p>

@@ -63,10 +63,10 @@ const WhatIsNew = () => {
               </span>
               {item.time}
             </p>
-            <Link href="https://newstopedia.space" className="text-[28px] font-[700] leading-[36px] text-secondaryColor hover:text-accent">
+            <Link href="https://newstopedia.space" className="text-[28px] font-[700] leading-[36px] text-darkaccent hover:text-accent">
               {item.title}
             </Link>
-            <p className="mt-4 text-[18px] leading-[28px] font-[400] h-[150px] hover:text-darkaccent">{item.desc}</p>
+            <p className="mt-4 text-[18px] leading-[28px] font-[400] h-[150px] hover:text-accent text-darkaccent">{item.desc}</p>
             <div className="text-[14px] text-primaryColor font-light flex items-center gap-1">
               <SellIcon sx={{ transform: "rotate(75deg)", fontSize: 15, color:'gray' }} />
               <span className="cursor-pointer hover-border mr-4 text-accent">

@@ -69,10 +69,10 @@ const PricingPage = () => {
         </Breadcrumbs>
         <div className="mt-7 flex md:flex-row flex-col justify-between items-start">
           <div className="md:w-[50%] w-full">
-            <h1 className="font-bold md:text-[32px] text-[20px]">
+            <h1 className="text-decoration-none text-darkaccent leading-[46px] text-[30px] font-[700] mb-[24px]">
               SIMPLE and TRANSPARENT pricing
             </h1>
-            <p className="mr-12 mt-2 font-normal">
+            <p className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[400] max-w-[750px]">
               Buy, store, sell. Gold with no hidden costs.
             </p>
           </div>
@@ -88,10 +88,10 @@ const PricingPage = () => {
         </div>
 
         <div className="bg-primaryColor/5 w-full px-5 py-10 my-10">
-          <h1 className="font-bold md:text-[30px] text-[22px] mb-5">
+          <h1 className="text-decoration-none text-darkaccent leading-[46px] text-[30px] font-[700] mb-[24px]">
             Store physical gold at a simple price
           </h1>
-          <div className="font-normal">
+          <div className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[400] max-w-[750px]">
             <p>
               Start with{" "}
               <span className="font-bold">
@@ -135,7 +135,7 @@ const PricingPage = () => {
               <p className="md:text-[18px] text-[12px] text-blue-700 font-bold">0.5%/year</p>
             </div>
           </div>
-          <Link href="https://www.youtube.com/watch?v=uGXRCvrlZnE" className="flex gap-3 items-center text-primaryColor mt-10">
+          <Link href="https://www.youtube.com/watch?v=uGXRCvrlZnE" className="flex gap-3 items-center text-accent mt-10">
             <YouTubeIcon />
             <p className="hover-border cursor-pointer">How to store precious metals with GOLD AVENUE?</p>
           </Link>
