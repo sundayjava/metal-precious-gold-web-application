@@ -20,7 +20,7 @@ const GoldSection = () => {
             <span className="hover-border cursor-pointer">What is WARET GOLD</span>
           </Link>
         </div>
-        <div className="w-[200px] h-[220px]">
+        <div className="w-[200px] h-[220px] md:block hidden">
           <Image
             src={goldLogo}
             alt="pamp"
@@ -29,7 +29,7 @@ const GoldSection = () => {
         </div>
       </div>
       <div className="gap-10 items-center flex md:flex-row flex-col justify-between mt-12">
-        <div className="md:w-[50%] w-full md:block hidden">
+        <div className="md:w-[50%] w-full">
           <Image
             src={leftos}
             alt="pamp"
