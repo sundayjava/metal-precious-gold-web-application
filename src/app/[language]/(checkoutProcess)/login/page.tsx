@@ -36,8 +36,8 @@ const LoginPage = () => {
   return (
     <div className="flex justify-center items-center min-h-[80vh]">
       <div className="custom-box-shadow rounded-md md:px-16 px-4 md:w-[35%] w-[98%] py-10">
-        <h1 className="text-[20px] font-bold text-center">Welcome back!</h1>
-        <p className="mb-8 text-[14px] font-light text-center">
+        <h1 className="text-[28px] font-[700] leading-[36px] text-darkaccent hover:text-accent">Welcome back!</h1>
+        <p className="mt-4 text-[18px] leading-[20px] font-[400] mb-8 hover:text-accent text-darkaccent">
           Please sign in to access your personal account
         </p>
         <form onSubmit={handleSubmit}>
@@ -83,12 +83,12 @@ const LoginPage = () => {
           {loading ? (
             <CircularProgress />
           ) : (
-            <button className="text-[14px] my-8 font-bold text-white py-3 w-full bg-primaryColor rounded-md">
+            <button className="text-[14px] my-8 font-bold text-white py-3 w-full grdientBtn rounded-md">
               Sign in
             </button>
           )}
         </form>
-        <p className="mb-3 text-[14px] font-light text-center">
+        <p className="mb-4 text-[18px] leading-[20px] font-[400] hover:text-accent text-darkaccent">
           First time on WARET GOLD?
         </p>
         <button

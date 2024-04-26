@@ -172,7 +172,7 @@ const PricingPage = () => {
             <h1 className="text-decoration-none text-darkaccent leading-[46px] text-[30px] font-[700] mb-[24px]">
               Choose your payment method
             </h1>
-            <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] md:mb-0 mb-10 font-[400] max-w-[750px]">
+            <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] md:mb-8 mb-10 font-[400] max-w-[750px]">
               WARET GOLD currently accepts payments in USD, EUR, GBP, and CHF.
               You can pay either by wire transfer, WARET GOLD Pay or credit
               card.
@@ -183,11 +183,11 @@ const PricingPage = () => {
             {paymentData.map((item) => (
               <div key={item.id} className="flex flex-col items-center">
                 <div>{item.img}</div>
-                <p className="my-8 font-bold">
+                <p className="text-[20px] font-[700] leading-[36px] text-darkaccent hover:text-accent">
                   {item.heading}
                   <span className="font-light"> {item.sub}</span>
                 </p>
-                <p>{item.body}</p>
+                <p className="mt-4 text-[18px] leading-[20px] font-[400] h-[150px] hover:text-accent text-darkaccent">{item.body}</p>
               </div>
             ))}
           </div>
