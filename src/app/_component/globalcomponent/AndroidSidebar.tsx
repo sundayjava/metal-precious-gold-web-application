@@ -105,7 +105,7 @@ const AndroidSidebar = (props: {
           }}
         >
           <div className="w-full">
-            <div className="flex w-full bg-black px-2 text-white gap-4 justify-between py-3 items-center">
+            <div className="flex w-full bg-secondaryColor px-2 text-white gap-4 justify-between py-3 items-center">
               {user !== null ? (
                 <div className=" py-4 px-2">
                   <button

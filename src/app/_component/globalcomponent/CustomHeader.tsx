@@ -105,7 +105,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
     >
       <Toolbar
         sx={{
-          backgroundColor: "#000000",
+          backgroundColor: "#25262B",
           flexDirection: "column",
           justifyContent: "space-between",
           py: "0.1rem",
@@ -324,7 +324,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
             </div>
           </div>
         </div>
-        <div className="justify-between items-center flex gap-[3rem] w-full pt-2">
+        <div className="justify-between bg-secondaryColor items-center flex gap-[3rem] w-full pt-2">
           <IconButton
             onClick={() => props.setIsSidebarOpen(!props.isSidebarOpen)}
           >
@@ -361,7 +361,7 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
             <li key={item.id}>
               <button
                 onClick={() => router.push(`/${lang}/buy/${item.parent}`)}
-                className="text-primaryColor hover:bg-white/20 text-[14px] rounded-lg py-[2px] px-2 uppercase"
+                className="text-accent hover:bg-primaryColor/30 text-[16px] leading-[22px] font-bold rounded-lg py-[2px] px-2 uppercase"
               >
                 {item.parent}
               </button>

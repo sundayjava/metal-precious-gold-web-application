@@ -19,7 +19,7 @@ header {
   width: 100%;
   height: auto;
   margin: auto;
-  background-color: #153358;
+  background-color: #25262B;
 }
 .headerWrapper {
   transition: all 0.3s ease-in-out;
@@ -28,7 +28,7 @@ header {
   left: 0px;
   width: 100%;
   z-index: 1000;
-  background-color: #153358;
+  background-color: #25262B;
 }
 .headerWrapper.fixed {
   top: -80px;
