@@ -120,10 +120,7 @@ const Usercarousel = () => {
           <span className="underline">2,162 reviews.</span> Trust our favorite
           reviews
         </p>
-        <div className="flex items-center">
-          <Star sx={{ color: "#68D391" }} />
-          <span>Trustpilot</span>
-        </div>
+       
       </div>
     </div>
   );

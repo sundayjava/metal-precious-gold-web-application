@@ -44,7 +44,7 @@ const AboutUsPage = () => {
       id: 2,
       img: "https://th.bing.com/th/id/OIP.e6ZrbVPkt3bSSz7s9GWjvAAAAA?w=425&h=425&rs=1&pid=ImgDetMain",
       heading: "From the ground to your hand",
-      body: "With more than 60 years in the industry, our group has always searched for innovative ways to move across the value chain to better serve our customers. With the creation of GOLD AVENUE, we wanted to get closer to our end clients in order to serve them straight from the source and directly share with them our passion for precious metals.",
+      body: "With more than 60 years in the industry, our group has always searched for innovative ways to move across the value chain to better serve our customers. With the creation of WARET GOLD, we wanted to get closer to our end clients in order to serve them straight from the source and directly share with them our passion for precious metals.",
       name: "Edward Anselem",
       position: "Founder",
     },
@@ -61,29 +61,21 @@ const AboutUsPage = () => {
           {breadcrumbs}
         </Breadcrumbs>
         <div className="mt-7 flex md:flex-row flex-col justify-between items-start">
-          <div className="md:w-[50%] w-full">
+          <div className="md:w-[60%] w-full">
             <h1 className="text-decoration-none text-darkaccent leading-[46px] text-[36px] font-[700] mb-[24px]">
               Your trustworthy GOLD partner
             </h1>
-            <p className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[400] max-w-[750px]">
-              WARET GOAL is the official online retailer of MKS PAMP GROUP, the
+            <p className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[400] max-w-[850px]">
+              WARET GOLD is the official online retailer of MKS PAMP GROUP, the
               worldwide leader in the precious metal industry.
             </p>
           </div>
-          <div className="md:w-[50%] w-full flex justify-end">
-            <Image
-              src={trustpilot}
-              alt="trustpilot"
-              width={120}
-              height={50}
-              className=" object-cover"
-            />
-          </div>
+         
         </div>
         <div className="md:mt-10 mt-1 rounded-lg">
           <Map />
         </div>
-        <div className="mt-12 md:w-[40%] w-full">
+        <div className="mt-12 md:w-[55%] w-full">
           <p className="text-decoration-none text-darkaccent leading-[46px] text-[36px] font-[700] mb-[24px]">People at WARET GOLD</p>
           <p className="text-decoration-none text-darkaccent leading-[32px] text-[20px] font-[400] max-w-[750px]">
             WARET GOLD is composed of a team of thirty experts who aim to offer
@@ -121,7 +113,7 @@ const AboutUsPage = () => {
         </div>
         <hr/>
         <div className="flex justify-center">
-          <div className="md:w-[85%] lg:w-[80%] xl:w-[70%] w-full">
+          <div className="w-full">
             <FAQ />
           </div>
         </div>
