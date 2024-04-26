@@ -142,11 +142,11 @@ const PricingPage = () => {
         </div>
 
         <div className=" w-full px-3 py-10 my-10">
-          <p className="font-bold md:text-[30px] text-[22px] mb-5">
+          <p className="text-decoration-none text-darkaccent leading-[46px] text-[30px] font-[700] mb-[24px] max-w-[560px]">
             Resell without commission
           </p>
           <div className="flex justify-between md:flex-row flex-col items-center">
-            <div className="md:w-[50%] w-full">
+            <div className="text-decoration-none text-darkaccent leading-[32px] text-[24px] font-[400] md:max-w-[600px]">
               <p className="font-bold mb-2">
                 We charge 0% commission fee upon resale
               </p>
@@ -161,7 +161,7 @@ const PricingPage = () => {
               <Image src={resel} alt="ujhbnol" className="" />
             </div>
           </div>
-          <Link href="https://www.youtube.com/watch?v=uGXRCvrlZnE" className="flex gap-3 items-center text-primaryColor mt-7">
+          <Link href="https://www.youtube.com/watch?v=uGXRCvrlZnE" className="flex gap-3 items-center text-accent mt-7">
             <YouTubeIcon />
             <p className="hover-border cursor-pointer">How to sell your precious metals?</p>
           </Link>
