@@ -65,7 +65,7 @@ const SecureSaving = () => {
         {secureData.map((item) => (
           <div
             key={item.id}
-            className="bg-white w-[33%] rounded-lg cursor-pointer shadow-lg  h-[500px] py-8 px-10"
+            className="bg-white md:w-[33%] w-full rounded-lg cursor-pointer shadow-lg  h-[500px] py-8 px-10"
           >
             <h1 className="text-[28px] font-[700] leading-[36px] hover:text-secondaryColor">
               {item.title}

@@ -29,7 +29,7 @@ const GoldSection = () => {
         </div>
       </div>
       <div className="gap-10 items-center flex md:flex-row flex-col justify-between mt-12">
-        <div className="md:w-[50%] w-full">
+        <div className="md:w-[50%] w-full md:block hidden">
           <Image
             src={leftos}
             alt="pamp"

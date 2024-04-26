@@ -80,7 +80,7 @@ const WhatIsNew = () => {
         ))}
       </div>
       <div className="flex justify-end md:hidden my-16 gap-2 items-center">
-        <button className="text-primaryColor hover-border">
+        <button className="text-accent hover-border">
         Discover our Blog <ArrowForwardIcon sx={{ fontSize: 17 }} />
         </button>
       </div>
