@@ -36,6 +36,15 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
     setAnchorEl(null);
   };
 
+  const navigateToWallet = () => {
+    handleClose();
+    router.push("/en/wallet");
+  }
+const navigateToProfile = () => {
+  handleClose();
+  router.push("/en/profile");
+}
+
   const navigateToOrder = () => {
     handleClose();
     router.push("/en/order-history");
@@ -199,9 +208,8 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
                         "aria-labelledby": "basic-button",
                       }}
                     >
-                      <MenuItem onClick={navigateToOrder}>
-                        Order history
-                      </MenuItem>
+                      <MenuItem onClick={navigateToWallet}>Wallet</MenuItem>
+                      <MenuItem onClick={navigateToProfile}>Profile Settings</MenuItem>
                       <MenuItem onClick={hanldeLogout}>Sign out</MenuItem>
                     </Menu>
                   </div>

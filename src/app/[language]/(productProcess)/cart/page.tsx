@@ -158,7 +158,7 @@ const CartPage = () => {
                             className="w-full h-full object-contain"
                           />
                         </div>
-                        <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400]">
+                        <p className="text-decoration-none text-darkaccent leading-[28px] text-[14px] font-[400]">
                           {item.product.title}
                         </p>
                       </div>
@@ -203,7 +203,7 @@ const CartPage = () => {
                       </div>
                     </div>
                     <div className="flex mt-10 ml-10 font-extralight items-center text-[13px]">
-                      <FavoriteBorder sx={{ fontSize: 22,color:'#c1c2c5' }} />
+                      <FavoriteBorder sx={{ fontSize: 22, color: "#c1c2c5" }} />
                       <p className="hover-border cursor-pointer"></p>
                     </div>
                   </div>
@@ -252,7 +252,9 @@ const CartPage = () => {
                         value="2"
                         control={<Radio />}
                         label={
-                          <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400] max-w-[750px]">Bitcoin</p>
+                          <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[400] max-w-[750px]">
+                            Bitcoin
+                          </p>
                         }
                         // onChange={(e) =>
                         //   handleRadioFilterChange(section.id, e)
@@ -319,24 +321,30 @@ const CartPage = () => {
           </div>
         </div>
         <div className="md:w-[35%] w-full bg-white rounded-md md:p-5 p-2">
-          <p className="text-decoration-none text-darkaccent leading-[46px] text-[30px] font-[700] mb-[26px]">
+          <p className="text-decoration-none text-darkaccent leading-[46px] text-[25px] font-[700] mb-[26px]">
             Order summary
           </p>
-          <div className="mt-10 text-decoration-none text-darkaccent leading-[28px] text-[18px] font-[400] flex justify-between items-center max-w-[750px]">
+          <div className="mt-10 text-decoration-none text-darkaccent leading-[28px] text-[14px] font-[400] flex justify-between items-center max-w-[750px]">
             <p>Products ({cartData?.data.cartItems.length})</p>
-            <p className="text-decoration-none text-darkaccent leading-[28px] text-[18px] font-[600] max-w-[750px]">€{cartData?.data.discount}</p>
+            <p className="text-decoration-none text-darkaccent leading-[28px] text-[18px] font-[600] max-w-[750px]">
+              €{cartData?.data.totalPrice}
+            </p>
           </div>
-          <div className="mb-10 mt-2 text-decoration-none text-darkaccent leading-[28px] text-[18px] font-[400] flex justify-between items-center max-w-[750px]">
+          <div className="mb-10 mt-2 text-decoration-none text-darkaccent leading-[28px] text-[14px] font-[400] flex justify-between items-center max-w-[750px]">
             <p>Priority payment (3%)</p>
-            <p className="text-decoration-none text-darkaccent leading-[28px] text-[18px] font-[600] max-w-[750px]">€{cartData?.data.totalPrice}</p>
+            <p className="text-decoration-none text-darkaccent leading-[28px] text-[18px] font-[600] max-w-[750px]">
+              €{cartData?.data.discount}
+            </p>
           </div>
           <hr />
           <div className="my-10">
-            <div className="flex text-decoration-none text-darkaccent leading-[28px] text-[20px] font-[600] max-w-[750px] justify-between items-center">
+            <div className="flex text-decoration-none text-darkaccent leading-[28px] text-[16px] font-[600] max-w-[750px] justify-between items-center">
               <p>Total</p>
-              <p>€{cartData?.data.discount}</p>
+              <p>€{cartData?.data.totalPrice}</p>
             </div>
-            <p className="text-decoration-none text-darkaccent leading-[28px] text-[20px] pt-2 font-[400] max-w-[750px]">Incl. taxes</p>
+            <p className="text-decoration-none text-darkaccent leading-[28px] text-[16px] pt-2 font-[400] max-w-[750px]">
+              Incl. taxes
+            </p>
           </div>
           {!auth.currentUser ? (
             <button

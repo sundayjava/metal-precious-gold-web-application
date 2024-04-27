@@ -11,11 +11,9 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
-import { ChevronLeft} from "@mui/icons-material";
+import { ChevronLeft } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import {
-  navData,
-} from "@/app/_utility/headerData";
+import { navData } from "@/app/_utility/headerData";
 import Link from "next/link";
 import { auth } from "@/config/firebase";
 import { User } from "@prisma/client";
@@ -50,9 +48,13 @@ const AndroidSidebar = (props: {
     setAnchorEl(null);
   };
 
-  const navigateToOrder = () => {
+  const navigateToWallet = () => {
     handleClose();
-    router.push("/en/order-history");
+    router.push("/en/wallet");
+  };
+  const navigateToProfile = () => {
+    handleClose();
+    router.push("/en/profile");
   };
 
   const hanldeLogout = () => {
@@ -127,7 +129,10 @@ const AndroidSidebar = (props: {
                       "aria-labelledby": "basic-button",
                     }}
                   >
-                    <MenuItem onClick={navigateToOrder}>Order history</MenuItem>
+                    <MenuItem onClick={navigateToWallet}>Wallet</MenuItem>
+                    <MenuItem onClick={navigateToProfile}>
+                      Profile Settings
+                    </MenuItem>
                     <MenuItem onClick={hanldeLogout}>Sign out</MenuItem>
                   </Menu>
                 </div>
@@ -159,7 +164,9 @@ const AndroidSidebar = (props: {
             </div>
 
             <div className="">
-              <h1 className="text-[22px] font-[700] leading-[36px] text-darkaccent hover:text-accent">Shops</h1>
+              <h1 className="text-[22px] font-[700] leading-[36px] text-darkaccent hover:text-accent">
+                Shops
+              </h1>
               <div>
                 {category.map((item) => (
                   <Accordion key={item.id}>
