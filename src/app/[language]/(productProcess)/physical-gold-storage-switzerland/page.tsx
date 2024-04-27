@@ -12,7 +12,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import FAQ from "@/app/_component/dashboardcomponent/FAQ";
 import Slider from "react-slick";
 import { userReviews } from "@/app/_utility/headerData";
-import leftos from "../../../../../public/lefttos.webp";
+import leftos from "../../../../../public/lefttos.png";
 import { useRouter } from "next/navigation";
 import { auth } from "@/config/firebase";
 
