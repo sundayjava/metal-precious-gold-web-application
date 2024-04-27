@@ -147,7 +147,7 @@ const Profile = () => {
             />
           </div>
           <p className="text-decoration-none text-darkaccent leading-[32px] mt-8 text-[16px] font-[400] max-w-[750px]">
-          <span className="font-[700]">NOTE:</span> Please contact our customer service if you'd like to update your first name, last name, and phone number.
+          <span className="font-[700]">NOTE:</span> Please contact our customer service if you`d like to update your first name, last name, and phone number.
           </p>
           <button className="text-white text-[13px] my-2 mt-10 font-bold grdientBtn px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white">
             Save Changes
