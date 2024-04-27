@@ -4,13 +4,15 @@ import ItemsCard from "@/app/_component/metaltabscomponents/ItemsCard";
 import { Pagination, PaginationItem } from "@mui/material";
 import { filters } from "@/app/_utility/filterData";
 import { useEffect, useState } from "react";
-import { Product } from "@/app/_utility/apicall";
+import { CartData, Product, getCartItem } from "@/app/_utility/apicall";
 import axios from "axios";
+import { auth } from "@/config/firebase";
 
 const ProductPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [parentcategory, setCat] = useState("");
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [cartData, setCartData] = useState<CartData | null>(null);
   const pageSize = 10;
   const sortOptions = [
     { id: 1, value: "default", label: "Default" },
@@ -32,6 +34,7 @@ const ProductPage = () => {
       }
     };
     fetchData();
+    getCartItem(auth.currentUser?.email, setCartData);
   }, []);
 
   const totalPages = Math.ceil(products.length / pageSize);
@@ -115,7 +118,11 @@ const ProductPage = () => {
           {products.length > 0 ? (
             <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
               {products?.map((item) => (
-                <ItemsCard item={item} key={item.id} />
+                <ItemsCard
+                  item={item}
+                  key={item.id}
+                  setcartData={setCartData}
+                />
               ))}
             </div>
           ) : (
