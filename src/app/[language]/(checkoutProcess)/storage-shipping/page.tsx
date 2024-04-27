@@ -59,9 +59,9 @@ const StorageShipping = () => {
           </Stepper>
           {activeStep === 0 ? (
             <Delivery nextStep={handleNext} />
-          ) : activeStep === 2 ? (
+          ) : activeStep === 1 ? (
             <BillingAddress nextStep={handleNext} />
-          ) : activeStep === 3 ? (
+          ) : activeStep === 2 ? (
             <PaymentOptions/>
           ) : (
             <PaymentReviews finalStep={handleNext} />

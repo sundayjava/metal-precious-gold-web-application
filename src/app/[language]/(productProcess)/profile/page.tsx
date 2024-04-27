@@ -1,3 +1,6 @@
+"use client";
+
+import { auth } from "@/config/firebase";
 import {
   FormControl,
   FormControlLabel,
@@ -5,9 +8,33 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import React from "react";
+import { User } from "@prisma/client";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Profile = () => {
+  const [user, setUser] = useState<User | null>(null);
+
+  async function getProfile() {
+    if (auth.currentUser?.email) {
+      try {
+        const response = await axios.get<User>(
+          `/api/user/${auth.currentUser?.email}`
+        );
+        setUser(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    localStorage.setItem("lang", "en");
+    getProfile();
+    // getCartItem(auth.currentUser?.email, setCartData);
+  }, [auth.currentUser?.email]);
+
   return (
     <div className="pt-16">
       <div>
@@ -60,6 +87,7 @@ const Profile = () => {
                 type="text"
                 id="outlined-basic"
                 name="firstname"
+                value={user?.firstname}
                 label={
                   <p>
                     First name(s) <span className="text-red-500">*</span>
@@ -72,6 +100,7 @@ const Profile = () => {
                 type="text"
                 id="outlined-basic"
                 name="firstname"
+                value={user?.lastname}
                 label={
                   <p>
                     Last name(s) <span className="text-red-500">*</span>
@@ -80,10 +109,10 @@ const Profile = () => {
                 variant="outlined"
               />
             </div>
-            <div className="flex flex-col gap-3 items-center">
-              <p className="text-decoration-none text-darkaccent leading-[32px] my-3 text-[16px] font-[400] max-w-[750px]">
-                Date of birth (i.e: 31/01/1975):
-              </p>
+            <p className="text-decoration-none text-darkaccent leading-[32px] mt-3 text-[16px] font-[400] max-w-[750px]">
+              Date of birth (i.e: 31/01/1975):
+            </p>
+            <div className="flex md:flex-row flex-col gap-3 items-center">
               <TextField
                 sx={{ width: "100%", mt: 3 }}
                 type="text"
@@ -126,6 +155,7 @@ const Profile = () => {
               type="text"
               id="outlined-basic"
               name="phonenumber"
+              value={user?.phoneNumber}
               label={
                 <p>
                   Phone Number <span className="text-red-500">*</span>
@@ -138,6 +168,7 @@ const Profile = () => {
               type="text"
               id="outlined-basic"
               name="email"
+              value={user?.email}
               label={
                 <p>
                   Email <span className="text-red-500">*</span>
@@ -147,9 +178,14 @@ const Profile = () => {
             />
           </div>
           <p className="text-decoration-none text-darkaccent leading-[32px] mt-8 text-[16px] font-[400] max-w-[750px]">
-          <span className="font-[700]">NOTE:</span> Please contact our customer service if you`d like to update your first name, last name, and phone number.
+            <span className="font-[700]">NOTE:</span> Please contact our
+            customer service if you`d like to update your first name, last name,
+            and phone number.
           </p>
-          <button className="text-white text-[13px] my-2 mt-10 font-bold grdientBtn px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white">
+          <button
+            onClick={() => alert("Successfull")}
+            className="text-white text-[13px] my-2 mt-10 font-bold grdientBtn px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white"
+          >
             Save Changes
           </button>
         </div>
