@@ -155,7 +155,7 @@ const StorageSolution = () => {
               directly online.
             </p>
             <div className="mt-11">
-              <button onClick={()=>router.push("/")} className="text-white text-[13px] cursor-not-allowed font-bold grdientBtn px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white">
+              <button onClick={()=>router.push("/en/wallet")} className="text-white text-[13px] font-bold grdientBtn px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white">
                 Get started
               </button>
             </div>

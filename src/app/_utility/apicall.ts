@@ -4,7 +4,7 @@ import { User } from "./user";
 export const addToCart = async (
   email: any,
   productId: string,
-  setCartData?: any
+  setCartData: any
 ) => {
   if (email) {
     try {

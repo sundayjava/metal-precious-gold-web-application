@@ -10,14 +10,21 @@ import FAQ from "@/app/_component/dashboardcomponent/FAQ";
 import WhatIsNew from "@/app/_component/dashboardcomponent/WhatIsNew";
 import Footer from "@/app/_component/globalcomponent/Footer";
 import { Box, useMediaQuery } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AndroidSidebar from "./_component/globalcomponent/AndroidSidebar";
 import CustomHeader from "./_component/globalcomponent/CustomHeader";
 import TawkToChat from "./_component/Tawkto";
+import { auth } from "@/config/firebase";
+import { CartData, getCartItem } from "./_utility/apicall";
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const isNonMobile = useMediaQuery("(min-width: 769px)");
+  const [cartData, setCartData] = useState<CartData | null>(null);
+
+  useEffect(() => {
+    getCartItem(auth.currentUser?.email, setCartData);
+  }, [auth.currentUser?.email]);
 
   return (
     <Box>
@@ -31,11 +38,12 @@ export default function Home() {
         <CustomHeader
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
+          cartData={cartData}
         />
         <div className="mt-12 flex-grow">
           <div className="xl:px-[190px] lg:px-[100px] md:px-[40px] px-4 md:mt-7 w-full">
             <CarouselSlideShow />
-            <MetalTabs />
+            <MetalTabs setcartData = {setCartData}/>
             <SecureSaving />
             <GoldSection />
             <SavingAssistance />

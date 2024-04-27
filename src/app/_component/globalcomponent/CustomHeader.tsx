@@ -17,7 +17,7 @@ import { signOut } from "@firebase/auth";
 import { CartData, getCartItem } from "@/app/_utility/apicall";
 import { User } from "@/app/_utility/user";
 
-const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
+const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any,cartData:CartData | null }) => {
   const [isOpenNav, setIsOpenNav] = useState(false);
   const [openMegaMenu, setOpenMegaMenu] = useState(false);
   const [lang, setLang] = useState("en");
@@ -26,7 +26,8 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [user, setUser] = useState<User | null>(null);
-  const [cartData, setCartData] = useState<CartData | null>(null);
+  const {cartData} = props
+  // const [cartData, setCartData] = useState<CartData | null>(null);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -96,7 +97,7 @@ const navigateToProfile = () => {
   useEffect(() => {
     localStorage.setItem("lang", "en");
     getProfile();
-    getCartItem(auth.currentUser?.email, setCartData);
+    // getCartItem(auth.currentUser?.email, setCartData);
   }, [auth.currentUser?.email]);
 
   const changeLanguage = (event: ChangeEvent<HTMLSelectElement>) => {

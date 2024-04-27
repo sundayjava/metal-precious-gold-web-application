@@ -3,7 +3,7 @@ import ItemsCard from "./ItemsCard";
 import { limitedEditionData } from "@/app/_utility/metalData";
 import { useState, useEffect } from "react";
 
-const LimitedEdition = (props:{product:any}) => {
+const LimitedEdition = (props:{product:any,setcartData:any}) => {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
   const {product} = props
 
@@ -58,7 +58,7 @@ const LimitedEdition = (props:{product:any}) => {
       <div className="container-fluid position-relative">
         <Slider {...settings} className="home_slider_Main">
           {product.map((items:any) => (
-            <ItemsCard key={items.id} item={items} />
+            <ItemsCard setcartData = {props.setcartData} key={items.id} item={items} />
           ))}
         </Slider>
       </div>

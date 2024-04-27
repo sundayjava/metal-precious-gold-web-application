@@ -12,7 +12,7 @@ const onChange = (key: string) => {
   console.log(key);
 };
 
-const MetalTabs = () => {
+const MetalTabs = (props:{setcartData:any}) => {
   const [isCentered, setIsCentered] = useState(false);
   const [product, setProduct] = useState([])
 
@@ -43,22 +43,22 @@ const MetalTabs = () => {
     {
       key: "bestsellers",
       label: "Best Sellers",
-      children: <BestSeller product={product} />,
+      children: <BestSeller setcartData = {props.setcartData} product={product} />,
     },
     {
       key: "limitededitions",
       label: "Limited Editions",
-      children: <LimitedEdition product={product} />,
+      children: <LimitedEdition setcartData = {props.setcartData} product={product} />,
     },
     {
       key: "coins",
       label: "Coins",
-      children: <Coins product={product} />,
+      children: <Coins setcartData = {props.setcartData} product={product} />,
     },
     {
       key: "newarrivals",
       label: "New Arrivals",
-      children: <NewArrivals product={product} />,
+      children: <NewArrivals setcartData = {props.setcartData} product={product} />,
     },
   ];
 

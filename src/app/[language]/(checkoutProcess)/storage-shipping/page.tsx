@@ -1,13 +1,20 @@
 "use client";
 
+import BillingAddress from "@/app/_component/checkout-components/BillingAddress";
 import Delivery from "@/app/_component/checkout-components/Delivery";
+import PaymentOptions from "@/app/_component/checkout-components/PaymentOptions";
 import PaymentReviews from "@/app/_component/checkout-components/PaymentReviews";
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
 import { Box, Stepper, Step, StepLabel } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const steps = ["Storage & Delivery", "Order Summary"];
+const steps = [
+  "Storage & Delivery",
+  "Billing Address",
+  "Payment Method",
+  "Order Summary",
+];
 
 const StorageShipping = () => {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -31,7 +38,9 @@ const StorageShipping = () => {
         Go back to cart
       </button>
       <div className="flex justify-center items-center my-5">
-        <p className="text-decoration-none text-darkaccent leading-[28px] text-[26px] font-[700] max-w-[750px]">Checkout</p>
+        <p className="text-decoration-none text-darkaccent leading-[28px] text-[26px] font-[700] max-w-[750px]">
+          Checkout
+        </p>
       </div>
       <div className="md:w-[80%] w-full inline-block lg:px-12 md:px-7 px-2">
         <Box>
@@ -50,7 +59,11 @@ const StorageShipping = () => {
           </Stepper>
           {activeStep === 0 ? (
             <Delivery nextStep={handleNext} />
-          )  : (
+          ) : activeStep === 2 ? (
+            <BillingAddress nextStep={handleNext} />
+          ) : activeStep === 3 ? (
+            <PaymentOptions/>
+          ) : (
             <PaymentReviews finalStep={handleNext} />
           )}
         </Box>

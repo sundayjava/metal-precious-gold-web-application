@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { auth } from "@/config/firebase";
 import { addToCart } from "@/app/_utility/apicall";
 
-const ItemsCard = (props: { item: any }) => {
+const ItemsCard = (props: { item: any,setcartData:any }) => {
   const [isHovered, setIsHovered] = useState(false);
   const router = useRouter();
   const { item } = props;
@@ -48,7 +48,7 @@ const ItemsCard = (props: { item: any }) => {
         <h1 className="text-center font-bold text-[18px] text-primaryColor mt-2">€{item?.price.toLocaleString()}</h1>
         <div className="w-full flex justify-center items-center">
           <button
-            onClick={() => addToCart(auth.currentUser?.email, item.id)}
+            onClick={() => addToCart(auth.currentUser?.email, item.id,props.setcartData)}
             className="text-white grdientBtn font-bold px-6 py-3 mt-4 rounded-lg flex items-center gap-2"
           >
             <ShoppingCart sx={{ fontSize: 20 }} />

@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import ItemsCard from "./ItemsCard";
 import { useState, useEffect } from "react";
 
-const BestSeller = (props:{product:any}) => {
+const BestSeller = (props:{product:any, setcartData:any}) => {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
   const {product} = props
 
@@ -62,7 +62,7 @@ const BestSeller = (props:{product:any}) => {
          {
           product.map(
             (items:any) => (
-              <ItemsCard key={items.id} item={items}/>
+              <ItemsCard setcartData = {props.setcartData} key={items.id} item={items}/>
             )
           )
          }
