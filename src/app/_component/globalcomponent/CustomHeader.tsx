@@ -3,7 +3,7 @@
 import { AppBar, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState, useRef, useEffect, ChangeEvent } from "react";
-import { ArrowDropUp, Call, Search } from "@mui/icons-material";
+import { ArrowDropUp, Call } from "@mui/icons-material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { metals, navData } from "@/app/_utility/headerData";
 import Link from "next/link";
@@ -15,6 +15,7 @@ import { auth } from "@/config/firebase";
 import axios from "axios";
 import { signOut } from "@firebase/auth";
 import { CartData, getCartItem } from "@/app/_utility/apicall";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { User } from "@/app/_utility/user";
 
 const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any,cartData:CartData | null }) => {
@@ -198,7 +199,7 @@ const navigateToProfile = () => {
                       onClick={handleClick}
                       className="text-[14px]"
                     >
-                      {user.firstname} {user.lastname}
+                      {user.firstname} {user.lastname}<ArrowDropDownIcon sx={{fontSize:22}}/>
                     </button>
                     <Menu
                       id="basic-menu"

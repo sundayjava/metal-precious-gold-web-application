@@ -21,6 +21,7 @@ import axios from "axios";
 import { signOut } from "firebase/auth";
 import { ChangeEvent, useEffect, useState } from "react";
 import { category } from "@/app/_utility/category";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const AndroidSidebar = (props: {
   isNonMobile: any;
@@ -123,7 +124,7 @@ const AndroidSidebar = (props: {
                     onClick={handleClick}
                     className="text-[14px] font-bold"
                   >
-                    {user.firstname} {user.lastname}
+                    {user.firstname} {user.lastname}<ArrowDropDownIcon sx={{fontSize:22}}/>
                   </button>
                   <Menu
                     id="basic-menu"
