@@ -416,7 +416,7 @@ const WalletPayment = () => {
           </h1>
           <p className="text-decoration-none text-center text-darkaccent leading-[21px] text-[16px] font-[400] mb-[20px]">
             Add funds to your wallet to start earning on every amount less than{" "}
-            {user?.currency}100,000 generates 1%/mon, amount above
+            <span className="uppercase">{user?.currency}</span>100,000 generates 1%/mon, amount above
             $1 million generate 2%/mon. Adds funds to get started
           </p>
 
