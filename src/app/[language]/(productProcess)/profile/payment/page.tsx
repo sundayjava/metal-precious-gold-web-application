@@ -288,8 +288,8 @@ const WalletPayment = () => {
               Your currency:
             </p>
             {user?.currency ? (
-              <p className="text-decoration-none text-darkaccent leading-[21px] text-[18px] font-[700] mb-[40px]">
-                {user?.currency.toUpperCase()}
+              <p className="text-decoration-none uppercase text-darkaccent leading-[21px] text-[18px] font-[700] mb-[40px]">
+                {user?.currency}
               </p>
             ) : (
               <p className="text-decoration-none text-darkaccent leading-[21px] text-[18px] font-[700] mb-[40px]">
