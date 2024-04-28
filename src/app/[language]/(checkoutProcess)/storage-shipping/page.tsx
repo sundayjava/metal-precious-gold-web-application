@@ -62,7 +62,7 @@ const StorageShipping = () => {
           ) : activeStep === 1 ? (
             <BillingAddress nextStep={handleNext} />
           ) : activeStep === 2 ? (
-            <PaymentOptions/>
+            <PaymentOptions nextStep={handleNext}/>
           ) : (
             <PaymentReviews finalStep={handleNext} />
           )}

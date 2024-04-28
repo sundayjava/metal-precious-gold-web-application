@@ -1,10 +1,13 @@
 import { auth } from "@/config/firebase";
+import { User } from "@prisma/client";
+import axios from "axios";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, use, useEffect, useState } from "react";
 
 const BillingAddress = (props: { nextStep: any }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
   const [info, setInfo] = useState({
     phoneNumber: "",
     address: "",
@@ -15,6 +18,25 @@ const BillingAddress = (props: { nextStep: any }) => {
     city: "",
     country: "",
   });
+
+  async function getProfile() {
+    if (auth.currentUser?.email) {
+      try {
+        const response = await axios.get<User>(
+          `/api/user/${auth.currentUser?.email}`
+        );
+        setUser(response.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    localStorage.setItem("lang", "en");
+    getProfile();
+  }, [auth.currentUser?.email]);
+  
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -55,7 +77,7 @@ const BillingAddress = (props: { nextStep: any }) => {
 
         console.log(data);
         if (data.success == true) {
-          props.nextStep
+          props.nextStep()
           setLoading(false);
         }
      
@@ -74,6 +96,7 @@ const BillingAddress = (props: { nextStep: any }) => {
               <input
                 type="text"
                 placeholder="First name(s)"
+                value={user?.firstname}
                 className="px-4 py-2 border border-primaryColor/50 rounded-md outline-primaryColor"
               />
               <span className="text-[12px] italic font-light text-red-500"></span>
@@ -82,6 +105,7 @@ const BillingAddress = (props: { nextStep: any }) => {
               <input
                 type="text"
                 placeholder="Last name"
+                value={user?.lastname}
                 className="px-4 py-2 border border-primaryColor/50 rounded-md outline-primaryColor"
               />
               <span className="text-[12px] italic font-light text-red-500"></span>
@@ -182,7 +206,7 @@ const BillingAddress = (props: { nextStep: any }) => {
           </div>
           <div className="mt-8">
             <button
-              className="px-4 py-2 rounded-md text-[15px] font-bold text-white bg-black"
+              className="px-4 py-2 rounded-md text-[15px] font-bold text-white grdientBtn bg-black"
             >
               Continue
             </button>

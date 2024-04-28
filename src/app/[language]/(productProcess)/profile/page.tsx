@@ -32,7 +32,6 @@ const Profile = () => {
   useEffect(() => {
     localStorage.setItem("lang", "en");
     getProfile();
-    // getCartItem(auth.currentUser?.email, setCartData);
   }, [auth.currentUser?.email]);
 
   return (

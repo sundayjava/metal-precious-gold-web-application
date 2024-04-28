@@ -321,7 +321,7 @@ const navigateToProfile = () => {
                           <ShoppingCartOutlinedIcon
                             sx={{ color: "#C1C2C5", cursor: "pointer" }}
                           />
-                          <div className="absolute cursor-pointer bg-red-600 px-1 right-1 text-[12px] font-bold text-primaryColor rounded-full top-0">
+                          <div className="absolute cursor-pointer bg-red-600 px-1 right-1 text-[12px] font-bold text-white rounded-full top-0">
                             {cartData?.data?.cartItems.length}
                           </div>
                         </li>

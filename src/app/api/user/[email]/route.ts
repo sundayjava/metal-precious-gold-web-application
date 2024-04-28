@@ -28,6 +28,7 @@ export async function PUT(
       address,
       street,
       streetNumber,
+      shippingAddress,
       door,
       postalcode,
       city,
@@ -42,6 +43,7 @@ export async function PUT(
       where: { id: user?.id },
       data: {
         phoneNumber,
+        shippingAddress,
         address,
         street,
         streetNumber,

@@ -5,19 +5,17 @@ import {
   CircularProgress,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import CopyButton from "../globalcomponent/CopyBtn";
-import Image from "next/image";
 import { auth, storage } from "@/config/firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { useRouter } from "next/navigation";
 import axios from "axios";
 import { User } from "@/app/_utility/user";
 
-const PaymentOptions = () => {
+const PaymentOptions = (props: { nextStep: any }) => {
   const [file, setFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
     if (selectedFile) {
@@ -27,66 +25,66 @@ const PaymentOptions = () => {
 
   const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!file) return;
+    props.nextStep()
+    // if (!file) {return};
 
-    try {
-      setIsLoading(true);
-      const cartItemId = localStorage.getItem("cartItemId");
-      const user = await axios.get<User>(
-        `/api/user/${auth.currentUser?.email}`
-      );
+    // try {
+    //   setIsLoading(true);
+    //   const user = await axios.get<User>(
+    //     `/api/user/${auth.currentUser?.email}`
+    //   );
 
-      const storageRef = ref(storage, "payment");
+    //   const storageRef = ref(storage, "payment");
 
-      const uploadTask = uploadBytesResumable(storageRef, file);
+    //   const uploadTask = uploadBytesResumable(storageRef, file);
 
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-        },
-        (error) => {
-          switch (error.code) {
-            case "storage/unauthorized":
-              console.log("Permission error");
-              break;
-            case "storage/canceled":
-              console.log("storage/canceled");
-              break;
+    //   uploadTask.on(
+    //     "state_changed",
+    //     (snapshot) => {
+    //       const progress =
+    //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    //       console.log("Upload is " + progress + "% done");
+    //     },
+    //     (error) => {
+    //       switch (error.code) {
+    //         case "storage/unauthorized":
+    //           console.log("Permission error");
+    //           break;
+    //         case "storage/canceled":
+    //           console.log("storage/canceled");
+    //           break;
 
-            case "storage/unknown":
-              console.log("storage/unknown");
-              break;
-          }
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            const response = await fetch("/api/payment", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                userId: user.data.id,
-                file: downloadURL,
-              }),
-            });
+    //         case "storage/unknown":
+    //           console.log("storage/unknown");
+    //           break;
+    //       }
+    //     },
+    //     () => {
+    //       getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+    //         const response = await fetch("/api/payment", {
+    //           method: "POST",
+    //           headers: {
+    //             "Content-Type": "application/json",
+    //           },
+    //           body: JSON.stringify({
+    //             userId: user.data.id,
+    //             file: downloadURL,
+    //           }),
+    //         });
 
-            const data = await response.json();
-            if (data.success === true) {
-              alert("Payment Uploaded successfully");
-              router.push("/");
-              setIsLoading(false);
-              localStorage.removeItem("cartItemId");
-            }
-          });
-        }
-      );
-    } catch (err) {
-      setIsLoading(false);
-    }
+    //         const data = await response.json();
+    //         if (data.success === true) {
+    //           alert("Payment Uploaded successfully");
+    //           props.nextStep()
+    //           setIsLoading(false);
+    //           localStorage.removeItem("cartItemId");
+    //         }
+    //       });
+    //     }
+    //   );
+    // } catch (err) {
+    //   setIsLoading(false);
+    // }
   };
 
   const paymentMethods = [
@@ -101,6 +99,7 @@ const PaymentOptions = () => {
       desc: "9079029135",
     },
   ];
+
   return (
     <div className="flex justify-center mt-10 w-full">
       <div className="bg-white rounded-md border-l-[8px] custom-box-shadow border-primaryColor p-10 w-full">
@@ -162,7 +161,6 @@ const PaymentOptions = () => {
               <CircularProgress />
             ) : (
               <button
-                // onClick={placeOrder}
                 className="px-4 py-2 rounded-md text-[15px] font-bold text-white grdientBtn"
               >
                 Next

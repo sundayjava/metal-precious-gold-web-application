@@ -47,7 +47,7 @@ export default function RootLayout({
             </div>
           </Box>
         </Box>
-       
+        <TawkToChat />
       </body>
     </html>
   );

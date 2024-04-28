@@ -37,20 +37,21 @@ model Product {
 }
 
 model User {
-  id           String  @id @default(auto()) @map("_id") @db.ObjectId
-  firstname    String
-  lastname     String
-  email        String
-  cart         Cart?
-  phoneNumber  String?
-  address      String?
-  street       String?
-  streetNumber String?
-  door         String?
-  postalcode   String?
-  city         String?
-  country      String?
-  Order        Order?
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  firstname       String
+  lastname        String
+  email           String
+  cart            Cart?
+  phoneNumber     String?
+  shippingAddress String?
+  address         String?
+  street          String?
+  streetNumber    String?
+  door            String?
+  postalcode      String?
+  city            String?
+  country         String?
+  Order           Order[]
 }
 
 model Payment {
@@ -98,7 +99,7 @@ model OrderItem {
 model Order {
   id                   String      @id @default(auto()) @map("_id") @db.ObjectId
   user                 User        @relation(fields: [userId], references: [id])
-  userId               String       @db.ObjectId @unique
+  userId               String      @db.ObjectId
   orderItems           OrderItem[]
   orderDate            DateTime
   deliveryDate         DateTime?

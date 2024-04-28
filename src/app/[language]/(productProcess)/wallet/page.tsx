@@ -15,7 +15,7 @@ const Wallet = () => {
           <div>
             <p className="text-decoration-none text-darkaccent leading-[32px] text-[16px] font-[400] max-w-[750px]">WARET GOLD pay balance</p>
             <button
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/en/profile/payment")}
               className="text-white text-[13px] my-2 font-bold grdientBtn px-10 py-3 rounded-md hover:text-primaryColor hover:bg-white"
             >
               Deposit

@@ -3,7 +3,6 @@
 import { Breadcrumbs, Link } from "@mui/material";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import trustpilot from "../../../../../public/trustpilot.png";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Map from "@/app/_component/Map/Map";
 import FAQ from "@/app/_component/dashboardcomponent/FAQ";
