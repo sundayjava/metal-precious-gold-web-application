@@ -52,12 +52,22 @@ model User {
   city            String?
   country         String?
   Order           Order[]
+  currency        String?
+  btcAddress      String?
+  accountNumber   String?
+  acccountry      String?
+  swift           String?
+  accName         String?
+  otherInfo       String?
+  refNumber       String?
+  balance         Float?
 }
 
 model Payment {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
   userId String
   file   String
+  date   DateTime @default(now())
 }
 
 model CartItem {

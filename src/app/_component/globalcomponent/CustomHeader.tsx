@@ -46,9 +46,9 @@ const navigateToProfile = () => {
   router.push("/en/profile");
 }
 
-  const navigateToOrder = () => {
+  const navigateToPayment = () => {
     handleClose();
-    router.push("/en/order-history");
+    router.push("/en/profile/payment");
   };
 
   const hanldeLogout = () => {
@@ -211,6 +211,7 @@ const navigateToProfile = () => {
                     >
                       <MenuItem onClick={navigateToWallet}>Wallet</MenuItem>
                       <MenuItem onClick={navigateToProfile}>Profile Settings</MenuItem>
+                      <MenuItem onClick={navigateToPayment}>Payment/Withdrawal</MenuItem>
                       <MenuItem onClick={hanldeLogout}>Sign out</MenuItem>
                     </Menu>
                   </div>

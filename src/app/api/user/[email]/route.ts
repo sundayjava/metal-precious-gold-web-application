@@ -33,6 +33,15 @@ export async function PUT(
       postalcode,
       city,
       country,
+      currency,
+      btcAddress,
+      accountNumber,
+      acccountry,
+      swift,
+      accName,
+      otherInfo,
+      refNumber,
+      balance
     } = await request.json();
 
     const user = await prisma.user.findFirst({
@@ -51,6 +60,15 @@ export async function PUT(
         postalcode,
         city,
         country,
+        currency,
+        btcAddress,
+        accountNumber,
+        acccountry,
+        swift,
+        accName,
+        otherInfo,
+        refNumber,
+        balance
       },
     });
     console.log("User updated:", updatedUser);

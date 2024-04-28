@@ -57,6 +57,11 @@ const AndroidSidebar = (props: {
     router.push("/en/profile");
   };
 
+  const navigateToPayment = () => {
+    handleClose();
+    router.push("/en/profile/payment");
+  };
+
   const hanldeLogout = () => {
     signOut(auth)
       .then(() => {
@@ -130,6 +135,9 @@ const AndroidSidebar = (props: {
                     }}
                   >
                     <MenuItem onClick={navigateToWallet}>Wallet</MenuItem>
+                    <MenuItem onClick={navigateToPayment}>
+                      Payment/Withdrawal
+                    </MenuItem>
                     <MenuItem onClick={navigateToProfile}>
                       Profile Settings
                     </MenuItem>
