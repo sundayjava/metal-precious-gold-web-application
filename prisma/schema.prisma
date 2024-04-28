@@ -67,6 +67,7 @@ model Payment {
   id     String   @id @default(auto()) @map("_id") @db.ObjectId
   userId String
   file   String
+  desc   String?
   date   DateTime @default(now())
 }
 

@@ -1,6 +1,16 @@
 "use client";
 
-import { AppBar, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  FormControl,
+  IconButton,
+  Menu,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Toolbar,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState, useRef, useEffect, ChangeEvent } from "react";
 import { ArrowDropUp, Call } from "@mui/icons-material";
@@ -15,10 +25,14 @@ import { auth } from "@/config/firebase";
 import axios from "axios";
 import { signOut } from "@firebase/auth";
 import { CartData, getCartItem } from "@/app/_utility/apicall";
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { User } from "@/app/_utility/user";
 
-const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any,cartData:CartData | null }) => {
+const CustomHeader = (props: {
+  isSidebarOpen: any;
+  setIsSidebarOpen: any;
+  cartData: CartData | null;
+}) => {
   const [isOpenNav, setIsOpenNav] = useState(false);
   const [openMegaMenu, setOpenMegaMenu] = useState(false);
   const [lang, setLang] = useState("en");
@@ -27,8 +41,12 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any,cartDat
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [user, setUser] = useState<User | null>(null);
-  const {cartData} = props
-  // const [cartData, setCartData] = useState<CartData | null>(null);
+  const { cartData } = props;
+  const [currency, setCurrency] = useState("eur");
+
+  const handleChangeCurrency = (event: SelectChangeEvent) => {
+    setCurrency(event.target.value as string);
+  };
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -41,11 +59,11 @@ const CustomHeader = (props: { isSidebarOpen: any; setIsSidebarOpen: any,cartDat
   const navigateToWallet = () => {
     handleClose();
     router.push("/en/wallet");
-  }
-const navigateToProfile = () => {
-  handleClose();
-  router.push("/en/profile");
-}
+  };
+  const navigateToProfile = () => {
+    handleClose();
+    router.push("/en/profile");
+  };
 
   const navigateToPayment = () => {
     handleClose();
@@ -98,7 +116,6 @@ const navigateToProfile = () => {
   useEffect(() => {
     localStorage.setItem("lang", "en");
     getProfile();
-    // getCartItem(auth.currentUser?.email, setCartData);
   }, [auth.currentUser?.email]);
 
   const changeLanguage = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -156,23 +173,44 @@ const navigateToProfile = () => {
             </div>
           </header>
           <div className="lg:px-[190px] md:px-[10px] px-1 bg-secondaryColor text-accent font-normal py-2">
-            <div className="flex justify-between">
-              <div className="flex lg:gap-6 gap-2 items-center md:text-[14px] text-[12px] text-accent">
-                <p className="text-[14px]">
-                  <span className="rounded-full px-1 bg-primaryColor text-white">
-                    €
-                  </span>{" "}
-                  EUR
-                </p>
-
+            <div className="flex justify-between items-center">
+             
+              <div className="flex lg:gap-6 gap-2 items-center md:text-[14px] text-[12px] text-accent h-[10px]">
+                <Box
+                  sx={{
+                    minWidth: "10%",
+                    color: "white",
+                    border: "none",
+                    marginRight: "10px",
+                  }}
+                >
+                  <FormControl
+                    fullWidth
+                    sx={{ border: "none", color: "white" }}
+                  >
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      sx={{ color: "white", border: "none", fontSize: "12px" }}
+                      value={currency}
+                      onChange={handleChangeCurrency}
+                      MenuProps={{ sx: { color: "white" } }}
+                    >
+                      <MenuItem value={"eur"}>EUR</MenuItem>
+                      <MenuItem value={"chf"}>CHF</MenuItem>
+                      <MenuItem value={"usd"}>USD</MenuItem>
+                      <MenuItem value={"gbp"}>GBP</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
                 <select
                   onChange={changeLanguage}
-                  className="bg-transparent cursor-pointer text-[14px]"
+                  className="bg-transparent cursor-pointer text-[14px] text-white" // Update text colo
                 >
                   <option value="en">EN</option>
                 </select>
-                <p className="cursor-pointer hover-border text-[14px]">
-                  <Call sx={{ fontSize: 14 }} />
+                <p className="cursor-pointer hover-border text-[14px] text-white flex items-center">
+                  <Call sx={{ fontSize: 14, marginLeft: "5px" }} />{" "}
                   +41225189111
                 </p>
               </div>
@@ -199,7 +237,8 @@ const navigateToProfile = () => {
                       onClick={handleClick}
                       className="text-[14px]"
                     >
-                      {user.firstname} {user.lastname}<ArrowDropDownIcon sx={{fontSize:22}}/>
+                      {user.firstname} {user.lastname}
+                      <ArrowDropDownIcon sx={{ fontSize: 22 }} />
                     </button>
                     <Menu
                       id="basic-menu"
@@ -211,8 +250,12 @@ const navigateToProfile = () => {
                       }}
                     >
                       <MenuItem onClick={navigateToWallet}>Wallet</MenuItem>
-                      <MenuItem onClick={navigateToProfile}>Profile Settings</MenuItem>
-                      <MenuItem onClick={navigateToPayment}>Payment/Withdrawal</MenuItem>
+                      <MenuItem onClick={navigateToProfile}>
+                        Profile Settings
+                      </MenuItem>
+                      <MenuItem onClick={navigateToPayment}>
+                        Payment/Withdrawal
+                      </MenuItem>
                       <MenuItem onClick={hanldeLogout}>Sign out</MenuItem>
                     </Menu>
                   </div>

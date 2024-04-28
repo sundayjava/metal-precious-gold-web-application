@@ -6,7 +6,6 @@ import {
   Radio,
   FormControl,
 } from "@mui/material";
-import axios from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
 
 const Delivery = (props: { nextStep: any }) => {
@@ -59,7 +58,6 @@ const Delivery = (props: { nextStep: any }) => {
       const data = await response.json();
 
       if (data.success !== true) {
-        console.log(response);
         alert(data.error);
         setLoading(false);
         return;
