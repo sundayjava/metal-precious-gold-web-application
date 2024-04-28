@@ -47,7 +47,7 @@ const PaymentOptions = (props: { nextStep: any }) => {
   useEffect(() => {
     localStorage.setItem("lang", "en");
     getProfile();
-  }, [auth.currentUser?.email]);
+  });
 
   useEffect(() => {
     getCartItem(auth.currentUser?.email, setCartData);
@@ -188,7 +188,7 @@ const PaymentOptions = (props: { nextStep: any }) => {
             {paymentMethods.map((item) => {
               if (item.title === "Wallet") {
                 return (
-                  <div className="flex gap-3 items-center mt-6">
+                  <div key={item.id} className="flex gap-3 items-center mt-6">
                     <FormControl>
                       <RadioGroup
                         aria-labelledby="demo-radio-buttons-group-label"
