@@ -37,7 +37,7 @@ model Product {
 }
 
 model User {
-  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
   firstname       String
   lastname        String
   email           String
@@ -52,6 +52,7 @@ model User {
   city            String?
   country         String?
   Order           Order[]
+  payment         Payment[]
   currency        String?
   btcAddress      String?
   accountNumber   String?
@@ -65,10 +66,18 @@ model User {
 
 model Payment {
   id     String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId String
+  user   User     @relation(fields: [userId], references: [id])
+  userId String   @unique @db.ObjectId
   file   String
   desc   String?
   date   DateTime @default(now())
+}
+
+model Settings {
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  walletaddress   String?
+  accountnumber   String?
+  accountname   String?
 }
 
 model CartItem {
